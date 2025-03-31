@@ -9,6 +9,7 @@ out/
 
 # Docs
 docs/
+output.xlsx
 
 # Dotenv file
 .env

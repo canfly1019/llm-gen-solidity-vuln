@@ -30,7 +30,7 @@ def append_log(text: str):
 # 開始紀錄
 append_log(f"\n===== Test run started: {datetime.now()} =====\n")
 
-start_from = "6.2.1"  # 控制從哪個 index 開始
+start_from = "5.7.4"  # 控制從哪個 index 開始
 skip = True
 
 for src_file in sol_files:

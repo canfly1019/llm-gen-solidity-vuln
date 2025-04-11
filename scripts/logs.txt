@@ -14525,3 +14525,3420 @@ Passed: 8.3.4-Incorrect-Argument-Encoding-vulnerability.t.sol
 
 ===== Test run finished: 2025-04-10 18:22:39.345746 =====
 
+
+===== Test run started: 2025-04-11 14:19:28.195870 =====
+
+
+Running forge test: 1.4-Improper-locking-during-external-calls-fixed.t.sol (attempt 1)
+Failed: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+Error:
+No files changed, compilation skipped
+
+Ran 3 tests for test/1.4-Improper-locking-during-external-calls-fixed.t.sol:BidFixedTest
+[FAIL: Error != expected error: No pending funds != Attack contract rejects funds] testAttackWithdrawRevertsAndDoesNotLock() (gas: 238185)
+Traces:
+  [437073] BidFixedTest::setUp()
+    ├─ [395717] → new BidFixed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1968 bytes of code
+    ├─ [0] VM::deal(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [238185] BidFixedTest::testAttackWithdrawRevertsAndDoesNotLock()
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [145994] → new AttackFixed@0x29ced945BB6A5acc52d2A29C7c7e8E5f84Cf299d
+    │   └─ ← [Return] 623 bytes of code
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x7e25a9fb0ee306b3b515087dc243c594051371c7dfce5786e8e3cbdbb177aa9a, 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000)
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  Attack contract rejects funds)
+    │   └─ ← [Return] 
+    ├─ [25626] AttackFixed::attackWithdraw()
+    │   ├─ [23122] BidFixed::withdraw()
+    │   │   └─ ← [Revert] revert: No pending funds
+    │   └─ ← [Revert] revert: No pending funds
+    └─ ← [Revert] Error != expected error: No pending funds != Attack contract rejects funds
+
+[FAIL: revert: No pending funds] testNormalWithdraw() (gas: 31531)
+Traces:
+  [437073] BidFixedTest::setUp()
+    ├─ [395717] → new BidFixed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1968 bytes of code
+    ├─ [0] VM::deal(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [31531] BidFixedTest::testNormalWithdraw()
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0xa81f4bf17b73b1ca07d4c2cd015611e74f89c21286499da1b80a3b84a2cb7df5, 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000)
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [23122] BidFixed::withdraw()
+    │   └─ ← [Revert] revert: No pending funds
+    └─ ← [Revert] revert: No pending funds
+
+[FAIL: Error != expected error: No pending funds != Attack contract rejects funds] testReattemptWithdrawAfterFailure() (gas: 238186)
+Traces:
+  [437073] BidFixedTest::setUp()
+    ├─ [395717] → new BidFixed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1968 bytes of code
+    ├─ [0] VM::deal(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [238186] BidFixedTest::testReattemptWithdrawAfterFailure()
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000c0DE)
+    │   └─ ← [Return] 
+    ├─ [145994] → new AttackFixed@0x8bBC3514477d75EC797BBe4e19d7961660Bb849c
+    │   └─ ← [Return] 623 bytes of code
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x9bcde9a9ffcdb98a3c98b00f3b53c3c3ed7edfc0c10312149666a92b602a0684, 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000)
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000c0DE)
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  Attack contract rejects funds)
+    │   └─ ← [Return] 
+    ├─ [25626] AttackFixed::attackWithdraw()
+    │   ├─ [23122] BidFixed::withdraw()
+    │   │   └─ ← [Revert] revert: No pending funds
+    │   └─ ← [Revert] revert: No pending funds
+    └─ ← [Revert] Error != expected error: No pending funds != Attack contract rejects funds
+
+Suite result: FAILED. 0 passed; 3 failed; 0 skipped; finished in 1.04ms (436.38µs CPU time)
+
+Ran 1 test suite in 778.00ms (1.04ms CPU time): 0 tests passed, 3 failed, 0 skipped (3 total tests)
+
+Failing tests:
+Encountered 3 failing tests in test/1.4-Improper-locking-during-external-calls-fixed.t.sol:BidFixedTest
+[FAIL: Error != expected error: No pending funds != Attack contract rejects funds] testAttackWithdrawRevertsAndDoesNotLock() (gas: 238185)
+[FAIL: revert: No pending funds] testNormalWithdraw() (gas: 31531)
+[FAIL: Error != expected error: No pending funds != Attack contract rejects funds] testReattemptWithdrawAfterFailure() (gas: 238186)
+
+Encountered a total of 3 failing tests, 0 tests succeeded
+Regenerating: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+
+Running forge test: 1.4-Improper-locking-during-external-calls-fixed.t.sol (attempt 2)
+Failed: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+Error:
+[2m2025-04-11T06:20:16.625185Z[0m [31mERROR[0m [2mfoundry_compilers_artifacts_solc::sources[0m[2m:[0m [3merror[0m[2m=[0m"/mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/src/3-Gas-Depletion-fixed.sol": No such file or directory (os error 2)
+Compiler run failed:
+Error (6160): Wrong argument count for function call: 1 arguments given but expected 0.
+  --> test/1.4-Improper-locking-during-external-calls-fixed.t.sol:86:13:
+   |
+86 |             fail("Expected attack.withdraw() to revert");
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Compilation failed
+Regenerating: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+
+Running forge test: 1.4-Improper-locking-during-external-calls-fixed.t.sol (attempt 3)
+Failed: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 517.20ms
+Compiler run successful!
+
+Ran 2 tests for test/1.4-Improper-locking-during-external-calls-fixed.t.sol:BidFixedTest
+[FAIL: Error != expected error: No pending funds != Attack contract rejects funds] testAttackWithdraw() (gas: 213852)
+Traces:
+  [442749] BidFixedTest::setUp()
+    ├─ [395717] → new BidFixed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1968 bytes of code
+    ├─ [55] BidFixed::receive{value: 2000000000000000000}()
+    │   └─ ← [Stop] 
+    └─ ← [Stop] 
+
+  [213852] BidFixedTest::testAttackWithdraw()
+    ├─ [145994] → new AttackFixed@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 623 bytes of code
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x1116d28675600672716f66a8ee87def478fe2692264054a478c0d8b1be5c8cdc, 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000)
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(AttackFixed: [0x2e234DAe75C793f67A35089C9d99245E1C58470b])
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  Attack contract rejects funds)
+    │   └─ ← [Return] 
+    ├─ [25626] AttackFixed::attackWithdraw()
+    │   ├─ [23122] BidFixed::withdraw()
+    │   │   └─ ← [Revert] revert: No pending funds
+    │   └─ ← [Revert] revert: No pending funds
+    └─ ← [Revert] Error != expected error: No pending funds != Attack contract rejects funds
+
+[FAIL: revert: No pending funds] testNormalWithdraw() (gas: 33436)
+Traces:
+  [442749] BidFixedTest::setUp()
+    ├─ [395717] → new BidFixed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1968 bytes of code
+    ├─ [55] BidFixed::receive{value: 2000000000000000000}()
+    │   └─ ← [Stop] 
+    └─ ← [Stop] 
+
+  [33436] BidFixedTest::testNormalWithdraw()
+    ├─ [0] VM::deal(ECRecover: [0x0000000000000000000000000000000000000001], 1000000000000000000 [1e18])
+    │   └─ ← [Return] 
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0xa15bc60c955c405d20d9149c709e2460f1c2d9a497496a7f46004d1772c3054c, 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000)
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return] 
+    ├─ [23122] BidFixed::withdraw()
+    │   └─ ← [Revert] revert: No pending funds
+    └─ ← [Revert] revert: No pending funds
+
+Suite result: FAILED. 0 passed; 2 failed; 0 skipped; finished in 814.03µs (337.00µs CPU time)
+
+Ran 1 test suite in 823.14ms (814.03µs CPU time): 0 tests passed, 2 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 2 failing tests in test/1.4-Improper-locking-during-external-calls-fixed.t.sol:BidFixedTest
+[FAIL: Error != expected error: No pending funds != Attack contract rejects funds] testAttackWithdraw() (gas: 213852)
+[FAIL: revert: No pending funds] testNormalWithdraw() (gas: 33436)
+
+Encountered a total of 2 failing tests, 0 tests succeeded
+Regenerating: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+
+Running forge test: 1.4-Improper-locking-during-external-calls-fixed.t.sol (attempt 4)
+Failed: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+Error:
+Compiler run failed:
+Error (6275): Source "ds-test/test.sol" not found: File not found.
+ --> test/1.4-Improper-locking-during-external-calls-fixed.t.sol:4:1:
+  |
+4 | import "ds-test/test.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Compilation failed
+Regenerating: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+
+Running forge test: 1.4-Improper-locking-during-external-calls-fixed.t.sol (attempt 5)
+Failed: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+Error:
+Compiler run failed:
+Error (4487): No unique declaration found after argument-dependent lookup.
+  --> test/1.4-Improper-locking-during-external-calls-fixed.t.sol:50:9:
+   |
+50 |         assertEq(currentState, 0, "State should be F after withdraw");
+   |         ^^^^^^^^
+Note: Candidate:
+  --> lib/forge-std/src/StdAssertions.sol:67:5:
+   |
+67 |     function assertEq(bool left, bool right) internal pure virtual {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+  --> lib/forge-std/src/StdAssertions.sol:71:5:
+   |
+71 |     function assertEq(bool left, bool right, string memory err) internal pure virtual {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+  --> lib/forge-std/src/StdAssertions.sol:75:5:
+   |
+75 |     function assertEq(uint256 left, uint256 right) internal pure virtual {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+  --> lib/forge-std/src/StdAssertions.sol:79:5:
+   |
+79 |     function assertEq(uint256 left, uint256 right, string memory err) internal pure virtual {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+  --> lib/forge-std/src/StdAssertions.sol:91:5:
+   |
+91 |     function assertEq(int256 left, int256 right) internal pure virtual {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+  --> lib/forge-std/src/StdAssertions.sol:95:5:
+   |
+95 |     function assertEq(int256 left, int256 right, string memory err) internal pure virtual {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:107:5:
+    |
+107 |     function assertEq(address left, address right) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:111:5:
+    |
+111 |     function assertEq(address left, address right, string memory err) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:115:5:
+    |
+115 |     function assertEq(bytes32 left, bytes32 right) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:119:5:
+    |
+119 |     function assertEq(bytes32 left, bytes32 right, string memory err) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:131:5:
+    |
+131 |     function assertEq(string memory left, string memory right) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:135:5:
+    |
+135 |     function assertEq(string memory left, string memory right, string memory err) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:139:5:
+    |
+139 |     function assertEq(bytes memory left, bytes memory right) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:143:5:
+    |
+143 |     function assertEq(bytes memory left, bytes memory right, string memory err) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:147:5:
+    |
+147 |     function assertEq(bool[] memory left, bool[] memory right) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:151:5:
+    |
+151 |     function assertEq(bool[] memory left, bool[] memory right, string memory err) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:155:5:
+    |
+155 |     function assertEq(uint256[] memory left, uint256[] memory right) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:159:5:
+    |
+159 |     function assertEq(uint256[] memory left, uint256[] memory right, string memory err) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:163:5:
+    |
+163 |     function assertEq(int256[] memory left, int256[] memory right) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:167:5:
+    |
+167 |     function assertEq(int256[] memory left, int256[] memory right, string memory err) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:171:5:
+    |
+171 |     function assertEq(address[] memory left, address[] memory right) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:175:5:
+    |
+175 |     function assertEq(address[] memory left, address[] memory right, string memory err) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:179:5:
+    |
+179 |     function assertEq(bytes32[] memory left, bytes32[] memory right) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:183:5:
+    |
+183 |     function assertEq(bytes32[] memory left, bytes32[] memory right, string memory err) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:187:5:
+    |
+187 |     function assertEq(string[] memory left, string[] memory right) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:191:5:
+    |
+191 |     function assertEq(string[] memory left, string[] memory right, string memory err) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:195:5:
+    |
+195 |     function assertEq(bytes[] memory left, bytes[] memory right) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: Candidate:
+   --> lib/forge-std/src/StdAssertions.sol:199:5:
+    |
+199 |     function assertEq(bytes[] memory left, bytes[] memory right, string memory err) internal pure virtual {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+Failed after 5 attempts: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+Deleted test file due to repeated failure: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+
+Running forge test: 1.4-Improper-locking-during-external-calls-vulnerability.t.sol (attempt 1)
+Passed: 1.4-Improper-locking-during-external-calls-vulnerability.t.sol
+
+Running forge test: 1.5-Interoperability-issues-with-other-contracts-fixed.t.sol (attempt 1)
+Passed: 1.5-Interoperability-issues-with-other-contracts-fixed.t.sol
+
+Running forge test: 1.5-Interoperability-issues-with-other-contracts-vulnerability.t.sol (attempt 1)
+Passed: 1.5-Interoperability-issues-with-other-contracts-vulnerability.t.sol
+
+Running forge test: 1.6-Delegatecall-to-Untrusted-Callee-fixed.t.sol (attempt 1)
+Passed: 1.6-Delegatecall-to-Untrusted-Callee-fixed.t.sol
+
+Running forge test: 1.6-Delegatecall-to-Untrusted-Callee-vulnerability.t.sol (attempt 1)
+Passed: 1.6-Delegatecall-to-Untrusted-Callee-vulnerability.t.sol
+Test file not found, generating first: 1.7-Unsafe-Non-Blockchain-External-Call-fixed.t.sol
+
+Running forge test: 1.7-Unsafe-Non-Blockchain-External-Call-fixed.t.sol (attempt 1)
+
+===== Test run started: 2025-04-11 14:32:11.488461 =====
+
+
+Running forge test: 6.2.1-Improper-Input-Validation-fixed.t.sol (attempt 1)
+Passed: 6.2.1-Improper-Input-Validation-fixed.t.sol
+Test file not found, generating first: 6.2.1-Improper-Input-Validation-vulnerability.t.sol
+
+===== Test run started: 2025-04-11 14:32:57.712640 =====
+
+Test file not found, generating first: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+
+Running forge test: 1.4-Improper-locking-during-external-calls-fixed.t.sol (attempt 1)
+Failed: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 525.09ms
+Compiler run successful!
+
+Ran 4 tests for test/1.4-Improper-locking-during-external-calls-fixed.t.sol:BidFixedTest
+[FAIL: Error != expected error: No pending funds != Address: unable to send value, recipient may have reverted] testAttackWithdraw_RevertAndStateRecovery() (gas: 237316)
+Traces:
+  [437073] BidFixedTest::setUp()
+    ├─ [395717] → new BidFixed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1968 bytes of code
+    ├─ [0] VM::deal(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [237316] BidFixedTest::testAttackWithdraw_RevertAndStateRecovery()
+    ├─ [145994] → new AttackFixed@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 623 bytes of code
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x1116d28675600672716f66a8ee87def478fe2692264054a478c0d8b1be5c8cdc, 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000)
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(AttackFixed: [0x2e234DAe75C793f67A35089C9d99245E1C58470b])
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  :Address: unable to send value, recipient may have reverted)
+    │   └─ ← [Return] 
+    ├─ [25626] AttackFixed::attackWithdraw()
+    │   ├─ [23122] BidFixed::withdraw()
+    │   │   └─ ← [Revert] revert: No pending funds
+    │   └─ ← [Revert] revert: No pending funds
+    └─ ← [Revert] Error != expected error: No pending funds != Address: unable to send value, recipient may have reverted
+
+[FAIL: revert: No pending funds] testNormalWithdraw_NotHighestBidder() (gas: 34066)
+Traces:
+  [437073] BidFixedTest::setUp()
+    ├─ [395717] → new BidFixed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1968 bytes of code
+    ├─ [0] VM::deal(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [34066] BidFixedTest::testNormalWithdraw_NotHighestBidder()
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0xa15bc60c955c405d20d9149c709e2460f1c2d9a497496a7f46004d1772c3054c, 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000)
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return] 
+    ├─ [23122] BidFixed::withdraw()
+    │   └─ ← [Revert] revert: No pending funds
+    └─ ← [Revert] revert: No pending funds
+
+[FAIL: revert: No pending funds] testWithdraw_HighestBidder() (gas: 40619)
+Traces:
+  [437073] BidFixedTest::setUp()
+    ├─ [395717] → new BidFixed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1968 bytes of code
+    ├─ [0] VM::deal(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [40619] BidFixedTest::testWithdraw_HighestBidder()
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x0000000000000000000000000000000000000000000000000000000000000001, 0x0000000000000000000000000000000000000000000000000000000000000002)
+    │   └─ ← [Return] 
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x0000000000000000000000000000000000000000000000000000000000000002, 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000)
+    │   └─ ← [Return] 
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0xc3a24b0501bd2c13a7e57f2db4369ec4c223447539fc0724a9d55ac4a06ebd4d, 0x0000000000000000000000000000000000000000000000001bc16d674ec80000)
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(SHA-256: [0x0000000000000000000000000000000000000002])
+    │   └─ ← [Return] 
+    ├─ [23122] BidFixed::withdraw()
+    │   └─ ← [Revert] revert: No pending funds
+    └─ ← [Revert] revert: No pending funds
+
+[PASS] testWithdraw_NoPendingFunds() (gas: 30119)
+Traces:
+  [30119] BidFixedTest::testWithdraw_NoPendingFunds()
+    ├─ [0] VM::prank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  No pending funds)
+    │   └─ ← [Return] 
+    ├─ [23122] BidFixed::withdraw()
+    │   └─ ← [Revert] revert: No pending funds
+    └─ ← [Stop] 
+
+Suite result: FAILED. 1 passed; 3 failed; 0 skipped; finished in 1.01ms (309.97µs CPU time)
+
+Ran 1 test suite in 929.18ms (1.01ms CPU time): 1 tests passed, 3 failed, 0 skipped (4 total tests)
+
+Failing tests:
+Encountered 3 failing tests in test/1.4-Improper-locking-during-external-calls-fixed.t.sol:BidFixedTest
+[FAIL: Error != expected error: No pending funds != Address: unable to send value, recipient may have reverted] testAttackWithdraw_RevertAndStateRecovery() (gas: 237316)
+[FAIL: revert: No pending funds] testNormalWithdraw_NotHighestBidder() (gas: 34066)
+[FAIL: revert: No pending funds] testWithdraw_HighestBidder() (gas: 40619)
+
+Encountered a total of 3 failing tests, 1 tests succeeded
+Regenerating: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+
+Running forge test: 1.4-Improper-locking-during-external-calls-fixed.t.sol (attempt 2)
+Failed: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 592.99ms
+Compiler run successful!
+
+Ran 4 tests for test/1.4-Improper-locking-during-external-calls-fixed.t.sol:BidFixedTest
+[FAIL: Error != expected error: No pending funds != Address: unable to send value, recipient may have reverted] testAttackWithdraw_RevertAndStateRecovery() (gas: 215285)
+Traces:
+  [437073] BidFixedTest::setUp()
+    ├─ [395717] → new BidFixed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1968 bytes of code
+    ├─ [0] VM::deal(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [215285] BidFixedTest::testAttackWithdraw_RevertAndStateRecovery()
+    ├─ [0] VM::prank(RIPEMD-160: [0x0000000000000000000000000000000000000003])
+    │   └─ ← [Return] 
+    ├─ [145994] → new AttackFixed@0x4859614cBE8bbe9cCAd991Cc69394343943CD52D
+    │   └─ ← [Return] 623 bytes of code
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0xf6374d39884dd4649b8875c1f5282f73bbbf935670a803c3464277710d46fdad, 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000)
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(RIPEMD-160: [0x0000000000000000000000000000000000000003])
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  :Address: unable to send value, recipient may have reverted)
+    │   └─ ← [Return] 
+    ├─ [25626] AttackFixed::attackWithdraw()
+    │   ├─ [23122] BidFixed::withdraw()
+    │   │   └─ ← [Revert] revert: No pending funds
+    │   └─ ← [Revert] revert: No pending funds
+    └─ ← [Revert] Error != expected error: No pending funds != Address: unable to send value, recipient may have reverted
+
+[FAIL: revert: No pending funds] testNormalWithdraw_NotHighestBidder() (gas: 31565)
+Traces:
+  [437073] BidFixedTest::setUp()
+    ├─ [395717] → new BidFixed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1968 bytes of code
+    ├─ [0] VM::deal(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [31565] BidFixedTest::testNormalWithdraw_NotHighestBidder()
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0xa15bc60c955c405d20d9149c709e2460f1c2d9a497496a7f46004d1772c3054c, 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000)
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return] 
+    ├─ [23122] BidFixed::withdraw()
+    │   └─ ← [Revert] revert: No pending funds
+    └─ ← [Revert] revert: No pending funds
+
+[FAIL: revert: No pending funds] testWithdraw_HighestBidder() (gas: 37241)
+Traces:
+  [437073] BidFixedTest::setUp()
+    ├─ [395717] → new BidFixed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1968 bytes of code
+    ├─ [0] VM::deal(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [37241] BidFixedTest::testWithdraw_HighestBidder()
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0xc3a24b0501bd2c13a7e57f2db4369ec4c223447539fc0724a9d55ac4a06ebd4d, 0x0000000000000000000000000000000000000000000000001bc16d674ec80000)
+    │   └─ ← [Return] 
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x0000000000000000000000000000000000000000000000000000000000000002, 0x0000000000000000000000000000000000000000000000000000000000000002)
+    │   └─ ← [Return] 
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x0000000000000000000000000000000000000000000000000000000000000002, 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000)
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(SHA-256: [0x0000000000000000000000000000000000000002])
+    │   └─ ← [Return] 
+    ├─ [23122] BidFixed::withdraw()
+    │   └─ ← [Revert] revert: No pending funds
+    └─ ← [Revert] revert: No pending funds
+
+[PASS] testWithdraw_NoPendingFunds() (gas: 29283)
+Traces:
+  [29283] BidFixedTest::testWithdraw_NoPendingFunds()
+    ├─ [0] VM::prank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  No pending funds)
+    │   └─ ← [Return] 
+    ├─ [23122] BidFixed::withdraw()
+    │   └─ ← [Revert] revert: No pending funds
+    └─ ← [Stop] 
+
+Suite result: FAILED. 1 passed; 3 failed; 0 skipped; finished in 910.54µs (506.41µs CPU time)
+
+Ran 1 test suite in 878.53ms (910.54µs CPU time): 1 tests passed, 3 failed, 0 skipped (4 total tests)
+
+Failing tests:
+Encountered 3 failing tests in test/1.4-Improper-locking-during-external-calls-fixed.t.sol:BidFixedTest
+[FAIL: Error != expected error: No pending funds != Address: unable to send value, recipient may have reverted] testAttackWithdraw_RevertAndStateRecovery() (gas: 215285)
+[FAIL: revert: No pending funds] testNormalWithdraw_NotHighestBidder() (gas: 31565)
+[FAIL: revert: No pending funds] testWithdraw_HighestBidder() (gas: 37241)
+
+Encountered a total of 3 failing tests, 1 tests succeeded
+Regenerating: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+
+Running forge test: 1.4-Improper-locking-during-external-calls-fixed.t.sol (attempt 3)
+Failed: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+Error:
+[2m2025-04-11T06:35:44.641698Z[0m [31mERROR[0m [2mfoundry_compilers_artifacts_solc::sources[0m[2m:[0m [3merror[0m[2m=[0m"/mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/test/5.2-Improper-Declaration-or-Initialization-fixed.t.sol": No such file or directory (os error 2)
+Error: "/mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/test/5.2-Improper-Declaration-or-Initialization-fixed.t.sol": No such file or directory (os error 2)
+Regenerating: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+
+Running forge test: 1.4-Improper-locking-during-external-calls-fixed.t.sol (attempt 4)
+Failed: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 461.82ms
+Compiler run successful!
+
+Ran 3 tests for test/1.4-Improper-locking-during-external-calls-fixed.t.sol:BidFixedTest
+[PASS] testWithdrawFailsWhenNoPendingFunds() (gas: 27875)
+Traces:
+  [27875] BidFixedTest::testWithdrawFailsWhenNoPendingFunds()
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  No pending funds)
+    │   └─ ← [Return] 
+    ├─ [23122] BidFixed::withdraw()
+    │   └─ ← [Revert] revert: No pending funds
+    └─ ← [Stop] 
+
+[FAIL: Error != expected error: No pending funds != Attack contract rejects funds] testWithdrawRevertsForAttackContractAndStateRemainsUnlocked() (gas: 34520)
+Traces:
+  [641806] BidFixedTest::setUp()
+    ├─ [395717] → new BidFixed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1968 bytes of code
+    ├─ [145994] → new AttackFixed@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 623 bytes of code
+    ├─ [0] VM::deal(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    ├─ [0] VM::deal(BidFixedTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    ├─ [0] VM::deal(AttackFixed: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [34520] BidFixedTest::testWithdrawRevertsForAttackContractAndStateRemainsUnlocked()
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x1116d28675600672716f66a8ee87def478fe2692264054a478c0d8b1be5c8cdc, 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000)
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  Attack contract rejects funds)
+    │   └─ ← [Return] 
+    ├─ [25626] AttackFixed::attackWithdraw()
+    │   ├─ [23122] BidFixed::withdraw()
+    │   │   └─ ← [Revert] revert: No pending funds
+    │   └─ ← [Revert] revert: No pending funds
+    └─ ← [Revert] Error != expected error: No pending funds != Attack contract rejects funds
+
+[FAIL: revert: No pending funds] testWithdrawSucceedsForRegularUser() (gas: 29080)
+Traces:
+  [641806] BidFixedTest::setUp()
+    ├─ [395717] → new BidFixed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1968 bytes of code
+    ├─ [145994] → new AttackFixed@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 623 bytes of code
+    ├─ [0] VM::deal(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    ├─ [0] VM::deal(BidFixedTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    ├─ [0] VM::deal(AttackFixed: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [29080] BidFixedTest::testWithdrawSucceedsForRegularUser()
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x1da434b76eba4736d6e760bfd78cbf883a0776ee1666a9157f99ab1b97923a3c, 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000)
+    │   └─ ← [Return] 
+    ├─ [23122] BidFixed::withdraw()
+    │   └─ ← [Revert] revert: No pending funds
+    └─ ← [Revert] revert: No pending funds
+
+Suite result: FAILED. 1 passed; 2 failed; 0 skipped; finished in 841.52µs (316.75µs CPU time)
+
+Ran 1 test suite in 673.84ms (841.52µs CPU time): 1 tests passed, 2 failed, 0 skipped (3 total tests)
+
+Failing tests:
+Encountered 2 failing tests in test/1.4-Improper-locking-during-external-calls-fixed.t.sol:BidFixedTest
+[FAIL: Error != expected error: No pending funds != Attack contract rejects funds] testWithdrawRevertsForAttackContractAndStateRemainsUnlocked() (gas: 34520)
+[FAIL: revert: No pending funds] testWithdrawSucceedsForRegularUser() (gas: 29080)
+
+Encountered a total of 2 failing tests, 1 tests succeeded
+Regenerating: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+
+Running forge test: 1.4-Improper-locking-during-external-calls-fixed.t.sol (attempt 5)
+Failed: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 535.33ms
+Compiler run successful!
+
+Ran 3 tests for test/1.4-Improper-locking-during-external-calls-fixed.t.sol:BidFixedTest
+[PASS] testWithdrawFailsWhenNoPendingFunds() (gas: 34110)
+Traces:
+  [34110] BidFixedTest::testWithdrawFailsWhenNoPendingFunds()
+    ├─ [1492] BidFixed::pendingReturns(BidFixedTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [0] VM::assertEq(0, 0) [staticcall]
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  No pending funds)
+    │   └─ ← [Return] 
+    ├─ [23122] BidFixed::withdraw()
+    │   └─ ← [Revert] revert: No pending funds
+    └─ ← [Stop] 
+
+[FAIL: assertion failed: 0 != 1000000000000000000] testWithdrawRevertsForAttackContractAndStateRemainsUnlocked() (gas: 11496)
+Traces:
+  [641806] BidFixedTest::setUp()
+    ├─ [395717] → new BidFixed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1968 bytes of code
+    ├─ [145994] → new AttackFixed@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 623 bytes of code
+    ├─ [0] VM::deal(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    ├─ [0] VM::deal(BidFixedTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    ├─ [0] VM::deal(AttackFixed: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [11496] BidFixedTest::testWithdrawRevertsForAttackContractAndStateRemainsUnlocked()
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x1116d28675600672716f66a8ee87def478fe2692264054a478c0d8b1be5c8cdc, 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000)
+    │   └─ ← [Return] 
+    ├─ [1492] BidFixed::pendingReturns(AttackFixed: [0x2e234DAe75C793f67A35089C9d99245E1C58470b]) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [0] VM::assertEq(0, 1000000000000000000 [1e18]) [staticcall]
+    │   └─ ← [Revert] assertion failed: 0 != 1000000000000000000
+    └─ ← [Revert] assertion failed: 0 != 1000000000000000000
+
+[FAIL: assertion failed: 0 != 1000000000000000000] testWithdrawSucceedsForRegularUser() (gas: 9790)
+Traces:
+  [641806] BidFixedTest::setUp()
+    ├─ [395717] → new BidFixed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1968 bytes of code
+    ├─ [145994] → new AttackFixed@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 623 bytes of code
+    ├─ [0] VM::deal(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    ├─ [0] VM::deal(BidFixedTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    ├─ [0] VM::deal(AttackFixed: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [9790] BidFixedTest::testWithdrawSucceedsForRegularUser()
+    ├─ [0] VM::store(BidFixed: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x2adece3ca4b697f84ffc288ceac1e38d78879787b6b486e335ee5f156ec60c4a, 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000)
+    │   └─ ← [Return] 
+    ├─ [1492] BidFixed::pendingReturns(0x000000000000000000000000000000000000bEEF) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [0] VM::assertEq(0, 1000000000000000000 [1e18]) [staticcall]
+    │   └─ ← [Revert] assertion failed: 0 != 1000000000000000000
+    └─ ← [Revert] assertion failed: 0 != 1000000000000000000
+
+Suite result: FAILED. 1 passed; 2 failed; 0 skipped; finished in 878.39µs (333.44µs CPU time)
+
+Ran 1 test suite in 613.65ms (878.39µs CPU time): 1 tests passed, 2 failed, 0 skipped (3 total tests)
+
+Failing tests:
+Encountered 2 failing tests in test/1.4-Improper-locking-during-external-calls-fixed.t.sol:BidFixedTest
+[FAIL: assertion failed: 0 != 1000000000000000000] testWithdrawRevertsForAttackContractAndStateRemainsUnlocked() (gas: 11496)
+[FAIL: assertion failed: 0 != 1000000000000000000] testWithdrawSucceedsForRegularUser() (gas: 9790)
+
+Encountered a total of 2 failing tests, 1 tests succeeded
+Regenerating: 1.4-Improper-locking-during-external-calls-fixed.t.sol
+
+===== Test run started: 2025-04-11 14:38:28.256775 =====
+
+
+Running forge test: 6.1.1-Incorrect-Use-of-Event-Blockchain-variables-for-Time-fixed.t.sol (attempt 1)
+Passed: 6.1.1-Incorrect-Use-of-Event-Blockchain-variables-for-Time-fixed.t.sol
+Test file not found, generating first: 6.1.1-Incorrect-Use-of-Event-Blockchain-variables-for-Time-vulnerability.t.sol
+
+Running forge test: 6.1.1-Incorrect-Use-of-Event-Blockchain-variables-for-Time-vulnerability.t.sol (attempt 1)
+Failed: 6.1.1-Incorrect-Use-of-Event-Blockchain-variables-for-Time-vulnerability.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/6.1.1-Incorrect-Use-of-Event-Blockchain-variables-for-Time-vulnerability.t.sol:4:1:
+  |
+4 | import "../src/6.1.1-Incorrect-Use-of-Event-Blockchain-variables-for-Time-vulnerability.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 6.1.1-Incorrect-Use-of-Event-Blockchain-variables-for-Time-vulnerability.t.sol
+
+Running forge test: 6.1.1-Incorrect-Use-of-Event-Blockchain-variables-for-Time-vulnerability.t.sol (attempt 2)
+Passed: 6.1.1-Incorrect-Use-of-Event-Blockchain-variables-for-Time-vulnerability.t.sol
+
+Running forge test: 6.1.2-Incorrect-Function-Call-Order-fixed.t.sol (attempt 1)
+Passed: 6.1.2-Incorrect-Function-Call-Order-fixed.t.sol
+
+Running forge test: 6.1.2-Incorrect-Function-Call-Order-vulnerability.t.sol (attempt 1)
+Passed: 6.1.2-Incorrect-Function-Call-Order-vulnerability.t.sol
+Test file not found, generating first: 6.1.3-Improper-Locking-fixed.t.sol
+
+Running forge test: 6.1.3-Improper-Locking-fixed.t.sol (attempt 1)
+Failed: 6.1.3-Improper-Locking-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 455.56ms
+Compiler run successful with warnings:
+Warning (2072): Unused local variable.
+  --> test/6.1.3-Improper-Locking-fixed.t.sol:35:18:
+   |
+35 |                 (uint256 amount, address lockAddr, bytes memory edgewareAddr, bool isValidator, uint256 timestamp) =
+   |                  ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/6.1.3-Improper-Locking-fixed.t.sol:35:52:
+   |
+35 |                 (uint256 amount, address lockAddr, bytes memory edgewareAddr, bool isValidator, uint256 timestamp) =
+   |                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/6.1.3-Improper-Locking-fixed.t.sol:35:79:
+   |
+35 |                 (uint256 amount, address lockAddr, bytes memory edgewareAddr, bool isValidator, uint256 timestamp) =
+   |                                                                               ^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/6.1.3-Improper-Locking-fixed.t.sol:35:97:
+   |
+35 |                 (uint256 amount, address lockAddr, bytes memory edgewareAddr, bool isValidator, uint256 timestamp) =
+   |                                                                                                 ^^^^^^^^^^^^^^^^^
+
+
+Ran 2 tests for test/6.1.3-Improper-Locking-fixed.t.sol:LockContractTest
+[FAIL: revert: Locked event not found] testForceSendExtraETH() (gas: 173590)
+Traces:
+  [657480] LockContractTest::setUp()
+    ├─ [414249] → new LockContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 2069 bytes of code
+    ├─ [151596] → new ForceSender@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 757 bytes of code
+    └─ ← [Stop] 
+
+  [173590] LockContractTest::testForceSendExtraETH()
+    ├─ [0] VM::recordLogs()
+    │   └─ ← [Return] 
+    ├─ [156292] LockContract::lock{value: 1000000000000000000}(100, 0x307831323334, true)
+    │   ├─ [118112] → new Lock@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   └─ ← [Return] 383 bytes of code
+    │   ├─ emit Locked(owner: LockContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000 [1e18], lockAddr: Lock: [0x104fBc016F4bb334D775a19E8A6510109AC63E00], edgewareAddr: 0x307831323334, isValidator: true, timestamp: 1)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::getRecordedLogs()
+    │   └─ ← [Return] [([0x6e0ed1c56084c3f03b3b4352f517072a794da3cd18c46f83ed8c43fafe157e11, 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496], 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000104fbc016f4bb334d775a19e8a6510109ac63e0000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000063078313233340000000000000000000000000000000000000000000000000000, 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f)]
+    └─ ← [Revert] revert: Locked event not found
+
+[FAIL: revert: Locked event not found] testLockNormal() (gas: 173569)
+Traces:
+  [657480] LockContractTest::setUp()
+    ├─ [414249] → new LockContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 2069 bytes of code
+    ├─ [151596] → new ForceSender@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 757 bytes of code
+    └─ ← [Stop] 
+
+  [173569] LockContractTest::testLockNormal()
+    ├─ [0] VM::recordLogs()
+    │   └─ ← [Return] 
+    ├─ [156292] LockContract::lock{value: 1000000000000000000}(100, 0x307831323334, true)
+    │   ├─ [118112] → new Lock@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   └─ ← [Return] 383 bytes of code
+    │   ├─ emit Locked(owner: LockContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000 [1e18], lockAddr: Lock: [0x104fBc016F4bb334D775a19E8A6510109AC63E00], edgewareAddr: 0x307831323334, isValidator: true, timestamp: 1)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::getRecordedLogs()
+    │   └─ ← [Return] [([0x6e0ed1c56084c3f03b3b4352f517072a794da3cd18c46f83ed8c43fafe157e11, 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496], 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000104fbc016f4bb334d775a19e8a6510109ac63e0000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000063078313233340000000000000000000000000000000000000000000000000000, 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f)]
+    └─ ← [Revert] revert: Locked event not found
+
+Suite result: FAILED. 0 passed; 2 failed; 0 skipped; finished in 8.98ms (4.07ms CPU time)
+
+Ran 1 test suite in 1.03s (8.98ms CPU time): 0 tests passed, 2 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 2 failing tests in test/6.1.3-Improper-Locking-fixed.t.sol:LockContractTest
+[FAIL: revert: Locked event not found] testForceSendExtraETH() (gas: 173590)
+[FAIL: revert: Locked event not found] testLockNormal() (gas: 173569)
+
+Encountered a total of 2 failing tests, 0 tests succeeded
+Regenerating: 6.1.3-Improper-Locking-fixed.t.sol
+
+Running forge test: 6.1.3-Improper-Locking-fixed.t.sol (attempt 2)
+Failed: 6.1.3-Improper-Locking-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 535.23ms
+Compiler run successful with warnings:
+Warning (2072): Unused local variable.
+  --> test/6.1.3-Improper-Locking-fixed.t.sol:46:34:
+   |
+46 |                 (uint256 amount, address lockAddr, bytes memory eventEdgeware, bool  ...
+   |                                  ^^^^^^^^^^^^^^^^
+
+
+Ran 2 tests for test/6.1.3-Improper-Locking-fixed.t.sol:LockContractTest
+[FAIL: revert: Locked event not found] testForceSendExtraETH() (gas: 173588)
+Traces:
+  [657480] LockContractTest::setUp()
+    ├─ [414249] → new LockContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 2069 bytes of code
+    ├─ [151596] → new ForceSender@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 757 bytes of code
+    └─ ← [Stop] 
+
+  [173588] LockContractTest::testForceSendExtraETH()
+    ├─ [0] VM::recordLogs()
+    │   └─ ← [Return] 
+    ├─ [156292] LockContract::lock{value: 1000000000000000000}(100, 0x307831323334, true)
+    │   ├─ [118112] → new Lock@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   └─ ← [Return] 383 bytes of code
+    │   ├─ emit Locked(owner: LockContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000 [1e18], lockAddr: Lock: [0x104fBc016F4bb334D775a19E8A6510109AC63E00], edgewareAddr: 0x307831323334, isValidator: true, timestamp: 1)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::getRecordedLogs()
+    │   └─ ← [Return] [([0x6e0ed1c56084c3f03b3b4352f517072a794da3cd18c46f83ed8c43fafe157e11, 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496], 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000104fbc016f4bb334d775a19e8a6510109ac63e0000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000063078313233340000000000000000000000000000000000000000000000000000, 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f)]
+    └─ ← [Revert] revert: Locked event not found
+
+[FAIL: Locked event not found] testLockNormal() (gas: 175548)
+Traces:
+  [657480] LockContractTest::setUp()
+    ├─ [414249] → new LockContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 2069 bytes of code
+    ├─ [151596] → new ForceSender@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 757 bytes of code
+    └─ ← [Stop] 
+
+  [175548] LockContractTest::testLockNormal()
+    ├─ [0] VM::recordLogs()
+    │   └─ ← [Return] 
+    ├─ [156292] LockContract::lock{value: 1000000000000000000}(100, 0x307831323334, true)
+    │   ├─ [118112] → new Lock@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   └─ ← [Return] 383 bytes of code
+    │   ├─ emit Locked(owner: LockContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000 [1e18], lockAddr: Lock: [0x104fBc016F4bb334D775a19E8A6510109AC63E00], edgewareAddr: 0x307831323334, isValidator: true, timestamp: 1)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::getRecordedLogs()
+    │   └─ ← [Return] [([0x6e0ed1c56084c3f03b3b4352f517072a794da3cd18c46f83ed8c43fafe157e11, 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496], 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000104fbc016f4bb334d775a19e8a6510109ac63e0000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000063078313233340000000000000000000000000000000000000000000000000000, 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f)]
+    ├─ [0] VM::assertTrue(false, "Locked event not found") [staticcall]
+    │   └─ ← [Revert] Locked event not found
+    └─ ← [Revert] Locked event not found
+
+Suite result: FAILED. 0 passed; 2 failed; 0 skipped; finished in 3.46ms (3.03ms CPU time)
+
+Ran 1 test suite in 1.21s (3.46ms CPU time): 0 tests passed, 2 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 2 failing tests in test/6.1.3-Improper-Locking-fixed.t.sol:LockContractTest
+[FAIL: revert: Locked event not found] testForceSendExtraETH() (gas: 173588)
+[FAIL: Locked event not found] testLockNormal() (gas: 175548)
+
+Encountered a total of 2 failing tests, 0 tests succeeded
+Regenerating: 6.1.3-Improper-Locking-fixed.t.sol
+
+Running forge test: 6.1.3-Improper-Locking-fixed.t.sol (attempt 3)
+Failed: 6.1.3-Improper-Locking-fixed.t.sol
+Error:
+Compiler run failed:
+Error (7920): Identifier not found or not unique.
+  --> test/6.1.3-Improper-Locking-fixed.t.sol:21:30:
+   |
+21 |     function findLockedEvent(vm.Log[] memory logs) internal pure retur ...
+   |                              ^^^^^^
+
+Error: Compilation failed
+Regenerating: 6.1.3-Improper-Locking-fixed.t.sol
+
+Running forge test: 6.1.3-Improper-Locking-fixed.t.sol (attempt 4)
+Failed: 6.1.3-Improper-Locking-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 513.51ms
+Compiler run successful with warnings:
+Warning (2072): Unused local variable.
+  --> test/6.1.3-Improper-Locking-fixed.t.sol:26:18:
+   |
+26 |                 (uint256 amount, address lockAddr, bytes memory ed ...
+   |                  ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/6.1.3-Improper-Locking-fixed.t.sol:26:52:
+   |
+26 |  ... (uint256 amount, address lockAddr, bytes memory edgewareAddr, bool isValidator, uint256 timesta ...
+   |                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/6.1.3-Improper-Locking-fixed.t.sol:26:79:
+   |
+26 |  ... ckAddr, bytes memory edgewareAddr, bool isValidator, uint256 timestamp) = abi.decode(l ...
+   |                                         ^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/6.1.3-Improper-Locking-fixed.t.sol:26:97:
+   |
+26 |  ... ry edgewareAddr, bool isValidator, uint256 timestamp) = abi.decode(logs[i].data, (uint2 ...
+   |                                         ^^^^^^^^^^^^^^^^^
+
+
+Ran 2 tests for test/6.1.3-Improper-Locking-fixed.t.sol:LockContractTest
+[FAIL: revert: Lock address not found in event logs] testForceSendDoesNotBreakLock() (gas: 173252)
+Traces:
+  [657480] LockContractTest::setUp()
+    ├─ [414249] → new LockContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 2069 bytes of code
+    ├─ [151596] → new ForceSender@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 757 bytes of code
+    └─ ← [Stop] 
+
+  [173252] LockContractTest::testForceSendDoesNotBreakLock()
+    ├─ [0] VM::recordLogs()
+    │   └─ ← [Return] 
+    ├─ [156033] LockContract::lock{value: 1000000000000000000}(86400 [8.64e4], 0x, false)
+    │   ├─ [118112] → new Lock@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   └─ ← [Return] 383 bytes of code
+    │   ├─ emit Locked(owner: LockContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000 [1e18], lockAddr: Lock: [0x104fBc016F4bb334D775a19E8A6510109AC63E00], edgewareAddr: 0x, isValidator: false, timestamp: 1)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::getRecordedLogs()
+    │   └─ ← [Return] [([0x6e0ed1c56084c3f03b3b4352f517072a794da3cd18c46f83ed8c43fafe157e11, 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496], 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000104fbc016f4bb334d775a19e8a6510109ac63e0000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000, 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f)]
+    └─ ← [Revert] revert: Lock address not found in event logs
+
+[FAIL: revert: Lock address not found in event logs] testNormalLock() (gas: 173237)
+Traces:
+  [657480] LockContractTest::setUp()
+    ├─ [414249] → new LockContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 2069 bytes of code
+    ├─ [151596] → new ForceSender@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 757 bytes of code
+    └─ ← [Stop] 
+
+  [173237] LockContractTest::testNormalLock()
+    ├─ [0] VM::recordLogs()
+    │   └─ ← [Return] 
+    ├─ [156033] LockContract::lock{value: 1000000000000000000}(86400 [8.64e4], 0x, true)
+    │   ├─ [118112] → new Lock@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   └─ ← [Return] 383 bytes of code
+    │   ├─ emit Locked(owner: LockContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000 [1e18], lockAddr: Lock: [0x104fBc016F4bb334D775a19E8A6510109AC63E00], edgewareAddr: 0x, isValidator: true, timestamp: 1)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::getRecordedLogs()
+    │   └─ ← [Return] [([0x6e0ed1c56084c3f03b3b4352f517072a794da3cd18c46f83ed8c43fafe157e11, 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496], 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000104fbc016f4bb334d775a19e8a6510109ac63e0000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000, 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f)]
+    └─ ← [Revert] revert: Lock address not found in event logs
+
+Suite result: FAILED. 0 passed; 2 failed; 0 skipped; finished in 704.48µs (429.35µs CPU time)
+
+Ran 1 test suite in 1.06s (704.48µs CPU time): 0 tests passed, 2 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 2 failing tests in test/6.1.3-Improper-Locking-fixed.t.sol:LockContractTest
+[FAIL: revert: Lock address not found in event logs] testForceSendDoesNotBreakLock() (gas: 173252)
+[FAIL: revert: Lock address not found in event logs] testNormalLock() (gas: 173237)
+
+Encountered a total of 2 failing tests, 0 tests succeeded
+Regenerating: 6.1.3-Improper-Locking-fixed.t.sol
+
+Running forge test: 6.1.3-Improper-Locking-fixed.t.sol (attempt 5)
+Failed: 6.1.3-Improper-Locking-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 459.17ms
+Compiler run successful!
+
+Ran 2 tests for test/6.1.3-Improper-Locking-fixed.t.sol:LockContractTest
+[FAIL: revert: Lock address not found in event logs] testForceSendDoesNotBreakLock() (gas: 172923)
+Traces:
+  [657480] LockContractTest::setUp()
+    ├─ [414249] → new LockContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 2069 bytes of code
+    ├─ [151596] → new ForceSender@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 757 bytes of code
+    └─ ← [Stop] 
+
+  [172923] LockContractTest::testForceSendDoesNotBreakLock()
+    ├─ [0] VM::recordLogs()
+    │   └─ ← [Return] 
+    ├─ [156033] LockContract::lock{value: 1000000000000000000}(86400 [8.64e4], 0x, false)
+    │   ├─ [118112] → new Lock@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   └─ ← [Return] 383 bytes of code
+    │   ├─ emit Locked(owner: LockContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000 [1e18], lockAddr: Lock: [0x104fBc016F4bb334D775a19E8A6510109AC63E00], edgewareAddr: 0x, isValidator: false, timestamp: 1)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::getRecordedLogs()
+    │   └─ ← [Return] [([0x6e0ed1c56084c3f03b3b4352f517072a794da3cd18c46f83ed8c43fafe157e11, 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496], 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000104fbc016f4bb334d775a19e8a6510109ac63e0000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000, 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f)]
+    └─ ← [Revert] revert: Lock address not found in event logs
+
+[FAIL: revert: Lock address not found in event logs] testNormalLock() (gas: 172900)
+Traces:
+  [657480] LockContractTest::setUp()
+    ├─ [414249] → new LockContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 2069 bytes of code
+    ├─ [151596] → new ForceSender@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 757 bytes of code
+    └─ ← [Stop] 
+
+  [172900] LockContractTest::testNormalLock()
+    ├─ [0] VM::recordLogs()
+    │   └─ ← [Return] 
+    ├─ [156033] LockContract::lock{value: 1000000000000000000}(86400 [8.64e4], 0x, true)
+    │   ├─ [118112] → new Lock@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   └─ ← [Return] 383 bytes of code
+    │   ├─ emit Locked(owner: LockContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000 [1e18], lockAddr: Lock: [0x104fBc016F4bb334D775a19E8A6510109AC63E00], edgewareAddr: 0x, isValidator: true, timestamp: 1)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::getRecordedLogs()
+    │   └─ ← [Return] [([0x6e0ed1c56084c3f03b3b4352f517072a794da3cd18c46f83ed8c43fafe157e11, 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496], 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000104fbc016f4bb334d775a19e8a6510109ac63e0000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000, 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f)]
+    └─ ← [Revert] revert: Lock address not found in event logs
+
+Suite result: FAILED. 0 passed; 2 failed; 0 skipped; finished in 649.67µs (280.15µs CPU time)
+
+Ran 1 test suite in 956.50ms (649.67µs CPU time): 0 tests passed, 2 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 2 failing tests in test/6.1.3-Improper-Locking-fixed.t.sol:LockContractTest
+[FAIL: revert: Lock address not found in event logs] testForceSendDoesNotBreakLock() (gas: 172923)
+[FAIL: revert: Lock address not found in event logs] testNormalLock() (gas: 172900)
+
+Encountered a total of 2 failing tests, 0 tests succeeded
+Regenerating: 6.1.3-Improper-Locking-fixed.t.sol
+Failed after 5 attempts: 6.1.3-Improper-Locking-fixed.t.sol
+Deleted test file due to repeated failure: 6.1.3-Improper-Locking-fixed.t.sol
+
+Running forge test: 6.1.3-Improper-Locking-vulnerability.t.sol (attempt 1)
+Passed: 6.1.3-Improper-Locking-vulnerability.t.sol
+
+Running forge test: 6.1.4-Transfer-Pre-Condition-Dependent-on-Transaction-Order-fixed.t.sol (attempt 1)
+Passed: 6.1.4-Transfer-Pre-Condition-Dependent-on-Transaction-Order-fixed.t.sol
+
+Running forge test: 6.1.4-Transfer-Pre-Condition-Dependent-on-Transaction-Order-vulnerability.t.sol (attempt 1)
+Passed: 6.1.4-Transfer-Pre-Condition-Dependent-on-Transaction-Order-vulnerability.t.sol
+
+Running forge test: 6.1.5-Transfer-Amount-Depending-on-Transaction-Order-fixed.t.sol (attempt 1)
+Passed: 6.1.5-Transfer-Amount-Depending-on-Transaction-Order-fixed.t.sol
+
+Running forge test: 6.1.5-Transfer-Amount-Depending-on-Transaction-Order-vulnerability.t.sol (attempt 1)
+Passed: 6.1.5-Transfer-Amount-Depending-on-Transaction-Order-vulnerability.t.sol
+
+Running forge test: 6.1.6-Transfer-Recipient-Depending-on-Transaction-Order-fixed.t.sol (attempt 1)
+Passed: 6.1.6-Transfer-Recipient-Depending-on-Transaction-Order-fixed.t.sol
+
+Running forge test: 6.1.6-Transfer-Recipient-Depending-on-Transaction-Order-vulnerability.t.sol (attempt 1)
+Passed: 6.1.6-Transfer-Recipient-Depending-on-Transaction-Order-vulnerability.t.sol
+
+Running forge test: 6.1.7-Exposed-state-variables-fixed.t.sol (attempt 1)
+Passed: 6.1.7-Exposed-state-variables-fixed.t.sol
+
+Running forge test: 6.1.7-Exposed-state-variables-vulnerability.t.sol (attempt 1)
+Passed: 6.1.7-Exposed-state-variables-vulnerability.t.sol
+
+Running forge test: 6.1.8-Wrong-Transaction-Definition-fixed.t.sol (attempt 1)
+Passed: 6.1.8-Wrong-Transaction-Definition-fixed.t.sol
+
+Running forge test: 6.1.8-Wrong-Transaction-Definition-vulnerability.t.sol (attempt 1)
+Passed: 6.1.8-Wrong-Transaction-Definition-vulnerability.t.sol
+
+Running forge test: 6.2.1-Improper-Input-Validation-fixed.t.sol (attempt 1)
+Passed: 6.2.1-Improper-Input-Validation-fixed.t.sol
+Test file not found, generating first: 6.2.1-Improper-Input-Validation-vulnerability.t.sol
+
+Running forge test: 6.2.1-Improper-Input-Validation-vulnerability.t.sol (attempt 1)
+Failed: 6.2.1-Improper-Input-Validation-vulnerability.t.sol
+Error:
+Compiler run failed:
+Error (4486): Type rational_const 125 / 32 is not implicitly convertible to expected type uint256. Try converting to type ufixed24x5 or use an explicit conversion.
+  --> test/6.2.1-Improper-Input-Validation-vulnerability.t.sol:73:9:
+   |
+73 |         uint256 expectedTransferred = 1000 / 256; // This is 3.
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Compilation failed
+Regenerating: 6.2.1-Improper-Input-Validation-vulnerability.t.sol
+
+Running forge test: 6.2.1-Improper-Input-Validation-vulnerability.t.sol (attempt 2)
+Failed: 6.2.1-Improper-Input-Validation-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 471.98ms
+Compiler run successful!
+
+Ran 1 test for test/6.2.1-Improper-Input-Validation-vulnerability.t.sol:ImproperInputValidationTest
+[FAIL: revert: Attack failed] testShortAddressAttack() (gas: 69084)
+Traces:
+  [538420] ImproperInputValidationTest::setUp()
+    ├─ [0] VM::startPrank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [241366] → new NonPayloadAttackableToken@0x01BD1984E7Ad080078C23290B8Fc6912FB7774E3
+    │   └─ ← [Return] 1105 bytes of code
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return] 
+    ├─ [0] VM::startPrank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [196243] → new Attack@0x29ced945BB6A5acc52d2A29C7c7e8E5f84Cf299d
+    │   └─ ← [Return] 874 bytes of code
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [69084] ImproperInputValidationTest::testShortAddressAttack()
+    ├─ [0] VM::startPrank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [28758] NonPayloadAttackableToken::transfer(Attack: [0x29ced945BB6A5acc52d2A29C7c7e8E5f84Cf299d], 1000)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return] 
+    ├─ [1492] NonPayloadAttackableToken::balances(Attack: [0x29ced945BB6A5acc52d2A29C7c7e8E5f84Cf299d]) [staticcall]
+    │   └─ ← [Return] 1000
+    ├─ [1492] NonPayloadAttackableToken::balances(0x000000000000000000000000000000000000bEEF) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [0] VM::assertEq(67, 67) [staticcall]
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [2828] Attack::attack(0xa9059cbb000000000000000000000000000000000000000000000000000000000000beef00000000000000000000000000000000000000000000000000000000000003)
+    │   ├─ [207] NonPayloadAttackableToken::transfer()
+    │   │   └─ ← [Revert] EvmError: Revert
+    │   └─ ← [Revert] revert: Attack failed
+    └─ ← [Revert] revert: Attack failed
+
+Suite result: FAILED. 0 passed; 1 failed; 0 skipped; finished in 950.92µs (214.67µs CPU time)
+
+Ran 1 test suite in 755.80ms (950.92µs CPU time): 0 tests passed, 1 failed, 0 skipped (1 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/6.2.1-Improper-Input-Validation-vulnerability.t.sol:ImproperInputValidationTest
+[FAIL: revert: Attack failed] testShortAddressAttack() (gas: 69084)
+
+Encountered a total of 1 failing tests, 0 tests succeeded
+Regenerating: 6.2.1-Improper-Input-Validation-vulnerability.t.sol
+
+Running forge test: 6.2.1-Improper-Input-Validation-vulnerability.t.sol (attempt 3)
+Failed: 6.2.1-Improper-Input-Validation-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 509.68ms
+Compiler run successful!
+
+Ran 1 test for test/6.2.1-Improper-Input-Validation-vulnerability.t.sol:ImproperInputValidationTest
+[FAIL: revert: Attack failed] testShortAddressAttack() (gas: 8651)
+Traces:
+  [538420] ImproperInputValidationTest::setUp()
+    ├─ [0] VM::startPrank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [241366] → new NonPayloadAttackableToken@0x01BD1984E7Ad080078C23290B8Fc6912FB7774E3
+    │   └─ ← [Return] 1105 bytes of code
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return] 
+    ├─ [0] VM::startPrank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [196243] → new Attack@0x29ced945BB6A5acc52d2A29C7c7e8E5f84Cf299d
+    │   └─ ← [Return] 874 bytes of code
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [8651] ImproperInputValidationTest::testShortAddressAttack()
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [2825] Attack::attack(0xa9059cbb000000000000000000000000000000000000beef00000000000000000000000000000000000000000000000000000000000003e8)
+    │   ├─ [207] NonPayloadAttackableToken::transfer()
+    │   │   └─ ← [Revert] EvmError: Revert
+    │   └─ ← [Revert] revert: Attack failed
+    └─ ← [Revert] revert: Attack failed
+
+Suite result: FAILED. 0 passed; 1 failed; 0 skipped; finished in 841.62µs (147.20µs CPU time)
+
+Ran 1 test suite in 966.89ms (841.62µs CPU time): 0 tests passed, 1 failed, 0 skipped (1 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/6.2.1-Improper-Input-Validation-vulnerability.t.sol:ImproperInputValidationTest
+[FAIL: revert: Attack failed] testShortAddressAttack() (gas: 8651)
+
+Encountered a total of 1 failing tests, 0 tests succeeded
+Regenerating: 6.2.1-Improper-Input-Validation-vulnerability.t.sol
+
+Running forge test: 6.2.1-Improper-Input-Validation-vulnerability.t.sol (attempt 4)
+Failed: 6.2.1-Improper-Input-Validation-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 550.56ms
+Compiler run successful!
+
+Ran 2 tests for test/6.2.1-Improper-Input-Validation-vulnerability.t.sol:ImproperInputValidationTest
+[PASS] testFullPayloadFails() (gas: 8662)
+Traces:
+  [8662] ImproperInputValidationTest::testFullPayloadFails()
+    ├─ [1799] NonPayloadAttackableToken::transfer(0x000000000000000000000000000000000000bEEF, 1000)
+    │   └─ ← [Revert] revert: Insufficient balance
+    ├─ [0] VM::assertTrue(true, "Full payload should fail due to insufficient balance of the caller") [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+[FAIL: revert: Attack failed] testShortAddressAttack() (gas: 12553)
+Traces:
+  [566075] ImproperInputValidationTest::setUp()
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [241366] → new NonPayloadAttackableToken@0x01BD1984E7Ad080078C23290B8Fc6912FB7774E3
+    │   └─ ← [Return] 1105 bytes of code
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [196243] → new Attack@0x29ced945BB6A5acc52d2A29C7c7e8E5f84Cf299d
+    │   └─ ← [Return] 874 bytes of code
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [24558] NonPayloadAttackableToken::transfer(Attack: [0x29ced945BB6A5acc52d2A29C7c7e8E5f84Cf299d], 1000)
+    │   └─ ← [Stop] 
+    └─ ← [Stop] 
+
+  [12553] ImproperInputValidationTest::testShortAddressAttack()
+    ├─ [0] VM::assertEq(40, 40, "Payload length should be 40 bytes") [staticcall]
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [2825] Attack::attack(0xa9059cbb000000000000000000000000000000000000beef00000000000000000000000000000005)
+    │   ├─ [207] NonPayloadAttackableToken::transfer()
+    │   │   └─ ← [Revert] EvmError: Revert
+    │   └─ ← [Revert] revert: Attack failed
+    └─ ← [Revert] revert: Attack failed
+
+Suite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 713.55µs (302.55µs CPU time)
+
+Ran 1 test suite in 680.54ms (713.55µs CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/6.2.1-Improper-Input-Validation-vulnerability.t.sol:ImproperInputValidationTest
+[FAIL: revert: Attack failed] testShortAddressAttack() (gas: 12553)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+Regenerating: 6.2.1-Improper-Input-Validation-vulnerability.t.sol
+
+Running forge test: 6.2.1-Improper-Input-Validation-vulnerability.t.sol (attempt 5)
+Failed: 6.2.1-Improper-Input-Validation-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 503.70ms
+Compiler run successful with warnings:
+Warning (2072): Unused local variable.
+  --> test/6.2.1-Improper-Input-Validation-vulnerability.t.sol:93:9:
+   |
+93 |         uint256 preAttackMalBalance = token.balances(maliciousRecipient); // expected 0
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Ran 2 tests for test/6.2.1-Improper-Input-Validation-vulnerability.t.sol:ImproperInputValidationTest
+[FAIL: revert: Full payload should revert due to insufficient balance] testFullPayloadFails() (gas: 12267)
+Traces:
+  [566075] ImproperInputValidationTest::setUp()
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [241366] → new NonPayloadAttackableToken@0x01BD1984E7Ad080078C23290B8Fc6912FB7774E3
+    │   └─ ← [Return] 1105 bytes of code
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [196243] → new Attack@0x2561e2FAEA20b514433C253266d9DA5dDD3E4Cd5
+    │   └─ ← [Return] 874 bytes of code
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [24558] NonPayloadAttackableToken::transfer(Attack: [0x2561e2FAEA20b514433C253266d9DA5dDD3E4Cd5], 100)
+    │   └─ ← [Stop] 
+    └─ ← [Stop] 
+
+  [12267] ImproperInputValidationTest::testFullPayloadFails()
+    ├─ [0] VM::prank(Attack: [0x2561e2FAEA20b514433C253266d9DA5dDD3E4Cd5])
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  Insufficient balance)
+    │   └─ ← [Return] 
+    ├─ [1799] NonPayloadAttackableToken::transfer(0x0000000000000000000000000000000000BEEF00, 1000)
+    │   └─ ← [Revert] revert: Insufficient balance
+    └─ ← [Revert] revert: Full payload should revert due to insufficient balance
+
+[FAIL: revert: Attack failed] testShortAddressAttack() (gas: 39978)
+Traces:
+  [566075] ImproperInputValidationTest::setUp()
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [241366] → new NonPayloadAttackableToken@0x01BD1984E7Ad080078C23290B8Fc6912FB7774E3
+    │   └─ ← [Return] 1105 bytes of code
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [196243] → new Attack@0x2561e2FAEA20b514433C253266d9DA5dDD3E4Cd5
+    │   └─ ← [Return] 874 bytes of code
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [24558] NonPayloadAttackableToken::transfer(Attack: [0x2561e2FAEA20b514433C253266d9DA5dDD3E4Cd5], 100)
+    │   └─ ← [Stop] 
+    └─ ← [Stop] 
+
+  [39978] ImproperInputValidationTest::testShortAddressAttack()
+    ├─ [0] VM::assertEq(67, 67, "Payload length should be 67 bytes") [staticcall]
+    │   └─ ← [Return] 
+    ├─ [1492] NonPayloadAttackableToken::balances(Attack: [0x2561e2FAEA20b514433C253266d9DA5dDD3E4Cd5]) [staticcall]
+    │   └─ ← [Return] 100
+    ├─ [1492] NonPayloadAttackableToken::balances(0x0000000000000000000000000000000000BEEF00) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [2828] Attack::attack(0xa9059cbb00000000000000000000000000000000000000000000000000000000beef000000000000000000000000000000000000000000000000000000000000000500)
+    │   ├─ [207] NonPayloadAttackableToken::transfer()
+    │   │   └─ ← [Revert] EvmError: Revert
+    │   └─ ← [Revert] revert: Attack failed
+    └─ ← [Revert] revert: Attack failed
+
+Suite result: FAILED. 0 passed; 2 failed; 0 skipped; finished in 1.29ms (690.74µs CPU time)
+
+Ran 1 test suite in 1.19s (1.29ms CPU time): 0 tests passed, 2 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 2 failing tests in test/6.2.1-Improper-Input-Validation-vulnerability.t.sol:ImproperInputValidationTest
+[FAIL: revert: Full payload should revert due to insufficient balance] testFullPayloadFails() (gas: 12267)
+[FAIL: revert: Attack failed] testShortAddressAttack() (gas: 39978)
+
+Encountered a total of 2 failing tests, 0 tests succeeded
+Regenerating: 6.2.1-Improper-Input-Validation-vulnerability.t.sol
+Failed after 5 attempts: 6.2.1-Improper-Input-Validation-vulnerability.t.sol
+Deleted test file due to repeated failure: 6.2.1-Improper-Input-Validation-vulnerability.t.sol
+
+Running forge test: 6.2.2-Extraneous-Input-Validation-fixed.t.sol (attempt 1)
+
+===== Test run started: 2025-04-11 14:57:25.497239 =====
+
+
+Running forge test: 8.1.1-Wrong-Caller-Identification-fixed.t.sol (attempt 1)
+Passed: 8.1.1-Wrong-Caller-Identification-fixed.t.sol
+Test file not found, generating first: 8.1.1-Wrong-Caller-Identification-vulnerability.t.sol
+
+Running forge test: 8.1.1-Wrong-Caller-Identification-vulnerability.t.sol (attempt 1)
+Failed: 8.1.1-Wrong-Caller-Identification-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 598.70ms
+Compiler run successful!
+
+Ran 2 tests for test/8.1.1-Wrong-Caller-Identification-vulnerability.t.sol:ExploitTest
+[PASS] testDirectCallByNonOwner() (gas: 9951)
+Traces:
+  [9951] ExploitTest::testDirectCallByNonOwner()
+    ├─ [0] VM::prank(0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF)
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  	Not owner)
+    │   └─ ← [Return] 
+    ├─ [1751] UserWallet::transfer(0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF, 1000000000000000000 [1e18])
+    │   └─ ← [Revert] revert: Not owner
+    └─ ← [Stop] 
+
+[FAIL: UserWallet not drained properly: 10000000000000000000 != 9000000000000000000] testExploitUsingAttackWallet() (gas: 20228)
+Traces:
+  [506623] ExploitTest::setUp()
+    ├─ [0] VM::addr(<pk>) [staticcall]
+    │   └─ ← [Return] 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf
+    ├─ [0] VM::addr(<pk>) [staticcall]
+    │   └─ ← [Return] 0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF
+    ├─ [0] VM::deal(0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, 100000000000000000000 [1e20])
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf)
+    │   └─ ← [Return] 
+    ├─ [183250] → new UserWallet@0xF2E246BB76DF876Cef8b38ae84130F4F55De395b
+    │   └─ ← [Return] 811 bytes of code
+    ├─ [0] VM::prank(0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF)
+    │   └─ ← [Return] 
+    ├─ [176092] → new AttackWallet@0x153b84F377C6C7a7D93Bd9a717E48097Ca6Cfd11
+    │   └─ ← [Return] 668 bytes of code
+    └─ ← [Stop] 
+
+  [20228] ExploitTest::testExploitUsingAttackWallet()
+    ├─ [0] VM::prank(0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf)
+    │   └─ ← [Return] 
+    ├─ [55] AttackWallet::receive{value: 1000000000000000000}()
+    │   └─ ← [Stop] 
+    ├─ [0] VM::assertEq(10000000000000000000 [1e19], 9000000000000000000 [9e18], "UserWallet not drained properly") [staticcall]
+    │   └─ ← [Revert] UserWallet not drained properly: 10000000000000000000 != 9000000000000000000
+    └─ ← [Revert] UserWallet not drained properly: 10000000000000000000 != 9000000000000000000
+
+Suite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 919.09µs (209.92µs CPU time)
+
+Ran 1 test suite in 821.21ms (919.09µs CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/8.1.1-Wrong-Caller-Identification-vulnerability.t.sol:ExploitTest
+[FAIL: UserWallet not drained properly: 10000000000000000000 != 9000000000000000000] testExploitUsingAttackWallet() (gas: 20228)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+Regenerating: 8.1.1-Wrong-Caller-Identification-vulnerability.t.sol
+
+Running forge test: 8.1.1-Wrong-Caller-Identification-vulnerability.t.sol (attempt 2)
+Failed: 8.1.1-Wrong-Caller-Identification-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 515.44ms
+Compiler run successful!
+
+Ran 2 tests for test/8.1.1-Wrong-Caller-Identification-vulnerability.t.sol:ExploitTest
+[PASS] testDirectCallByNonOwner() (gas: 9864)
+Traces:
+  [9864] ExploitTest::testDirectCallByNonOwner()
+    ├─ [0] VM::prank(0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF)
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  	Not owner)
+    │   └─ ← [Return] 
+    ├─ [1751] UserWallet::transfer(0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF, 1000000000000000000 [1e18])
+    │   └─ ← [Revert] revert: Not owner
+    └─ ← [Stop] 
+
+[FAIL: revert: AttackWallet call failed] testExploitUsingAttackWallet() (gas: 22353)
+Traces:
+  [506766] ExploitTest::setUp()
+    ├─ [0] VM::addr(<pk>) [staticcall]
+    │   └─ ← [Return] 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf
+    ├─ [0] VM::addr(<pk>) [staticcall]
+    │   └─ ← [Return] 0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF
+    ├─ [0] VM::deal(0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, 100000000000000000000 [1e20])
+    │   └─ ← [Return] 
+    ├─ [0] VM::deal(0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF, 0)
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf)
+    │   └─ ← [Return] 
+    ├─ [183250] → new UserWallet@0xF2E246BB76DF876Cef8b38ae84130F4F55De395b
+    │   └─ ← [Return] 811 bytes of code
+    ├─ [176092] → new AttackWallet@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 668 bytes of code
+    └─ ← [Stop] 
+
+  [22353] ExploitTest::testExploitUsingAttackWallet()
+    ├─ [0] VM::assertEq(10000000000000000000 [1e19], 10000000000000000000 [1e19]) [staticcall]
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf)
+    │   └─ ← [Return] 
+    ├─ [5408] AttackWallet::15667403{value: 1000000000000000000}()
+    │   ├─ [1751] UserWallet::transfer(0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF, 1000000000000000000 [1e18])
+    │   │   └─ ← [Revert] revert: Not owner
+    │   └─ ← [Revert] revert: Not owner
+    └─ ← [Revert] revert: AttackWallet call failed
+
+Suite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 1.36ms (684.07µs CPU time)
+
+Ran 1 test suite in 1.45s (1.36ms CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/8.1.1-Wrong-Caller-Identification-vulnerability.t.sol:ExploitTest
+[FAIL: revert: AttackWallet call failed] testExploitUsingAttackWallet() (gas: 22353)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+Regenerating: 8.1.1-Wrong-Caller-Identification-vulnerability.t.sol
+
+Running forge test: 8.1.1-Wrong-Caller-Identification-vulnerability.t.sol (attempt 3)
+Failed: 8.1.1-Wrong-Caller-Identification-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 478.61ms
+Compiler run successful!
+
+Ran 2 tests for test/8.1.1-Wrong-Caller-Identification-vulnerability.t.sol:ExploitTest
+[PASS] testDirectCallByNonOwner() (gas: 9929)
+Traces:
+  [9929] ExploitTest::testDirectCallByNonOwner()
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  	Not owner)
+    │   └─ ← [Return] 
+    ├─ [1751] UserWallet::transfer(0x000000000000000000000000000000000000bEEF, 1000000000000000000 [1e18])
+    │   └─ ← [Revert] revert: Not owner
+    └─ ← [Stop] 
+
+[FAIL: revert: AttackWallet call failed] testExploitUsingAttackWallet() (gas: 15833)
+Traces:
+  [463636] ExploitTest::setUp()
+    ├─ [0] VM::deal(0x000000000000000000000000000000000000ABcD, 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    ├─ [0] VM::deal(0x000000000000000000000000000000000000bEEF, 1000000000000000000 [1e18])
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [183250] → new UserWallet@0x01BD1984E7Ad080078C23290B8Fc6912FB7774E3
+    │   └─ ← [Return] 811 bytes of code
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [176092] → new AttackWallet@0x29ced945BB6A5acc52d2A29C7c7e8E5f84Cf299d
+    │   └─ ← [Return] 668 bytes of code
+    └─ ← [Stop] 
+
+  [15833] ExploitTest::testExploitUsingAttackWallet()
+    ├─ [0] VM::startPrank(0x000000000000000000000000000000000000ABcD, 0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [0] AttackWallet::receive{value: 1000000000000000000}()
+    │   └─ ← [OutOfFunds] EvmError: OutOfFunds
+    └─ ← [Revert] revert: AttackWallet call failed
+
+Suite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 825.70µs (200.19µs CPU time)
+
+Ran 1 test suite in 932.06ms (825.70µs CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/8.1.1-Wrong-Caller-Identification-vulnerability.t.sol:ExploitTest
+[FAIL: revert: AttackWallet call failed] testExploitUsingAttackWallet() (gas: 15833)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+Regenerating: 8.1.1-Wrong-Caller-Identification-vulnerability.t.sol
+
+Running forge test: 8.1.1-Wrong-Caller-Identification-vulnerability.t.sol (attempt 4)
+Failed: 8.1.1-Wrong-Caller-Identification-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 477.11ms
+Compiler run successful!
+
+Ran 2 tests for test/8.1.1-Wrong-Caller-Identification-vulnerability.t.sol:ExploitTest
+[PASS] testDirectCallByNonOwner() (gas: 10232)
+Traces:
+  [10232] ExploitTest::testDirectCallByNonOwner()
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  	Not owner)
+    │   └─ ← [Return] 
+    ├─ [1751] UserWallet::transfer(0x000000000000000000000000000000000000bEEF, 1000000000000000000 [1e18])
+    │   └─ ← [Revert] revert: Not owner
+    └─ ← [Stop] 
+
+[FAIL: revert: AttackWallet call failed] testExploitUsingAttackWallet() (gas: 20575)
+Traces:
+  [478464] ExploitTest::setUp()
+    ├─ [0] VM::deal(0x000000000000000000000000000000000000ABcD, 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    ├─ [0] VM::deal(0x000000000000000000000000000000000000bEEF, 1000000000000000000 [1e18])
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [183250] → new UserWallet@0x01BD1984E7Ad080078C23290B8Fc6912FB7774E3
+    │   └─ ← [Return] 811 bytes of code
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [176092] → new AttackWallet@0x29ced945BB6A5acc52d2A29C7c7e8E5f84Cf299d
+    │   └─ ← [Return] 668 bytes of code
+    └─ ← [Stop] 
+
+  [20575] ExploitTest::testExploitUsingAttackWallet()
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [5408] AttackWallet::15667403{value: 1000000000000000000}()
+    │   ├─ [1751] UserWallet::transfer(0x000000000000000000000000000000000000bEEF, 1000000000000000000 [1e18])
+    │   │   └─ ← [Revert] revert: Not owner
+    │   └─ ← [Revert] revert: Not owner
+    └─ ← [Revert] revert: AttackWallet call failed
+
+Suite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 1.57ms (1.04ms CPU time)
+
+Ran 1 test suite in 858.68ms (1.57ms CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/8.1.1-Wrong-Caller-Identification-vulnerability.t.sol:ExploitTest
+[FAIL: revert: AttackWallet call failed] testExploitUsingAttackWallet() (gas: 20575)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+Regenerating: 8.1.1-Wrong-Caller-Identification-vulnerability.t.sol
+
+Running forge test: 8.1.1-Wrong-Caller-Identification-vulnerability.t.sol (attempt 5)
+Failed: 8.1.1-Wrong-Caller-Identification-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 458.16ms
+Compiler run successful!
+
+Ran 2 tests for test/8.1.1-Wrong-Caller-Identification-vulnerability.t.sol:ExploitTest
+[PASS] testDirectCallByNonOwner() (gas: 10282)
+Traces:
+  [10282] ExploitTest::testDirectCallByNonOwner()
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000dEaD)
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  	Not owner)
+    │   └─ ← [Return] 
+    ├─ [1751] UserWallet::transfer(0x000000000000000000000000000000000000dEaD, 1000000000000000000 [1e18])
+    │   └─ ← [Revert] revert: Not owner
+    └─ ← [Stop] 
+
+[FAIL: UserWallet should lose 1 ether: 0 != 1000000000000000000] testExploitUsingAttackWallet() (gas: 20289)
+Traces:
+  [465490] ExploitTest::setUp()
+    ├─ [0] VM::deal(0x000000000000000000000000000000000000ABcD, 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    ├─ [0] VM::deal(0x000000000000000000000000000000000000bEEF, 0)
+    │   └─ ← [Return] 
+    ├─ [0] VM::deal(0x000000000000000000000000000000000000dEaD, 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    ├─ [0] VM::startPrank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [183250] → new UserWallet@0x01BD1984E7Ad080078C23290B8Fc6912FB7774E3
+    │   └─ ← [Return] 811 bytes of code
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return] 
+    ├─ [176092] → new AttackWallet@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 668 bytes of code
+    └─ ← [Stop] 
+
+  [20289] ExploitTest::testExploitUsingAttackWallet()
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [55] AttackWallet::receive{value: 1000000000000000000}()
+    │   └─ ← [Stop] 
+    ├─ [0] VM::assertEq(0, 1000000000000000000 [1e18], "UserWallet should lose 1 ether") [staticcall]
+    │   └─ ← [Revert] UserWallet should lose 1 ether: 0 != 1000000000000000000
+    └─ ← [Revert] UserWallet should lose 1 ether: 0 != 1000000000000000000
+
+Suite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 904.67µs (325.92µs CPU time)
+
+Ran 1 test suite in 812.41ms (904.67µs CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/8.1.1-Wrong-Caller-Identification-vulnerability.t.sol:ExploitTest
+[FAIL: UserWallet should lose 1 ether: 0 != 1000000000000000000] testExploitUsingAttackWallet() (gas: 20289)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+Regenerating: 8.1.1-Wrong-Caller-Identification-vulnerability.t.sol
+
+===== Test run started: 2025-04-11 15:03:21.938653 =====
+
+Test file not found, generating first: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol
+
+Running forge test: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol (attempt 1)
+Failed: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol
+Error:
+Compiler run failed:
+Error (3125): Member "code" not found or not visible after argument-dependent lookup in contract XYZ. Use "address(xyz).code" to access this address member.
+  --> test/8.1.3-Missing-verification-for-program-termination-fixed.t.sol:33:28:
+   |
+33 |         uint256 codeSize = xyz.code.length;
+   |                            ^^^^^^^^
+
+Error: Compilation failed
+Regenerating: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol
+
+Running forge test: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol (attempt 2)
+Failed: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 662.62ms
+Compiler run successful!
+
+Ran 2 tests for test/8.1.3-Missing-verification-for-program-termination-fixed.t.sol:MissingVerificationForProgramTerminationTest
+[PASS] testNonOwnerCannotDestroy() (gas: 15330)
+Traces:
+  [15330] MissingVerificationForProgramTerminationTest::testNonOwnerCannotDestroy()
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  nly owner can call destroy)
+    │   └─ ← [Return] 
+    ├─ [3753] Attacker::attack()
+    │   ├─ [1249] XYZ::destroy()
+    │   │   └─ ← [Revert] revert: Only owner can call destroy
+    │   └─ ← [Revert] revert: Only owner can call destroy
+    ├─ [0] VM::assertGt(561, 0) [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+[FAIL: EvmError: Revert] testOwnerCanDestroy() (gas: 11146)
+Traces:
+  [337976] MissingVerificationForProgramTerminationTest::setUp()
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [133225] → new XYZ@0x01BD1984E7Ad080078C23290B8Fc6912FB7774E3
+    │   └─ ← [Return] 561 bytes of code
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [107158] → new Attacker@0x29ced945BB6A5acc52d2A29C7c7e8E5f84Cf299d
+    │   └─ ← [Return] 429 bytes of code
+    └─ ← [Stop] 
+
+  [11146] MissingVerificationForProgramTerminationTest::testOwnerCanDestroy()
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [0] XYZ::fallback{value: 1000000000000000000}()
+    │   └─ ← [OutOfFunds] EvmError: OutOfFunds
+    └─ ← [Revert] EvmError: Revert
+
+Suite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 1.09ms (325.56µs CPU time)
+
+Ran 1 test suite in 717.15ms (1.09ms CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/8.1.3-Missing-verification-for-program-termination-fixed.t.sol:MissingVerificationForProgramTerminationTest
+[FAIL: EvmError: Revert] testOwnerCanDestroy() (gas: 11146)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+Regenerating: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol
+
+Running forge test: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol (attempt 3)
+Failed: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol
+Error:
+Compiler run failed:
+Error (7000): Function expects 0 arguments but got 1.
+  --> test/8.1.3-Missing-verification-for-program-termination-fixed.t.sol:43:37:
+   |
+43 |             codeSize := extcodesize(address(xyz))
+   |                                     ^^^^^^^
+
+Error (1408): Only local variables are supported. To access storage variables, use the ".slot" and ".offset" suffixes.
+  --> test/8.1.3-Missing-verification-for-program-termination-fixed.t.sol:43:45:
+   |
+43 |             codeSize := extcodesize(address(xyz))
+   |                                             ^^^
+
+Error: Compilation failed
+Regenerating: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol
+
+Running forge test: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol (attempt 4)
+Failed: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 358.34ms
+Compiler run successful!
+
+Ran 2 tests for test/8.1.3-Missing-verification-for-program-termination-fixed.t.sol:MissingVerificationTest
+[PASS] testAttackFails() (gas: 179411)
+Traces:
+  [179411] MissingVerificationTest::testAttackFails()
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [107158] → new Attacker@0x29ced945BB6A5acc52d2A29C7c7e8E5f84Cf299d
+    │   └─ ← [Return] 429 bytes of code
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  nly owner can call destroy)
+    │   └─ ← [Return] 
+    ├─ [3753] Attacker::attack()
+    │   ├─ [1249] XYZ::destroy()
+    │   │   └─ ← [Revert] revert: Only owner can call destroy
+    │   └─ ← [Revert] revert: Only owner can call destroy
+    ├─ [0] VM::assertGt(561, 0, "XYZ contract should still exist after failed attack") [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+[FAIL: XYZ contract should be destroyed by the owner: 561 != 0] testOwnerCanDestroy() (gas: 18416)
+Traces:
+  [171540] MissingVerificationTest::setUp()
+    ├─ [133225] → new XYZ@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 561 bytes of code
+    └─ ← [Stop] 
+
+  [18416] MissingVerificationTest::testOwnerCanDestroy()
+    ├─ [0] VM::assertGt(561, 0, "XYZ contract should exist before destruction") [staticcall]
+    │   └─ ← [Return] 
+    ├─ [5988] XYZ::destroy()
+    │   └─ ← [SelfDestruct] 
+    ├─ [0] VM::assertEq(561, 0, "XYZ contract should be destroyed by the owner") [staticcall]
+    │   └─ ← [Revert] XYZ contract should be destroyed by the owner: 561 != 0
+    └─ ← [Revert] XYZ contract should be destroyed by the owner: 561 != 0
+
+Suite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 968.88µs (546.21µs CPU time)
+
+Ran 1 test suite in 619.84ms (968.88µs CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/8.1.3-Missing-verification-for-program-termination-fixed.t.sol:MissingVerificationTest
+[FAIL: XYZ contract should be destroyed by the owner: 561 != 0] testOwnerCanDestroy() (gas: 18416)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+Regenerating: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol
+
+Running forge test: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol (attempt 5)
+Failed: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 364.83ms
+Compiler run successful!
+
+Ran 2 tests for test/8.1.3-Missing-verification-for-program-termination-fixed.t.sol:MissingVerificationTest
+[PASS] testAttackFails() (gas: 158096)
+Traces:
+  [158096] MissingVerificationTest::testAttackFails()
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [107158] → new Attacker@0x29ced945BB6A5acc52d2A29C7c7e8E5f84Cf299d
+    │   └─ ← [Return] 429 bytes of code
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  nly owner can call destroy)
+    │   └─ ← [Return] 
+    ├─ [3753] Attacker::attack()
+    │   ├─ [1249] XYZ::destroy()
+    │   │   └─ ← [Revert] revert: Only owner can call destroy
+    │   └─ ← [Revert] revert: Only owner can call destroy
+    ├─ [0] VM::assertGt(561, 0, "XYZ contract should still exist after failed attack") [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+[FAIL: XYZ contract should be destroyed by the owner: 561 != 0] testOwnerCanDestroy() (gas: 20155)
+Traces:
+  [171540] MissingVerificationTest::setUp()
+    ├─ [133225] → new XYZ@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 561 bytes of code
+    └─ ← [Stop] 
+
+  [20155] MissingVerificationTest::testOwnerCanDestroy()
+    ├─ [0] VM::assertGt(561, 0, "XYZ contract should exist before destruction") [staticcall]
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(MissingVerificationTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   └─ ← [Return] 
+    ├─ [5988] XYZ::destroy()
+    │   └─ ← [SelfDestruct] 
+    ├─ [0] VM::assertEq(561, 0, "XYZ contract should be destroyed by the owner") [staticcall]
+    │   └─ ← [Revert] XYZ contract should be destroyed by the owner: 561 != 0
+    └─ ← [Revert] XYZ contract should be destroyed by the owner: 561 != 0
+
+Suite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 1.00ms (451.37µs CPU time)
+
+Ran 1 test suite in 619.71ms (1.00ms CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/8.1.3-Missing-verification-for-program-termination-fixed.t.sol:MissingVerificationTest
+[FAIL: XYZ contract should be destroyed by the owner: 561 != 0] testOwnerCanDestroy() (gas: 20155)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+Regenerating: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol
+Failed after 5 attempts: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol
+Deleted test file due to repeated failure: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol
+Test file not found, generating first: 8.1.3-Missing-verification-for-program-termination-vulnerability.t.sol
+
+Running forge test: 8.1.3-Missing-verification-for-program-termination-vulnerability.t.sol (attempt 1)
+Failed: 8.1.3-Missing-verification-for-program-termination-vulnerability.t.sol
+Error:
+Compiler run failed:
+Error (7000): Function expects 0 arguments but got 1.
+  --> test/8.1.3-Missing-verification-for-program-termination-vulnerability.t.sol:40:37:
+   |
+40 |             codeSize := extcodesize(address(vulnerable))
+   |                                     ^^^^^^^
+
+Error (1408): Only local variables are supported. To access storage variables, use the ".slot" and ".offset" suffixes.
+  --> test/8.1.3-Missing-verification-for-program-termination-vulnerability.t.sol:40:45:
+   |
+40 |             codeSize := extcodesize(address(vulnerable))
+   |                                             ^^^^^^^^^^
+
+Error: Compilation failed
+Regenerating: 8.1.3-Missing-verification-for-program-termination-vulnerability.t.sol
+
+Running forge test: 8.1.3-Missing-verification-for-program-termination-vulnerability.t.sol (attempt 2)
+Failed: 8.1.3-Missing-verification-for-program-termination-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 332.68ms
+Compiler run successful!
+
+Ran 1 test for test/8.1.3-Missing-verification-for-program-termination-vulnerability.t.sol:MaliciousAttackTest
+[FAIL: assertion failed: 132 != 0] testDestroyVulnerability() (gas: 24625)
+Traces:
+  [231380] MaliciousAttackTest::setUp()
+    ├─ [26481] → new XYZ@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 132 bytes of code
+    ├─ [0] VM::deal(XYZ: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [107158] → new Attacker@0x29ced945BB6A5acc52d2A29C7c7e8E5f84Cf299d
+    │   └─ ← [Return] 429 bytes of code
+    └─ ← [Stop] 
+
+  [24625] MaliciousAttackTest::testDestroyVulnerability()
+    ├─ [0] VM::assertGt(132, 0) [staticcall]
+    │   └─ ← [Return] 
+    ├─ [0] VM::assertEq(10000000000000000000 [1e19], 10000000000000000000 [1e19]) [staticcall]
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [7637] Attacker::attack()
+    │   ├─ [5121] XYZ::destroy()
+    │   │   └─ ← [SelfDestruct] 
+    │   └─ ← [Stop] 
+    ├─ [0] VM::assertEq(132, 0) [staticcall]
+    │   └─ ← [Revert] assertion failed: 132 != 0
+    └─ ← [Revert] assertion failed: 132 != 0
+
+Suite result: FAILED. 0 passed; 1 failed; 0 skipped; finished in 3.94ms (3.69ms CPU time)
+
+Ran 1 test suite in 641.98ms (3.94ms CPU time): 0 tests passed, 1 failed, 0 skipped (1 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/8.1.3-Missing-verification-for-program-termination-vulnerability.t.sol:MaliciousAttackTest
+[FAIL: assertion failed: 132 != 0] testDestroyVulnerability() (gas: 24625)
+
+Encountered a total of 1 failing tests, 0 tests succeeded
+Regenerating: 8.1.3-Missing-verification-for-program-termination-vulnerability.t.sol
+
+Running forge test: 8.1.3-Missing-verification-for-program-termination-vulnerability.t.sol (attempt 3)
+Passed: 8.1.3-Missing-verification-for-program-termination-vulnerability.t.sol
+
+Running forge test: 8.2.1-Exposed-private-data-fixed.t.sol (attempt 1)
+Passed: 8.2.1-Exposed-private-data-fixed.t.sol
+
+Running forge test: 8.2.1-Exposed-private-data-vulnerability.t.sol (attempt 1)
+
+===== Test run started: 2025-04-11 15:07:57.368537 =====
+
+
+Running forge test: 5.13.2-Write-to-Arbitrary-Storage-Location-fixed.t.sol (attempt 1)
+Passed: 5.13.2-Write-to-Arbitrary-Storage-Location-fixed.t.sol
+Test file not found, generating first: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+
+Running forge test: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol (attempt 1)
+Failed: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 391.27ms
+Compiler run successful!
+
+Ran 3 tests for test/5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol:VulnerableWalletTest
+[FAIL: panic: arithmetic underflow or overflow (0x11)] testAttackContract() (gas: 276696)
+Traces:
+  [294772] VulnerableWalletTest::setUp()
+    ├─ [256341] → new Wallet@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1176 bytes of code
+    └─ ← [Stop] 
+
+  [276696] VulnerableWalletTest::testAttackContract()
+    ├─ [0] VM::startPrank(0x0000000000000000000000000000000000012345)
+    │   └─ ← [Return] 
+    ├─ [192480] → new Attack@0x94598E7a618eB110f658757614F1444c8748d35E
+    │   └─ ← [Return] 855 bytes of code
+    ├─ [24755] Attack::attack()
+    │   ├─ [21792] Wallet::PopBonusCode()
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Revert] panic: arithmetic underflow or overflow (0x11)
+    └─ ← [Revert] panic: arithmetic underflow or overflow (0x11)
+
+[FAIL: panic: arithmetic underflow or overflow (0x11)] testManualAttack() (gas: 33366)
+Traces:
+  [294772] VulnerableWalletTest::setUp()
+    ├─ [256341] → new Wallet@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1176 bytes of code
+    └─ ← [Stop] 
+
+  [33366] VulnerableWalletTest::testManualAttack()
+    ├─ [0] VM::startPrank(0x0000000000000000000000000000000000012345)
+    │   └─ ← [Return] 
+    ├─ [1236] Wallet::owner() [staticcall]
+    │   └─ ← [Return] VulnerableWalletTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]
+    ├─ [0] VM::assertEq(VulnerableWalletTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], VulnerableWalletTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 
+    ├─ [21792] Wallet::PopBonusCode()
+    │   └─ ← [Stop] 
+    └─ ← [Revert] panic: arithmetic underflow or overflow (0x11)
+
+[PASS] testPopBonusCodeFailsWhenBonusNotEmpty() (gas: 50125)
+Traces:
+  [50125] VulnerableWalletTest::testPopBonusCodeFailsWhenBonusNotEmpty()
+    ├─ [41395] Wallet::PushBonusCode(123)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  %Not allowed: bonusCodes must be empty)
+    │   └─ ← [Return] 
+    ├─ [1253] Wallet::PopBonusCode()
+    │   └─ ← [Revert] revert: Not allowed: bonusCodes must be empty
+    └─ ← [Stop] 
+
+Suite result: FAILED. 1 passed; 2 failed; 0 skipped; finished in 514.93µs (354.71µs CPU time)
+
+Ran 1 test suite in 687.34ms (514.93µs CPU time): 1 tests passed, 2 failed, 0 skipped (3 total tests)
+
+Failing tests:
+Encountered 2 failing tests in test/5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol:VulnerableWalletTest
+[FAIL: panic: arithmetic underflow or overflow (0x11)] testAttackContract() (gas: 276696)
+[FAIL: panic: arithmetic underflow or overflow (0x11)] testManualAttack() (gas: 33366)
+
+Encountered a total of 2 failing tests, 1 tests succeeded
+Regenerating: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+
+Running forge test: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol (attempt 2)
+Failed: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 359.49ms
+Compiler run successful!
+
+Ran 3 tests for test/5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol:VulnerableWalletTest
+[PASS] testAttackContract() (gas: 279127)
+Traces:
+  [279127] VulnerableWalletTest::testAttackContract()
+    ├─ [0] VM::prank(0x0000000000000000000000000000000000012345)
+    │   └─ ← [Return] 
+    ├─ [192480] → new Attack@0x94598E7a618eB110f658757614F1444c8748d35E
+    │   └─ ← [Return] 855 bytes of code
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  $NH{q)
+    │   └─ ← [Return] 
+    ├─ [24755] Attack::attack()
+    │   ├─ [21792] Wallet::PopBonusCode()
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Revert] panic: arithmetic underflow or overflow (0x11)
+    └─ ← [Stop] 
+
+[FAIL: next call did not revert as expected] testManualAttack() (gas: 33452)
+Traces:
+  [294772] VulnerableWalletTest::setUp()
+    ├─ [256341] → new Wallet@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1176 bytes of code
+    └─ ← [Stop] 
+
+  [33452] VulnerableWalletTest::testManualAttack()
+    ├─ [1236] Wallet::owner() [staticcall]
+    │   └─ ← [Return] VulnerableWalletTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]
+    ├─ [0] VM::prank(0x0000000000000000000000000000000000012345)
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  $NH{q)
+    │   └─ ← [Return] 
+    ├─ [21792] Wallet::PopBonusCode()
+    │   └─ ← [Stop] 
+    └─ ← [Revert] next call did not revert as expected
+
+[PASS] testPopBonusCodeFailsWhenBonusNotEmpty() (gas: 49702)
+Traces:
+  [49702] VulnerableWalletTest::testPopBonusCodeFailsWhenBonusNotEmpty()
+    ├─ [41395] Wallet::PushBonusCode(123)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  %Not allowed: bonusCodes must be empty)
+    │   └─ ← [Return] 
+    ├─ [1253] Wallet::PopBonusCode()
+    │   └─ ← [Revert] revert: Not allowed: bonusCodes must be empty
+    └─ ← [Stop] 
+
+Suite result: FAILED. 2 passed; 1 failed; 0 skipped; finished in 688.52µs (428.91µs CPU time)
+
+Ran 1 test suite in 642.09ms (688.52µs CPU time): 2 tests passed, 1 failed, 0 skipped (3 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol:VulnerableWalletTest
+[FAIL: next call did not revert as expected] testManualAttack() (gas: 33452)
+
+Encountered a total of 1 failing tests, 2 tests succeeded
+Regenerating: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+
+Running forge test: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol (attempt 3)
+Failed: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 356.68ms
+Compiler run successful!
+
+Ran 3 tests for test/5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol:VulnerableWalletTest
+[PASS] testAttackContract() (gas: 266781)
+Traces:
+  [266781] VulnerableWalletTest::testAttackContract()
+    ├─ [0] VM::prank(0x0000000000000000000000000000000000012345)
+    │   └─ ← [Return] 
+    ├─ [192480] → new Attack@0x94598E7a618eB110f658757614F1444c8748d35E
+    │   └─ ← [Return] 855 bytes of code
+    ├─ [0] VM::prank(0x0000000000000000000000000000000000012345)
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  $NH{q)
+    │   └─ ← [Return] 
+    ├─ [24755] Attack::attack()
+    │   ├─ [21792] Wallet::PopBonusCode()
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Revert] panic: arithmetic underflow or overflow (0x11)
+    ├─ [1236] Wallet::owner() [staticcall]
+    │   └─ ← [Return] VulnerableWalletTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]
+    ├─ [0] VM::assertEq(VulnerableWalletTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], VulnerableWalletTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+[FAIL: panic: arithmetic underflow or overflow (0x11)] testManualAttack() (gas: 31472)
+Traces:
+  [294772] VulnerableWalletTest::setUp()
+    ├─ [256341] → new Wallet@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1176 bytes of code
+    └─ ← [Stop] 
+
+  [31472] VulnerableWalletTest::testManualAttack()
+    ├─ [1236] Wallet::owner() [staticcall]
+    │   └─ ← [Return] VulnerableWalletTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]
+    ├─ [0] VM::prank(0x0000000000000000000000000000000000012345)
+    │   └─ ← [Return] 
+    ├─ [21792] Wallet::PopBonusCode()
+    │   └─ ← [Stop] 
+    └─ ← [Revert] panic: arithmetic underflow or overflow (0x11)
+
+[PASS] testPopBonusCodeFailsWhenBonusNotEmpty() (gas: 49702)
+Traces:
+  [49702] VulnerableWalletTest::testPopBonusCodeFailsWhenBonusNotEmpty()
+    ├─ [41395] Wallet::PushBonusCode(123)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  %Not allowed: bonusCodes must be empty)
+    │   └─ ← [Return] 
+    ├─ [1253] Wallet::PopBonusCode()
+    │   └─ ← [Revert] revert: Not allowed: bonusCodes must be empty
+    └─ ← [Stop] 
+
+Suite result: FAILED. 2 passed; 1 failed; 0 skipped; finished in 574.06µs (241.98µs CPU time)
+
+Ran 1 test suite in 709.16ms (574.06µs CPU time): 2 tests passed, 1 failed, 0 skipped (3 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol:VulnerableWalletTest
+[FAIL: panic: arithmetic underflow or overflow (0x11)] testManualAttack() (gas: 31472)
+
+Encountered a total of 1 failing tests, 2 tests succeeded
+Regenerating: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+
+Running forge test: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol (attempt 4)
+Failed: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 381.13ms
+Compiler run successful!
+
+Ran 3 tests for test/5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol:VulnerableWalletTest
+[FAIL: panic: arithmetic underflow or overflow (0x11)] testAttackContract() (gas: 255004)
+Traces:
+  [294772] VulnerableWalletTest::setUp()
+    ├─ [256341] → new Wallet@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1176 bytes of code
+    └─ ← [Stop] 
+
+  [255004] VulnerableWalletTest::testAttackContract()
+    ├─ [0] VM::startPrank(0x0000000000000000000000000000000000012345)
+    │   └─ ← [Return] 
+    ├─ [192480] → new Attack@0x94598E7a618eB110f658757614F1444c8748d35E
+    │   └─ ← [Return] 855 bytes of code
+    ├─ [24755] Attack::attack()
+    │   ├─ [21792] Wallet::PopBonusCode()
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Revert] panic: arithmetic underflow or overflow (0x11)
+    └─ ← [Revert] panic: arithmetic underflow or overflow (0x11)
+
+[PASS] testManualAttack() (gas: 46892)
+Traces:
+  [46892] VulnerableWalletTest::testManualAttack()
+    ├─ [0] VM::startPrank(0x0000000000000000000000000000000000012345)
+    │   └─ ← [Return] 
+    ├─ [21792] Wallet::PopBonusCode()
+    │   └─ ← [Stop] 
+    ├─ [7282] Wallet::UpdateBonusCodeAt(97222658762210312835982718871080339316596872691747246639997364149093866936990 [9.722e76], 74565 [7.456e4])
+    │   └─ ← [Stop] 
+    ├─ [1236] Wallet::owner() [staticcall]
+    │   └─ ← [Return] 0x0000000000000000000000000000000000012345
+    ├─ [0] VM::assertEq(0x0000000000000000000000000000000000012345, 0x0000000000000000000000000000000000012345, "Attacker should be the new owner") [staticcall]
+    │   └─ ← [Return] 
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+[PASS] testPopBonusCodeFailsWhenBonusNotEmpty() (gas: 50125)
+Traces:
+  [50125] VulnerableWalletTest::testPopBonusCodeFailsWhenBonusNotEmpty()
+    ├─ [41395] Wallet::PushBonusCode(123)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  %Not allowed: bonusCodes must be empty)
+    │   └─ ← [Return] 
+    ├─ [1253] Wallet::PopBonusCode()
+    │   └─ ← [Revert] revert: Not allowed: bonusCodes must be empty
+    └─ ← [Stop] 
+
+Suite result: FAILED. 2 passed; 1 failed; 0 skipped; finished in 726.99µs (600.10µs CPU time)
+
+Ran 1 test suite in 638.95ms (726.99µs CPU time): 2 tests passed, 1 failed, 0 skipped (3 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol:VulnerableWalletTest
+[FAIL: panic: arithmetic underflow or overflow (0x11)] testAttackContract() (gas: 255004)
+
+Encountered a total of 1 failing tests, 2 tests succeeded
+Regenerating: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+
+Running forge test: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol (attempt 5)
+Failed: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 364.21ms
+Compiler run successful!
+
+Ran 3 tests for test/5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol:VulnerableWalletTest
+[FAIL: next call did not revert as expected] testAttackContract() (gas: 230265)
+Traces:
+  [315638] VulnerableWalletTest::setUp()
+    ├─ [256341] → new Wallet@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1176 bytes of code
+    └─ ← [Stop] 
+
+  [230265] VulnerableWalletTest::testAttackContract()
+    ├─ [0] VM::startPrank(0x0000000000000000000000000000000000012345)
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf4844814)
+    │   └─ ← [Return] 
+    ├─ [192480] → new Attack@0x94598E7a618eB110f658757614F1444c8748d35E
+    │   └─ ← [Return] 855 bytes of code
+    └─ ← [Revert] next call did not revert as expected
+
+[PASS] testManualAttack() (gas: 46901)
+Traces:
+  [46901] VulnerableWalletTest::testManualAttack()
+    ├─ [0] VM::startPrank(0x0000000000000000000000000000000000012345)
+    │   └─ ← [Return] 
+    ├─ [21792] Wallet::PopBonusCode()
+    │   └─ ← [Stop] 
+    ├─ [7282] Wallet::UpdateBonusCodeAt(97222658762210312835982718871080339316596872691747246639997364149093866936990 [9.722e76], 74565 [7.456e4])
+    │   └─ ← [Stop] 
+    ├─ [1236] Wallet::owner() [staticcall]
+    │   └─ ← [Return] 0x0000000000000000000000000000000000012345
+    ├─ [0] VM::assertEq(0x0000000000000000000000000000000000012345, 0x0000000000000000000000000000000000012345, "Attacker should be the new owner") [staticcall]
+    │   └─ ← [Return] 
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+[PASS] testPopBonusCodeFailsWhenBonusNotEmpty() (gas: 50059)
+Traces:
+  [50059] VulnerableWalletTest::testPopBonusCodeFailsWhenBonusNotEmpty()
+    ├─ [41395] Wallet::PushBonusCode(123)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  %Not allowed: bonusCodes must be empty)
+    │   └─ ← [Return] 
+    ├─ [1253] Wallet::PopBonusCode()
+    │   └─ ← [Revert] revert: Not allowed: bonusCodes must be empty
+    └─ ← [Stop] 
+
+Suite result: FAILED. 2 passed; 1 failed; 0 skipped; finished in 807.26µs (326.35µs CPU time)
+
+Ran 1 test suite in 725.33ms (807.26µs CPU time): 2 tests passed, 1 failed, 0 skipped (3 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol:VulnerableWalletTest
+[FAIL: next call did not revert as expected] testAttackContract() (gas: 230265)
+
+Encountered a total of 1 failing tests, 2 tests succeeded
+Regenerating: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+Failed after 5 attempts: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+Deleted test file due to repeated failure: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+
+Running forge test: 5.13.3-Read-from-Arbitrary-Storage-Location-fixed.t.sol (attempt 1)
+Passed: 5.13.3-Read-from-Arbitrary-Storage-Location-fixed.t.sol
+
+Running forge test: 5.13.3-Read-from-Arbitrary-Storage-Location-vulnerability.t.sol (attempt 1)
+Passed: 5.13.3-Read-from-Arbitrary-Storage-Location-vulnerability.t.sol
+
+Running forge test: 5.14-Use-of-Malicious-Libraries-fixed.t.sol (attempt 1)
+
+===== Test run started: 2025-04-11 15:12:37.233051 =====
+
+
+Running forge test: 3.1-Improper-Gas-Requirements-Checking-fixed.t.sol (attempt 1)
+Failed: 3.1-Improper-Gas-Requirements-Checking-fixed.t.sol
+Error:
+No files changed, compilation skipped
+
+Ran 3 tests for test/3.1-Improper-Gas-Requirements-Checking-fixed.t.sol:FixedGasTest
+[PASS] testAttack() (gas: 65401)
+Traces:
+  [65401] FixedGasTest::testAttack()
+    ├─ [56496] FixedAttack::attack()
+    │   ├─ [52096] FixedRelayer::relay(FixedTarget: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 0x, 300000 [3e5])
+    │   │   ├─ [1194] FixedTarget::execute(0x, 300000 [3e5])
+    │   │   │   └─ ← [Revert] revert: not enough gas
+    │   │   └─ ← [Return] false
+    │   └─ ← [Stop] 
+    ├─ [1129] FixedRelayer::transactionId() [staticcall]
+    │   └─ ← [Return] 1
+    ├─ [0] VM::assertEq(1, 1, "TransactionId should be incremented after attack") [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+[PASS] testInsufficientGasRelay() (gas: 68783)
+Traces:
+  [68783] FixedGasTest::testInsufficientGasRelay()
+    ├─ [52096] FixedRelayer::relay(FixedTarget: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 0x, 10000 [1e4])
+    │   ├─ [1194] FixedTarget::execute(0x, 10000 [1e4])
+    │   │   └─ ← [Revert] revert: not enough gas
+    │   └─ ← [Return] false
+    ├─ [0] VM::assertTrue(true, "Relay call should fail with insufficient gas") [staticcall]
+    │   └─ ← [Return] 
+    ├─ [3912] FixedRelayer::transactions(0) [staticcall]
+    │   └─ ← [Return] 0x, true
+    ├─ [0] VM::assertTrue(true, "Transaction record should be marked as executed even if call failed") [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+[FAIL: Relay call should succeed with sufficient gas] testSuccessfulRelay() (gas: 58932)
+Traces:
+  [1081027] FixedGasTest::setUp()
+    ├─ [483518] → new FixedRelayer@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 2415 bytes of code
+    ├─ [194438] → new FixedTarget@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 971 bytes of code
+    ├─ [256172] → new FixedAttack@0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+    │   └─ ← [Return] 1068 bytes of code
+    └─ ← [Stop] 
+
+  [58932] FixedGasTest::testSuccessfulRelay()
+    ├─ [52096] FixedRelayer::relay(FixedTarget: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 0x, 10000000 [1e7])
+    │   ├─ [1194] FixedTarget::execute(0x, 10000000 [1e7])
+    │   │   └─ ← [Revert] revert: not enough gas
+    │   └─ ← [Return] false
+    ├─ [0] VM::assertTrue(false, "Relay call should succeed with sufficient gas") [staticcall]
+    │   └─ ← [Revert] Relay call should succeed with sufficient gas
+    └─ ← [Revert] Relay call should succeed with sufficient gas
+
+Suite result: FAILED. 2 passed; 1 failed; 0 skipped; finished in 1.01ms (873.25µs CPU time)
+
+Ran 1 test suite in 701.27ms (1.01ms CPU time): 2 tests passed, 1 failed, 0 skipped (3 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/3.1-Improper-Gas-Requirements-Checking-fixed.t.sol:FixedGasTest
+[FAIL: Relay call should succeed with sufficient gas] testSuccessfulRelay() (gas: 58932)
+
+Encountered a total of 1 failing tests, 2 tests succeeded
+Regenerating: 3.1-Improper-Gas-Requirements-Checking-fixed.t.sol
+
+Running forge test: 3.1-Improper-Gas-Requirements-Checking-fixed.t.sol (attempt 2)
+Failed: 3.1-Improper-Gas-Requirements-Checking-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 399.95ms
+Compiler run successful with warnings:
+Warning (5667): Unused function parameter. Remove or comment out the variable name to silence this warning.
+  --> src/3.1-Improper-Gas-Requirements-Checking-fixed.sol:39:22:
+   |
+39 |     function execute(bytes memory _data, uint _gasLimit) public {
+   |                      ^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/3.1-Improper-Gas-Requirements-Checking-fixed.t.sol:44:10:
+   |
+44 |         (bytes memory data, bool executed) = relayer.transactions(txIdBefore);
+   |          ^^^^^^^^^^^^^^^^^
+
+Warning (2018): Function state mutability can be restricted to view
+  --> src/3.1-Improper-Gas-Requirements-Checking-fixed.sol:39:5:
+   |
+39 |     function execute(bytes memory _data, uint _gasLimit) public {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 3 tests for test/3.1-Improper-Gas-Requirements-Checking-fixed.t.sol:FixedGasTest
+[PASS] testAttack() (gas: 69454)
+Traces:
+  [69454] FixedGasTest::testAttack()
+    ├─ [1129] FixedRelayer::transactionId() [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [56496] FixedAttack::attack()
+    │   ├─ [52096] FixedRelayer::relay(FixedTarget: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 0x, 300000 [3e5])
+    │   │   ├─ [1194] FixedTarget::execute(0x, 300000 [3e5])
+    │   │   │   └─ ← [Revert] revert: not enough gas
+    │   │   └─ ← [Return] false
+    │   └─ ← [Stop] 
+    ├─ [1129] FixedRelayer::transactionId() [staticcall]
+    │   └─ ← [Return] 1
+    ├─ [0] VM::assertEq(1, 1, "TransactionId should be incremented after attack") [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+[PASS] testInsufficientGasRelay() (gas: 78774)
+Traces:
+  [78774] FixedGasTest::testInsufficientGasRelay()
+    ├─ [1129] FixedRelayer::transactionId() [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [52096] FixedRelayer::relay(FixedTarget: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 0x, 10000 [1e4])
+    │   ├─ [1194] FixedTarget::execute(0x, 10000 [1e4])
+    │   │   └─ ← [Revert] revert: not enough gas
+    │   └─ ← [Return] false
+    ├─ [0] VM::assertFalse(false, "Relay call should fail with insufficient gas") [staticcall]
+    │   └─ ← [Return] 
+    ├─ [3912] FixedRelayer::transactions(0) [staticcall]
+    │   └─ ← [Return] 0x, true
+    ├─ [0] VM::assertTrue(true, "Transaction record should be marked as executed even if call failed") [staticcall]
+    │   └─ ← [Return] 
+    ├─ [1129] FixedRelayer::transactionId() [staticcall]
+    │   └─ ← [Return] 1
+    ├─ [0] VM::assertEq(1, 1, "TransactionId should be incremented") [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+[FAIL: Relay call should succeed with sufficient gas] testSuccessfulRelay() (gas: 62531)
+Traces:
+  [1081027] FixedGasTest::setUp()
+    ├─ [483518] → new FixedRelayer@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 2415 bytes of code
+    ├─ [194438] → new FixedTarget@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 971 bytes of code
+    ├─ [256172] → new FixedAttack@0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+    │   └─ ← [Return] 1068 bytes of code
+    └─ ← [Stop] 
+
+  [62531] FixedGasTest::testSuccessfulRelay()
+    ├─ [1129] FixedRelayer::transactionId() [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [52096] FixedRelayer::relay(FixedTarget: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 0x, 300000 [3e5])
+    │   ├─ [1194] FixedTarget::execute(0x, 300000 [3e5])
+    │   │   └─ ← [Revert] revert: not enough gas
+    │   └─ ← [Return] false
+    ├─ [0] VM::assertTrue(false, "Relay call should succeed with sufficient gas") [staticcall]
+    │   └─ ← [Revert] Relay call should succeed with sufficient gas
+    └─ ← [Revert] Relay call should succeed with sufficient gas
+
+Suite result: FAILED. 2 passed; 1 failed; 0 skipped; finished in 764.57µs (547.45µs CPU time)
+
+Ran 1 test suite in 750.32ms (764.57µs CPU time): 2 tests passed, 1 failed, 0 skipped (3 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/3.1-Improper-Gas-Requirements-Checking-fixed.t.sol:FixedGasTest
+[FAIL: Relay call should succeed with sufficient gas] testSuccessfulRelay() (gas: 62531)
+
+Encountered a total of 1 failing tests, 2 tests succeeded
+Regenerating: 3.1-Improper-Gas-Requirements-Checking-fixed.t.sol
+
+===== Test run started: 2025-04-11 15:13:33.941185 =====
+
+Test file not found, generating first: 2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol
+
+Running forge test: 2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol (attempt 1)
+Failed: 2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol
+Error:
+Compiler run failed:
+Error (2314): Expected identifier but got 'fixed'
+ --> test/2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol:7:11:
+  |
+7 |     Fixed fixed;
+  |           ^^^^^
+
+Error: Compilation failed
+Regenerating: 2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol
+
+Running forge test: 2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol (attempt 2)
+Failed: 2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 368.71ms
+Compiler run successful!
+
+Ran 2 tests for test/2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol:ImproperExceptionFixedTest
+[FAIL: next call did not revert as expected] testAttackReverts() (gas: 312094)
+Traces:
+  [330628] ImproperExceptionFixedTest::setUp()
+    ├─ [292131] → new Fixed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1459 bytes of code
+    └─ ← [Stop] 
+
+  [312094] ImproperExceptionFixedTest::testAttackReverts()
+    ├─ [222268] → new AttackerFixed@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 1004 bytes of code
+    ├─ [0] VM::deal(AttackerFixed: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 2000000000000000000 [2e18])
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  Transfer failed.)
+    │   └─ ← [Return] 
+    ├─ [43977] AttackerFixed::attack{value: 1000000000000000000}()
+    │   ├─ [21251] Fixed::deposit{value: 1000000000000000000}()
+    │   │   └─ ← [Stop] 
+    │   ├─ [10962] Fixed::withdraw(1000000000000000000 [1e18])
+    │   │   ├─ [55] AttackerFixed::receive{value: 1000000000000000000}()
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    └─ ← [Revert] next call did not revert as expected
+
+[PASS] testNormalDepositAndWithdraw() (gas: 45883)
+Traces:
+  [65083] ImproperExceptionFixedTest::testNormalDepositAndWithdraw()
+    ├─ [1492] Fixed::balances(ImproperExceptionFixedTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [0] VM::assertEq(0, 0) [staticcall]
+    │   └─ ← [Return] 
+    ├─ [21251] Fixed::deposit{value: 1000000000000000000}()
+    │   └─ ← [Stop] 
+    ├─ [1492] Fixed::balances(ImproperExceptionFixedTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 1000000000000000000 [1e18]
+    ├─ [0] VM::assertEq(1000000000000000000 [1e18], 1000000000000000000 [1e18]) [staticcall]
+    │   └─ ← [Return] 
+    ├─ [10962] Fixed::withdraw(1000000000000000000 [1e18])
+    │   ├─ [55] ImproperExceptionFixedTest::receive{value: 1000000000000000000}()
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [1492] Fixed::balances(ImproperExceptionFixedTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [0] VM::assertEq(0, 0) [staticcall]
+    │   └─ ← [Return] 
+    ├─ [0] VM::assertGe(79228162514264337593543950335 [7.922e28], 79228162514254337593543950335 [7.922e28]) [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+Suite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 705.29µs (410.74µs CPU time)
+
+Ran 1 test suite in 655.44ms (705.29µs CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol:ImproperExceptionFixedTest
+[FAIL: next call did not revert as expected] testAttackReverts() (gas: 312094)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+Regenerating: 2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol
+
+Running forge test: 2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol (attempt 3)
+Failed: 2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol
+Error:
+Compiler run failed:
+Error (2314): Expected identifier but got 'fixed'
+  --> test/2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol:34:11:
+   |
+34 |     Fixed fixed;
+   |           ^^^^^
+
+Error: Compilation failed
+Regenerating: 2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol
+
+Running forge test: 2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol (attempt 4)
+Failed: 2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 358.14ms
+Compiler run successful!
+
+Ran 2 tests for test/2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol:ImproperUseExceptionHandlingFixedTest
+[FAIL: next call did not revert as expected] testAttackWithdrawalRevert() (gas: 312136)
+Traces:
+  [330606] ImproperUseExceptionHandlingFixedTest::setUp()
+    ├─ [292131] → new Fixed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1459 bytes of code
+    └─ ← [Stop] 
+
+  [312136] ImproperUseExceptionHandlingFixedTest::testAttackWithdrawalRevert()
+    ├─ [222268] → new AttackerFixed@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 1004 bytes of code
+    ├─ [0] VM::deal(AttackerFixed: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 1000000000000000000 [1e18])
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  Transfer failed.)
+    │   └─ ← [Return] 
+    ├─ [43977] AttackerFixed::attack{value: 1000000000000000000}()
+    │   ├─ [21251] Fixed::deposit{value: 1000000000000000000}()
+    │   │   └─ ← [Stop] 
+    │   ├─ [10962] Fixed::withdraw(1000000000000000000 [1e18])
+    │   │   ├─ [55] AttackerFixed::receive{value: 1000000000000000000}()
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    └─ ← [Revert] next call did not revert as expected
+
+[FAIL: revert: Transfer failed.] testNormalWithdrawal() (gas: 53000)
+Traces:
+  [330606] ImproperUseExceptionHandlingFixedTest::setUp()
+    ├─ [292131] → new Fixed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1459 bytes of code
+    └─ ← [Stop] 
+
+  [53000] ImproperUseExceptionHandlingFixedTest::testNormalWithdrawal()
+    ├─ [0] VM::deal(ImproperUseExceptionHandlingFixedTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 2000000000000000000 [2e18])
+    │   └─ ← [Return] 
+    ├─ [21251] Fixed::deposit{value: 1000000000000000000}()
+    │   └─ ← [Stop] 
+    ├─ [1492] Fixed::balances(ImproperUseExceptionHandlingFixedTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 1000000000000000000 [1e18]
+    ├─ [0] VM::assertEq(1000000000000000000 [1e18], 1000000000000000000 [1e18], "Deposit balance mismatch.") [staticcall]
+    │   └─ ← [Return] 
+    ├─ [11208] Fixed::withdraw(1000000000000000000 [1e18])
+    │   ├─ [45] ImproperUseExceptionHandlingFixedTest::fallback{value: 1000000000000000000}()
+    │   │   └─ ← [Revert] EvmError: Revert
+    │   └─ ← [Revert] revert: Transfer failed.
+    └─ ← [Revert] revert: Transfer failed.
+
+Suite result: FAILED. 0 passed; 2 failed; 0 skipped; finished in 564.10µs (382.92µs CPU time)
+
+Ran 1 test suite in 724.06ms (564.10µs CPU time): 0 tests passed, 2 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 2 failing tests in test/2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol:ImproperUseExceptionHandlingFixedTest
+[FAIL: next call did not revert as expected] testAttackWithdrawalRevert() (gas: 312136)
+[FAIL: revert: Transfer failed.] testNormalWithdrawal() (gas: 53000)
+
+Encountered a total of 2 failing tests, 0 tests succeeded
+Regenerating: 2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol
+
+Running forge test: 2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol (attempt 5)
+Failed: 2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol
+Error:
+Compiler run failed:
+Error (2314): Expected identifier but got 'fixed'
+ --> test/2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol:8:11:
+  |
+8 |     Fixed fixed;
+  |           ^^^^^
+
+Error: Compilation failed
+Regenerating: 2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol
+Failed after 5 attempts: 2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol
+Deleted test file due to repeated failure: 2.1.1-Improper-Use-of-Exception-Handling-Functions-fixed.t.sol
+Test file not found, generating first: 2.1.1-Improper-Use-of-Exception-Handling-Functions-vulnerability.t.sol
+
+Running forge test: 2.1.1-Improper-Use-of-Exception-Handling-Functions-vulnerability.t.sol (attempt 1)
+Failed: 2.1.1-Improper-Use-of-Exception-Handling-Functions-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 362.18ms
+Compiler run successful!
+
+Ran 2 tests for test/2.1.1-Improper-Use-of-Exception-Handling-Functions-vulnerability.t.sol:VulnerableTest
+[FAIL: next call did not revert as expected] testAttackWithdrawRevert() (gas: 57935)
+Traces:
+  [555754] VulnerableTest::setUp()
+    ├─ [240881] → new Vulnerable@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1203 bytes of code
+    ├─ [222268] → new Attacker@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 1004 bytes of code
+    └─ ← [Stop] 
+
+  [57935] VulnerableTest::testAttackWithdrawRevert()
+    ├─ [0] VM::deal(Attacker: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 2000000000000000000 [2e18])
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  Fallback triggered revert)
+    │   └─ ← [Return] 
+    ├─ [43798] Attacker::attack{value: 1000000000000000000}()
+    │   ├─ [21251] Vulnerable::deposit{value: 1000000000000000000}()
+    │   │   └─ ← [Stop] 
+    │   ├─ [10783] Vulnerable::withdraw(1000000000000000000 [1e18])
+    │   │   ├─ [55] Attacker::receive{value: 1000000000000000000}()
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    └─ ← [Revert] next call did not revert as expected
+
+[PASS] testNormalWithdrawal() (gas: 36994)
+Traces:
+  [56194] VulnerableTest::testNormalWithdrawal()
+    ├─ [0] VM::deal(0x000000000000000000000000000000000000ABcD, 2000000000000000000 [2e18])
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [21251] Vulnerable::deposit{value: 1000000000000000000}()
+    │   └─ ← [Stop] 
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [10728] Vulnerable::withdraw(1000000000000000000 [1e18])
+    │   ├─ [0] 0x000000000000000000000000000000000000ABcD::fallback{value: 1000000000000000000}()
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [1492] Vulnerable::balances(0x000000000000000000000000000000000000ABcD) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [0] VM::assertEq(0, 0, "User balance should be 0 after withdrawal") [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+Suite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 1.45ms (682.75µs CPU time)
+
+Ran 1 test suite in 625.03ms (1.45ms CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/2.1.1-Improper-Use-of-Exception-Handling-Functions-vulnerability.t.sol:VulnerableTest
+[FAIL: next call did not revert as expected] testAttackWithdrawRevert() (gas: 57935)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+Regenerating: 2.1.1-Improper-Use-of-Exception-Handling-Functions-vulnerability.t.sol
+
+Running forge test: 2.1.1-Improper-Use-of-Exception-Handling-Functions-vulnerability.t.sol (attempt 2)
+Passed: 2.1.1-Improper-Use-of-Exception-Handling-Functions-vulnerability.t.sol
+
+Running forge test: 2.1.2-Improper-Exception-Handling-in-a-Loop-fixed.t.sol (attempt 1)
+Passed: 2.1.2-Improper-Exception-Handling-in-a-Loop-fixed.t.sol
+
+Running forge test: 2.1.2-Improper-Exception-Handling-in-a-Loop-vulnerability.t.sol (attempt 1)
+
+===== Test run started: 2025-04-11 15:18:12.517152 =====
+
+Test file not found, generating first: 5.6.2-Function-return-type-mismatch-fixed.t.sol
+
+Running forge test: 5.6.2-Function-return-type-mismatch-fixed.t.sol (attempt 1)
+Failed: 5.6.2-Function-return-type-mismatch-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 396.16ms
+Compiler run successful with warnings:
+Warning (2018): Function state mutability can be restricted to view
+  --> src/5.6.2-Function-return-type-mismatch-fixed.sol:30:5:
+   |
+30 |     function transfer(address token) external {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 1 test for test/5.6.2-Function-return-type-mismatch-fixed.t.sol:TokenFixedTest
+[FAIL: `testFail*` has been removed. Consider changing to test_Revert[If|When]_Condition and expecting a revert] Found 1 instances: testFailedTransferFromNonOwner (gas: 0)
+Suite result: FAILED. 0 passed; 1 failed; 0 skipped; finished in 321.08µs (0.00ns CPU time)
+
+Ran 1 test suite in 9.60ms (321.08µs CPU time): 0 tests passed, 1 failed, 0 skipped (1 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/5.6.2-Function-return-type-mismatch-fixed.t.sol:TokenFixedTest
+[FAIL: `testFail*` has been removed. Consider changing to test_Revert[If|When]_Condition and expecting a revert] Found 1 instances: testFailedTransferFromNonOwner (gas: 0)
+
+Encountered a total of 1 failing tests, 0 tests succeeded
+Regenerating: 5.6.2-Function-return-type-mismatch-fixed.t.sol
+
+Running forge test: 5.6.2-Function-return-type-mismatch-fixed.t.sol (attempt 2)
+Passed: 5.6.2-Function-return-type-mismatch-fixed.t.sol
+Test file not found, generating first: 5.6.2-Function-return-type-mismatch-vulnerability.t.sol
+
+Running forge test: 5.6.2-Function-return-type-mismatch-vulnerability.t.sol (attempt 1)
+Passed: 5.6.2-Function-return-type-mismatch-vulnerability.t.sol
+Test file not found, generating first: 5.6.3-Parameter-type-mismatch-fixed.t.sol
+
+Running forge test: 5.6.3-Parameter-type-mismatch-fixed.t.sol (attempt 1)
+Failed: 5.6.3-Parameter-type-mismatch-fixed.t.sol
+Error:
+Compiler run failed:
+Error (6275): Source "ds-test/test.sol" not found: File not found.
+ --> test/5.6.3-Parameter-type-mismatch-fixed.t.sol:3:1:
+  |
+3 | import "ds-test/test.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Compilation failed
+Regenerating: 5.6.3-Parameter-type-mismatch-fixed.t.sol
+
+Running forge test: 5.6.3-Parameter-type-mismatch-fixed.t.sol (attempt 2)
+Passed: 5.6.3-Parameter-type-mismatch-fixed.t.sol
+Test file not found, generating first: 5.6.3-Parameter-type-mismatch-vulnerability.t.sol
+
+Running forge test: 5.6.3-Parameter-type-mismatch-vulnerability.t.sol (attempt 1)
+
+===== Test run started: 2025-04-11 15:21:32.205634 =====
+
+
+Running forge test: 5.6.3-Parameter-type-mismatch-fixed.t.sol (attempt 1)
+Failed: 5.6.3-Parameter-type-mismatch-fixed.t.sol
+Error:
+Compiler run failed:
+Error (9182): Function, variable, struct or modifier declaration expected.
+  --> test/5.6.3-Parameter-type-mismatch-vulnerability.t.sol:48:5:
+   |
+48 |     contract CompliantToken {
+   |     ^^^^^^^^
+
+Error: Compilation failed
+Regenerating: 5.6.3-Parameter-type-mismatch-fixed.t.sol
+
+Running forge test: 5.6.3-Parameter-type-mismatch-fixed.t.sol (attempt 2)
+Failed: 5.6.3-Parameter-type-mismatch-fixed.t.sol
+Error:
+Compiler run failed:
+Error (9182): Function, variable, struct or modifier declaration expected.
+  --> test/5.6.3-Parameter-type-mismatch-vulnerability.t.sol:48:5:
+   |
+48 |     contract CompliantToken {
+   |     ^^^^^^^^
+
+Error: Compilation failed
+Regenerating: 5.6.3-Parameter-type-mismatch-fixed.t.sol
+
+Running forge test: 5.6.3-Parameter-type-mismatch-fixed.t.sol (attempt 3)
+Failed: 5.6.3-Parameter-type-mismatch-fixed.t.sol
+Error:
+Compiler run failed:
+Error (9182): Function, variable, struct or modifier declaration expected.
+  --> test/5.6.3-Parameter-type-mismatch-vulnerability.t.sol:48:5:
+   |
+48 |     contract CompliantToken {
+   |     ^^^^^^^^
+
+Error: Compilation failed
+Regenerating: 5.6.3-Parameter-type-mismatch-fixed.t.sol
+
+Running forge test: 5.6.3-Parameter-type-mismatch-fixed.t.sol (attempt 4)
+Failed: 5.6.3-Parameter-type-mismatch-fixed.t.sol
+Error:
+Compiler run failed:
+Error (9182): Function, variable, struct or modifier declaration expected.
+  --> test/5.6.3-Parameter-type-mismatch-vulnerability.t.sol:48:5:
+   |
+48 |     contract CompliantToken {
+   |     ^^^^^^^^
+
+Error: Compilation failed
+Regenerating: 5.6.3-Parameter-type-mismatch-fixed.t.sol
+
+Running forge test: 5.6.3-Parameter-type-mismatch-fixed.t.sol (attempt 5)
+Failed: 5.6.3-Parameter-type-mismatch-fixed.t.sol
+Error:
+Compiler run failed:
+Error (9182): Function, variable, struct or modifier declaration expected.
+  --> test/5.6.3-Parameter-type-mismatch-vulnerability.t.sol:48:5:
+   |
+48 |     contract CompliantToken {
+   |     ^^^^^^^^
+
+Error: Compilation failed
+Regenerating: 5.6.3-Parameter-type-mismatch-fixed.t.sol
+Failed after 5 attempts: 5.6.3-Parameter-type-mismatch-fixed.t.sol
+Deleted test file due to repeated failure: 5.6.3-Parameter-type-mismatch-fixed.t.sol
+
+Running forge test: 5.6.3-Parameter-type-mismatch-vulnerability.t.sol (attempt 1)
+Failed: 5.6.3-Parameter-type-mismatch-vulnerability.t.sol
+Error:
+Compiler run failed:
+Error (9182): Function, variable, struct or modifier declaration expected.
+  --> test/5.6.3-Parameter-type-mismatch-vulnerability.t.sol:48:5:
+   |
+48 |     contract CompliantToken {
+   |     ^^^^^^^^
+
+Error: Compilation failed
+Regenerating: 5.6.3-Parameter-type-mismatch-vulnerability.t.sol
+
+Running forge test: 5.6.3-Parameter-type-mismatch-vulnerability.t.sol (attempt 2)
+Failed: 5.6.3-Parameter-type-mismatch-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 352.85ms
+Compiler run successful with warnings:
+Warning (3628): This contract has a payable fallback function, but no receive ether function. Consider adding a receive ether function.
+  --> src/5.6.3-Parameter-type-mismatch-vulnerability.sol:51:1:
+   |
+51 | contract MaliciousToken {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+Note: The payable fallback function is defined here.
+  --> src/5.6.3-Parameter-type-mismatch-vulnerability.sol:55:5:
+   |
+55 |     fallback() external payable { }
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (5667): Unused function parameter. Remove or comment out the variable name to silence this warning.
+  --> src/5.6.3-Parameter-type-mismatch-vulnerability.sol:15:23:
+   |
+15 |     function transfer(uint32 value) external returns (bool) {
+   |                       ^^^^^^^^^^^^
+
+Warning (5667): Unused function parameter. Remove or comment out the variable name to silence this warning.
+  --> src/5.6.3-Parameter-type-mismatch-vulnerability.sol:58:23:
+   |
+58 |     function transfer(uint32 _value) external pure returns (bool) {
+   |                       ^^^^^^^^^^^^^
+
+Warning (2018): Function state mutability can be restricted to pure
+  --> src/5.6.3-Parameter-type-mismatch-vulnerability.sol:15:5:
+   |
+15 |     function transfer(uint32 value) external returns (bool) {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 2 tests for test/5.6.3-Parameter-type-mismatch-vulnerability.t.sol:ParameterTypeMismatchTest
+[FAIL: call reverted as expected, but without data] testAttackReverts() (gas: 15815)
+Traces:
+  [863701] ParameterTypeMismatchTest::setUp()
+    ├─ [356393] → new Wallet@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1780 bytes of code
+    ├─ [59311] → new MaliciousToken@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 296 bytes of code
+    ├─ [302191] → new Attack@0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+    │   ├─ [59311] → new MaliciousToken@0x4f81992FCe2E1846dD528eC0102e6eE1f61ed3e2
+    │   │   └─ ← [Return] 296 bytes of code
+    │   └─ ← [Return] 842 bytes of code
+    └─ ← [Stop] 
+
+  [15815] ParameterTypeMismatchTest::testAttackReverts()
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  Transfer failed)
+    │   └─ ← [Return] 
+    ├─ [10941] Attack::executeAttack(123)
+    │   ├─ [6990] Wallet::transfer(MaliciousToken: [0x4f81992FCe2E1846dD528eC0102e6eE1f61ed3e2], 123)
+    │   │   ├─ [85] MaliciousToken::fallback("123")
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Revert] EvmError: Revert
+    │   └─ ← [Revert] EvmError: Revert
+    └─ ← [Revert] call reverted as expected, but without data
+
+[FAIL: call reverted as expected, but without data] testWalletTransferRevertsWithMaliciousToken() (gas: 12943)
+Traces:
+  [863701] ParameterTypeMismatchTest::setUp()
+    ├─ [356393] → new Wallet@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1780 bytes of code
+    ├─ [59311] → new MaliciousToken@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 296 bytes of code
+    ├─ [302191] → new Attack@0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+    │   ├─ [59311] → new MaliciousToken@0x4f81992FCe2E1846dD528eC0102e6eE1f61ed3e2
+    │   │   └─ ← [Return] 296 bytes of code
+    │   └─ ← [Return] 842 bytes of code
+    └─ ← [Stop] 
+
+  [12943] ParameterTypeMismatchTest::testWalletTransferRevertsWithMaliciousToken()
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  Transfer failed)
+    │   └─ ← [Return] 
+    ├─ [6990] Wallet::transfer(MaliciousToken: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 100)
+    │   ├─ [85] MaliciousToken::fallback("100")
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Revert] EvmError: Revert
+    └─ ← [Revert] call reverted as expected, but without data
+
+Suite result: FAILED. 0 passed; 2 failed; 0 skipped; finished in 1.47ms (1.77ms CPU time)
+
+Ran 1 test suite in 711.01ms (1.47ms CPU time): 0 tests passed, 2 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 2 failing tests in test/5.6.3-Parameter-type-mismatch-vulnerability.t.sol:ParameterTypeMismatchTest
+[FAIL: call reverted as expected, but without data] testAttackReverts() (gas: 15815)
+[FAIL: call reverted as expected, but without data] testWalletTransferRevertsWithMaliciousToken() (gas: 12943)
+
+Encountered a total of 2 failing tests, 0 tests succeeded
+Regenerating: 5.6.3-Parameter-type-mismatch-vulnerability.t.sol
+
+Running forge test: 5.6.3-Parameter-type-mismatch-vulnerability.t.sol (attempt 3)
+Passed: 5.6.3-Parameter-type-mismatch-vulnerability.t.sol
+Test file not found, generating first: 5.6.4-Missing-type-in-variable-declaration-fixed.t.sol
+
+Running forge test: 5.6.4-Missing-type-in-variable-declaration-fixed.t.sol (attempt 1)
+Passed: 5.6.4-Missing-type-in-variable-declaration-fixed.t.sol
+Test file not found, generating first: 5.6.4-Missing-type-in-variable-declaration-vulnerability.t.sol
+
+Running forge test: 5.6.4-Missing-type-in-variable-declaration-vulnerability.t.sol (attempt 1)
+Passed: 5.6.4-Missing-type-in-variable-declaration-vulnerability.t.sol
+Test file not found, generating first: 5.6.5-Wrong-Type-in-Variable-Declaration-fixed.t.sol
+
+Running forge test: 5.6.5-Wrong-Type-in-Variable-Declaration-fixed.t.sol (attempt 1)
+Passed: 5.6.5-Wrong-Type-in-Variable-Declaration-fixed.t.sol
+Test file not found, generating first: 5.6.5-Wrong-Type-in-Variable-Declaration-vulnerability.t.sol
+
+Running forge test: 5.6.5-Wrong-Type-in-Variable-Declaration-vulnerability.t.sol (attempt 1)
+Failed: 5.6.5-Wrong-Type-in-Variable-Declaration-vulnerability.t.sol
+Error:
+Compiler run failed:
+Error (9582): Member "simBytesLength" not found or not visible after argument-dependent lookup in contract VulnerableSampleBytesArray.
+  --> test/5.6.5-Wrong-Type-in-Variable-Declaration-vulnerability.t.sol:19:33:
+   |
+19 |         uint256 initialLength = vulnerable.simBytesLength();
+   |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Compilation failed
+Regenerating: 5.6.5-Wrong-Type-in-Variable-Declaration-vulnerability.t.sol
+
+Running forge test: 5.6.5-Wrong-Type-in-Variable-Declaration-vulnerability.t.sol (attempt 2)
+Passed: 5.6.5-Wrong-Type-in-Variable-Declaration-vulnerability.t.sol
+Test file not found, generating first: 5.6.6-Wrong-Type-of-Function-fixed.t.sol
+
+Running forge test: 5.6.6-Wrong-Type-of-Function-fixed.t.sol (attempt 1)
+Failed: 5.6.6-Wrong-Type-of-Function-fixed.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.6.6-Wrong-Type-of-Function-fixed.t.sol
+
+===== Test run started: 2025-04-11 15:26:34.565039 =====
+
+Test file not found, generating first: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-fixed.t.sol
+
+Running forge test: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-fixed.t.sol (attempt 1)
+Failed: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-fixed.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-fixed.t.sol
+
+Running forge test: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-fixed.t.sol (attempt 2)
+Failed: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-fixed.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-fixed.t.sol
+
+Running forge test: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-fixed.t.sol (attempt 3)
+Failed: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-fixed.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-fixed.t.sol
+
+Running forge test: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-fixed.t.sol (attempt 4)
+Failed: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-fixed.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-fixed.t.sol
+
+Running forge test: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-fixed.t.sol (attempt 5)
+Failed: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-fixed.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-fixed.t.sol
+Failed after 5 attempts: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-fixed.t.sol
+Deleted test file due to repeated failure: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-fixed.t.sol
+Test file not found, generating first: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-vulnerability.t.sol
+
+Running forge test: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-vulnerability.t.sol (attempt 1)
+Failed: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-vulnerability.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-vulnerability.t.sol
+
+Running forge test: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-vulnerability.t.sol (attempt 2)
+Failed: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-vulnerability.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-vulnerability.t.sol
+
+Running forge test: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-vulnerability.t.sol (attempt 3)
+Failed: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-vulnerability.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-vulnerability.t.sol
+
+Running forge test: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-vulnerability.t.sol (attempt 4)
+Failed: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-vulnerability.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-vulnerability.t.sol
+
+Running forge test: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-vulnerability.t.sol (attempt 5)
+Failed: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-vulnerability.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-vulnerability.t.sol
+Failed after 5 attempts: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-vulnerability.t.sol
+Deleted test file due to repeated failure: 5.6.7-Non-Identifiable-Order-in-Map-Structure-Iteration-vulnerability.t.sol
+Test file not found, generating first: 5.7.1-Unreachable-Payable-Function-fixed.t.sol
+
+Running forge test: 5.7.1-Unreachable-Payable-Function-fixed.t.sol (attempt 1)
+Failed: 5.7.1-Unreachable-Payable-Function-fixed.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.7.1-Unreachable-Payable-Function-fixed.t.sol
+
+===== Test run started: 2025-04-11 15:30:47.147091 =====
+
+Test file not found, generating first: 5.7.2-No-effect-code-execution-fixed.t.sol
+
+Running forge test: 5.7.2-No-effect-code-execution-fixed.t.sol (attempt 1)
+Failed: 5.7.2-No-effect-code-execution-fixed.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.7.2-No-effect-code-execution-fixed.t.sol
+
+Running forge test: 5.7.2-No-effect-code-execution-fixed.t.sol (attempt 2)
+Failed: 5.7.2-No-effect-code-execution-fixed.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.7.2-No-effect-code-execution-fixed.t.sol
+
+Running forge test: 5.7.2-No-effect-code-execution-fixed.t.sol (attempt 3)
+Failed: 5.7.2-No-effect-code-execution-fixed.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.7.2-No-effect-code-execution-fixed.t.sol
+
+Running forge test: 5.7.2-No-effect-code-execution-fixed.t.sol (attempt 4)
+Failed: 5.7.2-No-effect-code-execution-fixed.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.7.2-No-effect-code-execution-fixed.t.sol
+
+Running forge test: 5.7.2-No-effect-code-execution-fixed.t.sol (attempt 5)
+Failed: 5.7.2-No-effect-code-execution-fixed.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.7.2-No-effect-code-execution-fixed.t.sol
+Failed after 5 attempts: 5.7.2-No-effect-code-execution-fixed.t.sol
+Deleted test file due to repeated failure: 5.7.2-No-effect-code-execution-fixed.t.sol
+Test file not found, generating first: 5.7.2-No-effect-code-execution-vulnerability.t.sol
+
+Running forge test: 5.7.2-No-effect-code-execution-vulnerability.t.sol (attempt 1)
+Failed: 5.7.2-No-effect-code-execution-vulnerability.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.7.2-No-effect-code-execution-vulnerability.t.sol
+
+Running forge test: 5.7.2-No-effect-code-execution-vulnerability.t.sol (attempt 2)
+Failed: 5.7.2-No-effect-code-execution-vulnerability.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.7.2-No-effect-code-execution-vulnerability.t.sol
+
+Running forge test: 5.7.2-No-effect-code-execution-vulnerability.t.sol (attempt 3)
+Failed: 5.7.2-No-effect-code-execution-vulnerability.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.7.2-No-effect-code-execution-vulnerability.t.sol
+
+Running forge test: 5.7.2-No-effect-code-execution-vulnerability.t.sol (attempt 4)
+Failed: 5.7.2-No-effect-code-execution-vulnerability.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.7.2-No-effect-code-execution-vulnerability.t.sol
+
+Running forge test: 5.7.2-No-effect-code-execution-vulnerability.t.sol (attempt 5)
+Failed: 5.7.2-No-effect-code-execution-vulnerability.t.sol
+Error:
+Compiler run failed:
+Error (2333): Identifier already declared.
+ --> test/5.6.6-Wrong-Type-of-Function-fixed.t.sol:4:1:
+  |
+4 | import "../src/5.6.6-Wrong-Type-of-Function-fixed.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The previous declaration is here:
+  --> lib/forge-std/src/Test.sol:30:1:
+   |
+30 | abstract contract Test is TestBase, StdAssertions, StdChains, StdCheats, StdInvariant, StdUtils {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Compilation failed
+Regenerating: 5.7.2-No-effect-code-execution-vulnerability.t.sol
+Failed after 5 attempts: 5.7.2-No-effect-code-execution-vulnerability.t.sol
+Deleted test file due to repeated failure: 5.7.2-No-effect-code-execution-vulnerability.t.sol
+Test file not found, generating first: 5.7.3-Unused-variables-fixed.t.sol
+
+Running forge test: 5.7.3-Unused-variables-fixed.t.sol (attempt 1)
+Failed: 5.7.3-Unused-variables-fixed.t.sol
+Error:
+Compiler run failed:
+Error (6275): Source "ds-test/test.sol" not found: File not found.
+ --> test/5.7.3-Unused-variables-fixed.t.sol:3:1:
+  |
+3 | import "ds-test/test.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Compilation failed
+Regenerating: 5.7.3-Unused-variables-fixed.t.sol
+
+Running forge test: 5.7.3-Unused-variables-fixed.t.sol (attempt 2)
+Failed: 5.7.3-Unused-variables-fixed.t.sol
+Error:
+Compiler run failed:
+Error (2314): Expected identifier but got 'fixed'
+ --> test/5.7.3-Unused-variables-fixed.t.sol:7:33:
+  |
+7 |     UnusedVariablesFixed public fixed;
+  |                                 ^^^^^
+
+Error: Compilation failed
+Regenerating: 5.7.3-Unused-variables-fixed.t.sol

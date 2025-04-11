@@ -1,183 +1,112 @@
 pragma solidity ^0.8.0;
 
 import "forge-std/Test.sol";
-
-/*
-   The contract below is the fixed version handling external calls safely via proper locking
-   and using the effects-interactions pattern. This test suite checks that the fix prevents
-   a potential deadlock (denial-of-service) if an external call fails. 
-*/
-
-contract BidFixed {
-    // 定義合約狀態
-    enum State { F, InTransition }
-    State public state = State.F;
-
-    address public highestBidder;
-    uint public highestBid;
-    mapping(address => uint) public pendingReturns;
-
-    function withdraw() public {
-        require(state == State.F, "Contract is in transition, try again later");
-
-        // 鎖定狀態，避免 reentrancy
-        state = State.InTransition;
-
-        uint amount = pendingReturns[msg.sender];
-        require(amount > 0, "No pending funds");
-
-        // 先更新狀態變數（effects）
-        pendingReturns[msg.sender] = 0;
-
-        // 接著呼叫外部合約（interactions）
-        if (msg.sender != highestBidder) {
-            payable(msg.sender).transfer(amount);
-        } else {
-            payable(msg.sender).transfer(amount - highestBid);
-        }
-
-        // 解鎖狀態
-        state = State.F;
-    }
-
-    // 接收 ETH 的 fallback 函式
-    receive() external payable {}
-}
-
-/*
-   攻擊合約：
-   此合約故意在 fallback 中 revert，以模擬利用外部呼叫失敗（例如拒絕接收資金）的情況。
-*/
-contract AttackFixed {
-    BidFixed public bidContract;
-
-    // 注意：建構子接收 BidFixed 合約地址
-    constructor(address payable _bidContract) {
-        bidContract = BidFixed(_bidContract);
-    }
-
-    // fallback 故意 revert
-    receive() external payable {
-        revert("Attack contract rejects funds");
-    }
-
-    function attackWithdraw() public {
-        bidContract.withdraw();
-    }
-}
-
-
+import "../src/1.4-Improper-locking-during-external-calls-fixed.sol";
 
 contract BidFixedTest is Test {
-    BidFixed bid;
-    AttackFixed attack;
+    BidFixed bidContract;
+    AttackFixed attackContract;
 
-    // Helper: Compute the storage slot key for pendingReturns mapping for an address
-    // pendingReturns is declared in slot 3 (state=slot0, highestBidder=slot1, highestBid=slot2, mapping=slot3)
-    function _pendingReturnsSlot(address user) internal pure returns (bytes32) {
-        return keccak256(abi.encode(user, uint256(3)));
-    }
-
-    // deploy a new BidFixed contract and fund it with some ETH
+    // We'll assume that the storage slot for the mapping pendingReturns is 3
+    // since state (slot0), highestBidder (slot1), highestBid (slot2) come before it.
+    // To compute the storage slot for pendingReturns[key], we use keccak256(abi.encode(key, uint256(3))).
+    
     function setUp() public {
-        bid = new BidFixed();
-        // Fund the BidFixed contract so that it can send ETH during withdraw
-        vm.deal(address(bid), 10 ether);
+        // Deploy the BidFixed contract
+        bidContract = new BidFixed();
+        // Deploy the AttackFixed contract, passing BidFixed's address
+        // Cast BidFixed address as payable
+        attackContract = new AttackFixed(payable(address(bidContract)));
+
+        // Fund the bidContract with sufficient ETH to cover withdrawals in our tests
+        // Also fund the test contract and attackContract as needed
+        vm.deal(address(bidContract), 10 ether);
+        vm.deal(address(this), 10 ether);
+        vm.deal(address(attackContract), 10 ether);
     }
 
-    // Test that a normal user is able to withdraw funds successfully and that state is not locked
-    function testNormalWithdraw() public {
-        // Use an address to simulate a normal user
-        address user = address(0xABCD);
-        uint depositAmount = 1 ether;
-        
-        // Set pendingReturns for the user directly in storage
+    // Helper function to compute storage slot for pendingReturns mapping for a given address
+    function _pendingReturnsSlot(address user) internal pure returns (bytes32 slot) {
+        slot = keccak256(abi.encode(user, uint256(3)));
+    }
+
+    // Helper function to set pendingReturns via cheat code.
+    function _setPendingReturn(address user, uint amount) internal {
         bytes32 slot = _pendingReturnsSlot(user);
-        vm.store(address(bid), slot, bytes32(uint256(depositAmount)));
-        
-        // Get initial balance of the user, and ensure user can receive ETH
-        uint initialBalance = user.balance;
-        
-        // Impersonate the user for calling withdraw
-        vm.prank(user);
-        bid.withdraw();
-        
-        // Check that the user has received the depositAmount
-        uint finalBalance = user.balance;
-        assertEq(finalBalance - initialBalance, depositAmount, "User did not receive correct amount");
-        
-        // Check that pendingReturns for user is now zero
-        uint pending = bid.pendingReturns(user);
-        assertEq(pending, 0, "pendingReturns not reset to 0");
-        
-        // The contract state should be unlocked (F)
-        uint stateVal = uint(bid.state());
-        assertEq(stateVal, 0, "Contract state did not unlock after withdraw");
+        // Write the new value (amount as bytes32) into the slot of bidContract
+        vm.store(address(bidContract), slot, bytes32(uint256(amount)));
     }
 
-    // Test that if an external call fails (due to reverting fallback in an attack contract),
-    // the contract does not get permanently locked and the pendingReturns remain available.
-    function testAttackWithdrawRevertsAndDoesNotLock() public {
-        // Deploy the attack contract using a distinct EOA for deployment
-        vm.prank(address(0xBEEF));
-        attack = new AttackFixed(payable(address(bid)));
+    // Test that withdraw fails if no pending funds are present
+    function testWithdrawFailsWhenNoPendingFunds() public {
+        // Make sure that pendingReturns for this address is 0
+        uint pending = bidContract.pendingReturns(address(this));
+        assertEq(pending, 0);
 
-        uint depositAmount = 1 ether;
-        // Set pendingReturns for the attack contract
-        bytes32 slot = _pendingReturnsSlot(address(attack));
-        vm.store(address(bid), slot, bytes32(uint256(depositAmount)));
-
-        // We need to ensure the BidFixed contract has enough ETH to complete the transfer attempt
-        // (already funded in setUp)
-
-        // Expect the revert from the attack contract's fallback
-        vm.prank(address(0xBEEF));
-        vm.expectRevert(bytes("Attack contract rejects funds"));
-        attack.attackWithdraw();
-
-        // After revert, the state should be unlocked and pendingReturns should remain unchanged
-        uint stateVal = uint(bid.state());
-        assertEq(stateVal, 0, "Contract state remains locked after failed withdraw");
-
-        // Because withdraw reverted, pendingReturns remains unchanged
-        uint pending = bid.pendingReturns(address(attack));
-        assertEq(pending, depositAmount, "pendingReturns should remain after failed withdraw");
+        // Expect revert due to no pending funds
+        vm.expectRevert(bytes("No pending funds"));
+        bidContract.withdraw();
     }
 
-    // Test that even if a withdraw attempt fails due to an external call reverting, a subsequent successful withdraw can occur
-    function testReattemptWithdrawAfterFailure() public {
-        // Deploy the attack contract
-        vm.prank(address(0xC0DE));
-        attack = new AttackFixed(payable(address(bid)));
-        
-        uint depositAmount = 1 ether;
-        // Set pendingReturns for the attack contract
-        bytes32 slot = _pendingReturnsSlot(address(attack));
-        vm.store(address(bid), slot, bytes32(uint256(depositAmount)));
+    // Test that a regular user with pending funds can withdraw successfully
+    function testWithdrawSucceedsForRegularUser() public {
+        // Use a test user different from this contract, e.g., userAddress
+        address user = address(0xBEEF);
+        uint amount = 1 ether;
 
-        // First withdraw attempt using the attack contract will revert
-        vm.prank(address(0xC0DE));
-        vm.expectRevert(bytes("Attack contract rejects funds"));
-        attack.attackWithdraw();
+        // Set pendingReturns for the user via cheat code
+        _setPendingReturn(user, amount);
+        // Confirm that the value is set
+        uint stored = bidContract.pendingReturns(user);
+        assertEq(stored, amount);
 
-        // Now, simulate that the attack contract corrected its behavior (for example, by forwarding funds to an EOA)
-        // To simulate this, we modify the attack contract's fallback at the testing level by impersonating the user,
-        // and we update pendingReturns for a normal user instead.
+        // Make sure bidContract has enough ETH (already set in setUp, but double-check)
+        assertGe(address(bidContract).balance, amount);
 
-        // Set pendingReturns for a normal user
-        address user = address(0xDEAD);
-        bytes32 slotUser = _pendingReturnsSlot(user);
-        vm.store(address(bid), slotUser, bytes32(uint256(depositAmount)));
+        // Record the balance of user before withdrawal
+        uint userBalanceBefore = user.balance;
 
-        // Record initial balance
-        uint initialBalance = user.balance;
+        // Withdraw as the user
         vm.prank(user);
-        bid.withdraw();
-        uint finalBalance = user.balance;
-        assertEq(finalBalance - initialBalance, depositAmount, "User did not receive funds after reattempting withdraw");
+        bidContract.withdraw();
 
-        // Final state check: state should be unlocked
-        uint stateVal = uint(bid.state());
-        assertEq(stateVal, 0, "Contract state not unlocked after successful withdraw");
+        // After withdrawal, pendingReturns for the user should be 0
+        uint storedAfter = bidContract.pendingReturns(user);
+        assertEq(storedAfter, 0);
+
+        // Check that user's balance increased by the withdrawn amount
+        uint userBalanceAfter = user.balance;
+        assertEq(userBalanceAfter, userBalanceBefore + amount);
+
+        // Ensure that contract state is unlocked (i.e., state == F, which is represented as 0)
+        assertEq(uint(bidContract.state()), 0);
+    }
+
+    // Test that if the attack contract attempts to withdraw funds, the external call reverts
+    // and the contract state remains unlocked and pendingReturns is not consumed (transaction reverts)
+    function testWithdrawRevertsForAttackContractAndStateRemainsUnlocked() public {
+        // For the attack contract, we set a pending return of 1 ether
+        uint amount = 1 ether;
+        _setPendingReturn(address(attackContract), amount);
+        uint stored = bidContract.pendingReturns(address(attackContract));
+        assertEq(stored, amount);
+
+        // Ensure bidContract has enough ETH
+        assertGe(address(bidContract).balance, amount);
+
+        // Expect the revert message from AttackFixed fallback
+        vm.expectRevert(bytes("Attack contract rejects funds"));
+        // Call attackWithdraw which will internally call bidContract.withdraw()
+        // and trigger the external call that reverts
+        vm.prank(address(attackContract));
+        attackContract.attackWithdraw();
+
+        // Since the transaction reverted, the state of bidContract should remain unchanged
+        // pendingReturns for the attack contract should still be the original amount
+        uint storedAfter = bidContract.pendingReturns(address(attackContract));
+        assertEq(storedAfter, amount);
+
+        // The contract state should also remain unlocked (State.F which is 0)
+        assertEq(uint(bidContract.state()), 0);
     }
 }

@@ -17942,3 +17942,3535 @@ Error (2314): Expected identifier but got 'fixed'
 
 Error: Compilation failed
 Regenerating: 5.7.3-Unused-variables-fixed.t.sol
+
+===== Test run started: 2025-04-11 15:48:22.918465 =====
+
+Test file not found, generating first: 5.7.4-Inefficient-Operation-Sequence-fixed.t.sol
+
+Running forge test: 5.7.4-Inefficient-Operation-Sequence-fixed.t.sol (attempt 1)
+Passed: 5.7.4-Inefficient-Operation-Sequence-fixed.t.sol
+Test file not found, generating first: 5.7.4-Inefficient-Operation-Sequence-vulnerability.t.sol
+
+Running forge test: 5.7.4-Inefficient-Operation-Sequence-vulnerability.t.sol (attempt 1)
+Failed: 5.7.4-Inefficient-Operation-Sequence-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 350.81ms
+Compiler run successful!
+
+Ran 2 tests for test/5.7.4-Inefficient-Operation-Sequence-vulnerability.t.sol:InefficientOperationSequenceTest
+[PASS] testAttackFailsWithLowGas() (gas: 104710)
+Traces:
+  [104710] InefficientOperationSequenceTest::testAttackFailsWithLowGas()
+    ├─ [99461] AttackContract::attack()
+    │   ├─ [22129] VulnerableContract::addData(0)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(1)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(2)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(3)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [OutOfGas] EvmError: OutOfGas
+    ├─ [0] VM::assertTrue(true, "Attack should have failed due to gas exhaustion") [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+[FAIL: Attack did not succeed with high gas limit] testAttackSucceedsWithHighGas() (gas: 10004494)
+Traces:
+  [447793] InefficientOperationSequenceTest::setUp()
+    ├─ [156002] → new VulnerableContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 779 bytes of code
+    ├─ [199243] → new AttackContract@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 889 bytes of code
+    └─ ← [Stop] 
+
+  [10004494] InefficientOperationSequenceTest::testAttackSucceedsWithHighGas()
+    ├─ [9999768] AttackContract::attack()
+    │   ├─ [22129] VulnerableContract::addData(0)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(1)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(2)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(3)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(4)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(5)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(6)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(7)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(8)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(9)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(10)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(11)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(12)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(13)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(14)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(15)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(16)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(17)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(18)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(19)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(20)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(21)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(22)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(23)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(24)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(25)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(26)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(27)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(28)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(29)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(30)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(31)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(32)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(33)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(34)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(35)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(36)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(37)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(38)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(39)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(40)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(41)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(42)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(43)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(44)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(45)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(46)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(47)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(48)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(49)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(50)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(51)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(52)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(53)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(54)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(55)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(56)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(57)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(58)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(59)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(60)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(61)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(62)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(63)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(64)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(65)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(66)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(67)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(68)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(69)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(70)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(71)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(72)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(73)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(74)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(75)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(76)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(77)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(78)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(79)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(80)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(81)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(82)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(83)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(84)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(85)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(86)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(87)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(88)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(89)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(90)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(91)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(92)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(93)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(94)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(95)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(96)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(97)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(98)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(99)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(100)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(101)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(102)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(103)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(104)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(105)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(106)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(107)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(108)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(109)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(110)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(111)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(112)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(113)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(114)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(115)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(116)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(117)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(118)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(119)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(120)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(121)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(122)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(123)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(124)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(125)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(126)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(127)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(128)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(129)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(130)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(131)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(132)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(133)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(134)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(135)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(136)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(137)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(138)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(139)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(140)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(141)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(142)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(143)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(144)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(145)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(146)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(147)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(148)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(149)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(150)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(151)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(152)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(153)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(154)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(155)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(156)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(157)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(158)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(159)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(160)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(161)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(162)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(163)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(164)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(165)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(166)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(167)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(168)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(169)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(170)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(171)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(172)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(173)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(174)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(175)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(176)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(177)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(178)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(179)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(180)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(181)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(182)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(183)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(184)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(185)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(186)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(187)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(188)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(189)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(190)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(191)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(192)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(193)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(194)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(195)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(196)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(197)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(198)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(199)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(200)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(201)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(202)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(203)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(204)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(205)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(206)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(207)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(208)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(209)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(210)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(211)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(212)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(213)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(214)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(215)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(216)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(217)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(218)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(219)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(220)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(221)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(222)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(223)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(224)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(225)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(226)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(227)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(228)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(229)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(230)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(231)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(232)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(233)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(234)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(235)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(236)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(237)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(238)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(239)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(240)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(241)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(242)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(243)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(244)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(245)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(246)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(247)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(248)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(249)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(250)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(251)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(252)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(253)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(254)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(255)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(256)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(257)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(258)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(259)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(260)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(261)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(262)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(263)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(264)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(265)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(266)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(267)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(268)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(269)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(270)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(271)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(272)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(273)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(274)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(275)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(276)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(277)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(278)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(279)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(280)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(281)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(282)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(283)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(284)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(285)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(286)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(287)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(288)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(289)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(290)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(291)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(292)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(293)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(294)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(295)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(296)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(297)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(298)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(299)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(300)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(301)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(302)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(303)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(304)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(305)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(306)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(307)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(308)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(309)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(310)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(311)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(312)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(313)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(314)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(315)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(316)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(317)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(318)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(319)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(320)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(321)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(322)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(323)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(324)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(325)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(326)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(327)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(328)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(329)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(330)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(331)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(332)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(333)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(334)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(335)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(336)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(337)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(338)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(339)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(340)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(341)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(342)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(343)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(344)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(345)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(346)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(347)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(348)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(349)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(350)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(351)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(352)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(353)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(354)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(355)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(356)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(357)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(358)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(359)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(360)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(361)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(362)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(363)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(364)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(365)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(366)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(367)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(368)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(369)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(370)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(371)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(372)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(373)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(374)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(375)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(376)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(377)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(378)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(379)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(380)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(381)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(382)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(383)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(384)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(385)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(386)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(387)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(388)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(389)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(390)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(391)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(392)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(393)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(394)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(395)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(396)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(397)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(398)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(399)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(400)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(401)
+    │   │   └─ ← [Stop] 
+    │   ├─ [2118] VulnerableContract::addData(402)
+    │   │   └─ ← [OutOfGas] EvmError: OutOfGas
+    │   └─ ← [Revert] EvmError: Revert
+    ├─ [0] VM::assertTrue(false, "Attack did not succeed with high gas limit") [staticcall]
+    │   └─ ← [Revert] Attack did not succeed with high gas limit
+    └─ ← [Revert] Attack did not succeed with high gas limit
+
+Suite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 2.09ms (1.72ms CPU time)
+
+Ran 1 test suite in 647.62ms (2.09ms CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/5.7.4-Inefficient-Operation-Sequence-vulnerability.t.sol:InefficientOperationSequenceTest
+[FAIL: Attack did not succeed with high gas limit] testAttackSucceedsWithHighGas() (gas: 10004494)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+Regenerating: 5.7.4-Inefficient-Operation-Sequence-vulnerability.t.sol
+
+Running forge test: 5.7.4-Inefficient-Operation-Sequence-vulnerability.t.sol (attempt 2)
+Failed: 5.7.4-Inefficient-Operation-Sequence-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 360.88ms
+Compiler run successful!
+
+Ran 2 tests for test/5.7.4-Inefficient-Operation-Sequence-vulnerability.t.sol:InefficientOperationSequenceTest
+[PASS] testAttackFailsWithLowGas() (gas: 504725)
+Traces:
+  [504725] InefficientOperationSequenceTest::testAttackFailsWithLowGas()
+    ├─ [499999] AttackContract::attack()
+    │   ├─ [22129] VulnerableContract::addData(0)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(1)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(2)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(3)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(4)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(5)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(6)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(7)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(8)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(9)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(10)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(11)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(12)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(13)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(14)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(15)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(16)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(17)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(18)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(19)
+    │   │   └─ ← [Stop] 
+    │   ├─ [413] VulnerableContract::addData(20)
+    │   │   └─ ← [OutOfGas] EvmError: OutOfGas
+    │   └─ ← [OutOfGas] EvmError: OutOfGas
+    ├─ [0] VM::assertFalse(false, "Expected attack to fail with low gas limit") [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+[FAIL: High gas attack should succeed] testAttackSucceedsWithHighGas() (gas: 25002013)
+Traces:
+  [447793] InefficientOperationSequenceTest::setUp()
+    ├─ [156002] → new VulnerableContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 779 bytes of code
+    ├─ [199243] → new AttackContract@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 889 bytes of code
+    └─ ← [Stop] 
+
+  [25002013] InefficientOperationSequenceTest::testAttackSucceedsWithHighGas()
+    ├─ [24997359] AttackContract::attack()
+    │   ├─ [22129] VulnerableContract::addData(0)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(1)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(2)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(3)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(4)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(5)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(6)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(7)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(8)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(9)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(10)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(11)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(12)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(13)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(14)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(15)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(16)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(17)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(18)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(19)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(20)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(21)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(22)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(23)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(24)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(25)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(26)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(27)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(28)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(29)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(30)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(31)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(32)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(33)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(34)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(35)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(36)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(37)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(38)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(39)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(40)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(41)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(42)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(43)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(44)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(45)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(46)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(47)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(48)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(49)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(50)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(51)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(52)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(53)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(54)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(55)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(56)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(57)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(58)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(59)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(60)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(61)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(62)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(63)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(64)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(65)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(66)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(67)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(68)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(69)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(70)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(71)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(72)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(73)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(74)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(75)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(76)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(77)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(78)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(79)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(80)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(81)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(82)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(83)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(84)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(85)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(86)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(87)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(88)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(89)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(90)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(91)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(92)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(93)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(94)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(95)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(96)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(97)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(98)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(99)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(100)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(101)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(102)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(103)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(104)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(105)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(106)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(107)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(108)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(109)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(110)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(111)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(112)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(113)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(114)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(115)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(116)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(117)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(118)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(119)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(120)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(121)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(122)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(123)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(124)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(125)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(126)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(127)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(128)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(129)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(130)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(131)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(132)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(133)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(134)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(135)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(136)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(137)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(138)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(139)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(140)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(141)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(142)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(143)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(144)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(145)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(146)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(147)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(148)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(149)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(150)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(151)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(152)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(153)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(154)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(155)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(156)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(157)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(158)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(159)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(160)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(161)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(162)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(163)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(164)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(165)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(166)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(167)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(168)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(169)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(170)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(171)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(172)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(173)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(174)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(175)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(176)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(177)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(178)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(179)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(180)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(181)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(182)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(183)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(184)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(185)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(186)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(187)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(188)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(189)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(190)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(191)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(192)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(193)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(194)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(195)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(196)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(197)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(198)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(199)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(200)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(201)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(202)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(203)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(204)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(205)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(206)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(207)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(208)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(209)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(210)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(211)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(212)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(213)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(214)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(215)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(216)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(217)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(218)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(219)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(220)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(221)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(222)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(223)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(224)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(225)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(226)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(227)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(228)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(229)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(230)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(231)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(232)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(233)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(234)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(235)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(236)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(237)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(238)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(239)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(240)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(241)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(242)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(243)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(244)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(245)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(246)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(247)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(248)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(249)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(250)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(251)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(252)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(253)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(254)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(255)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(256)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(257)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(258)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(259)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(260)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(261)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(262)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(263)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(264)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(265)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(266)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(267)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(268)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(269)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(270)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(271)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(272)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(273)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(274)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(275)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(276)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(277)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(278)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(279)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(280)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(281)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(282)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(283)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(284)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(285)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(286)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(287)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(288)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(289)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(290)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(291)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(292)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(293)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(294)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(295)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(296)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(297)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(298)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(299)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(300)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(301)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(302)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(303)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(304)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(305)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(306)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(307)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(308)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(309)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(310)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(311)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(312)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(313)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(314)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(315)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(316)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(317)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(318)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(319)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(320)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(321)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(322)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(323)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(324)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(325)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(326)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(327)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(328)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(329)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(330)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(331)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(332)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(333)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(334)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(335)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(336)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(337)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(338)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(339)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(340)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(341)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(342)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(343)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(344)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(345)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(346)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(347)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(348)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(349)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(350)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(351)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(352)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(353)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(354)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(355)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(356)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(357)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(358)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(359)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(360)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(361)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(362)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(363)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(364)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(365)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(366)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(367)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(368)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(369)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(370)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(371)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(372)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(373)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(374)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(375)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(376)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(377)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(378)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(379)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(380)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(381)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(382)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(383)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(384)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(385)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(386)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(387)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(388)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(389)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(390)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(391)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(392)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(393)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(394)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(395)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(396)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(397)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(398)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(399)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(400)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(401)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(402)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(403)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(404)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(405)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(406)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(407)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(408)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(409)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(410)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(411)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(412)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(413)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(414)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(415)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(416)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(417)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(418)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(419)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(420)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(421)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(422)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(423)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(424)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(425)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(426)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(427)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(428)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(429)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(430)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(431)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(432)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(433)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(434)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(435)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(436)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(437)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(438)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(439)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(440)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(441)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(442)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(443)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(444)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(445)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(446)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(447)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(448)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(449)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(450)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(451)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(452)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(453)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(454)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(455)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(456)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(457)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(458)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(459)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(460)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(461)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(462)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(463)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(464)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(465)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(466)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(467)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(468)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(469)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(470)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(471)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(472)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(473)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(474)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(475)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(476)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(477)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(478)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(479)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(480)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(481)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(482)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(483)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(484)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(485)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(486)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(487)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(488)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(489)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(490)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(491)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(492)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(493)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(494)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(495)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(496)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(497)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(498)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(499)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(500)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(501)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(502)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(503)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(504)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(505)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(506)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(507)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(508)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(509)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(510)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(511)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(512)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(513)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(514)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(515)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(516)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(517)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(518)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(519)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(520)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(521)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(522)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(523)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(524)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(525)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(526)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(527)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(528)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(529)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(530)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(531)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(532)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(533)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(534)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(535)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(536)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(537)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(538)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(539)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(540)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(541)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(542)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(543)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(544)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(545)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(546)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(547)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(548)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(549)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(550)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(551)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(552)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(553)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(554)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(555)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(556)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(557)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(558)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(559)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(560)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(561)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(562)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(563)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(564)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(565)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(566)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(567)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(568)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(569)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(570)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(571)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(572)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(573)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(574)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(575)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(576)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(577)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(578)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(579)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(580)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(581)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(582)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(583)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(584)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(585)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(586)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(587)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(588)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(589)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(590)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(591)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(592)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(593)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(594)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(595)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(596)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(597)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(598)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(599)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(600)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(601)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(602)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(603)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(604)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(605)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(606)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(607)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(608)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(609)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(610)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(611)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(612)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(613)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(614)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(615)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(616)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(617)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(618)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(619)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(620)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(621)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(622)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(623)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(624)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(625)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(626)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(627)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(628)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(629)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(630)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(631)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(632)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(633)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(634)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(635)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(636)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(637)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(638)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(639)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(640)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(641)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(642)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(643)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(644)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(645)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(646)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(647)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(648)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(649)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(650)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(651)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(652)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(653)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(654)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(655)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(656)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(657)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(658)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(659)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(660)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(661)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(662)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(663)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(664)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(665)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(666)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(667)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(668)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(669)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(670)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(671)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(672)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(673)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(674)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(675)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(676)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(677)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(678)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(679)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(680)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(681)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(682)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(683)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(684)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(685)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(686)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(687)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(688)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(689)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(690)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(691)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(692)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(693)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(694)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(695)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(696)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(697)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(698)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(699)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(700)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(701)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(702)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(703)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(704)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(705)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(706)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(707)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(708)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(709)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(710)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(711)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(712)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(713)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(714)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(715)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(716)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(717)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(718)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(719)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(720)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(721)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(722)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(723)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(724)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(725)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(726)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(727)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(728)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(729)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(730)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(731)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(732)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(733)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(734)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(735)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(736)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(737)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(738)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(739)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(740)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(741)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(742)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(743)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(744)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(745)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(746)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(747)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(748)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(749)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(750)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(751)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(752)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(753)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(754)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(755)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(756)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(757)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(758)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(759)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(760)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(761)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(762)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(763)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(764)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(765)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(766)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(767)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(768)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(769)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(770)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(771)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(772)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(773)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(774)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(775)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(776)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(777)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(778)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(779)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(780)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(781)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(782)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(783)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(784)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(785)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(786)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(787)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(788)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(789)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(790)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(791)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(792)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(793)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(794)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(795)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(796)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(797)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(798)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(799)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(800)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(801)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(802)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(803)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(804)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(805)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(806)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(807)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(808)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(809)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(810)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(811)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(812)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(813)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(814)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(815)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(816)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(817)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(818)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(819)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(820)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(821)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(822)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(823)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(824)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(825)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(826)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(827)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(828)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(829)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(830)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(831)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(832)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(833)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(834)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(835)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(836)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(837)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(838)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(839)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(840)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(841)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(842)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(843)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(844)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(845)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(846)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(847)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(848)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(849)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(850)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(851)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(852)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(853)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(854)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(855)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(856)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(857)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(858)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(859)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(860)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(861)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(862)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(863)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(864)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(865)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(866)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(867)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(868)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(869)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(870)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(871)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(872)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(873)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(874)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(875)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(876)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(877)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(878)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(879)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(880)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(881)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(882)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(883)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(884)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(885)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(886)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(887)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(888)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(889)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(890)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(891)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(892)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(893)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(894)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(895)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(896)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(897)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(898)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(899)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(900)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(901)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(902)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(903)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(904)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(905)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(906)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(907)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(908)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(909)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(910)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(911)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(912)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(913)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(914)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(915)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(916)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(917)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(918)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(919)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(920)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(921)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(922)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(923)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(924)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(925)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(926)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(927)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(928)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(929)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(930)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(931)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(932)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(933)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(934)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(935)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(936)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(937)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(938)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(939)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(940)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(941)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(942)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(943)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(944)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(945)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(946)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(947)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(948)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(949)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(950)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(951)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(952)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(953)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(954)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(955)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(956)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(957)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(958)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(959)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(960)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(961)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(962)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(963)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(964)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(965)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(966)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(967)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(968)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(969)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(970)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(971)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(972)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(973)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(974)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(975)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(976)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(977)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(978)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(979)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(980)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(981)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(982)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(983)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(984)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(985)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(986)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(987)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(988)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(989)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(990)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(991)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(992)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(993)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(994)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(995)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(996)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(997)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(998)
+    │   │   └─ ← [Stop] 
+    │   ├─ [22129] VulnerableContract::addData(999)
+    │   │   └─ ← [Stop] 
+    │   ├─ [168246] VulnerableContract::sumData() [staticcall]
+    │   │   └─ ← [OutOfGas] EvmError: OutOfGas
+    │   └─ ← [Revert] EvmError: Revert
+    ├─ [0] VM::assertTrue(false, "High gas attack should succeed") [staticcall]
+    │   └─ ← [Revert] High gas attack should succeed
+    └─ ← [Revert] High gas attack should succeed
+
+Suite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 4.25ms (3.86ms CPU time)
+
+Ran 1 test suite in 624.75ms (4.25ms CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/5.7.4-Inefficient-Operation-Sequence-vulnerability.t.sol:InefficientOperationSequenceTest
+[FAIL: High gas attack should succeed] testAttackSucceedsWithHighGas() (gas: 25002013)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+Regenerating: 5.7.4-Inefficient-Operation-Sequence-vulnerability.t.sol
+
+Running forge test: 5.7.4-Inefficient-Operation-Sequence-vulnerability.t.sol (attempt 3)
+Passed: 5.7.4-Inefficient-Operation-Sequence-vulnerability.t.sol
+Test file not found, generating first: 5.8.1-Undetermined-Program-Version-Prevalence-fixed.t.sol
+
+Running forge test: 5.8.1-Undetermined-Program-Version-Prevalence-fixed.t.sol (attempt 1)
+Passed: 5.8.1-Undetermined-Program-Version-Prevalence-fixed.t.sol
+Test file not found, generating first: 5.8.1-Undetermined-Program-Version-Prevalence-vulnerability.t.sol
+
+Running forge test: 5.8.1-Undetermined-Program-Version-Prevalence-vulnerability.t.sol (attempt 1)
+Passed: 5.8.1-Undetermined-Program-Version-Prevalence-vulnerability.t.sol
+Test file not found, generating first: 5.9-Inadequate-Data-Representation-fixed.t.sol
+
+Running forge test: 5.9-Inadequate-Data-Representation-fixed.t.sol (attempt 1)
+Failed: 5.9-Inadequate-Data-Representation-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 365.31ms
+Compiler run successful with warnings:
+Warning (2072): Unused local variable.
+  --> test/5.9-Inadequate-Data-Representation-fixed.t.sol:57:9:
+   |
+57 |         uint attackerInitialBalance = attacker.balance;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Ran 3 tests for test/5.9-Inadequate-Data-Representation-fixed.t.sol:InadequateDataRepresentationTest
+[PASS] testAttackDoesNotExtractExtraFunds() (gas: 271028)
+Traces:
+  [271028] InadequateDataRepresentationTest::testAttackDoesNotExtractExtraFunds()
+    ├─ [0] VM::prank(SHA-256: [0x0000000000000000000000000000000000000002])
+    │   └─ ← [Return] 
+    ├─ [172619] → new Attack@0xE536720791A7DaDBeBdBCD8c8546fb0791a11901
+    │   └─ ← [Return] 756 bytes of code
+    ├─ [0] VM::prank(SHA-256: [0x0000000000000000000000000000000000000002])
+    │   └─ ← [Return] 
+    ├─ [20206] Attack::attack{value: 1000000000000000000}()
+    │   ├─ [164] MyContract::deposit{value: 1000000000000000000}()
+    │   │   └─ ← [Stop] 
+    │   ├─ [8480] MyContract::withdraw()
+    │   │   ├─ [55] Attack::receive{value: 1000000000000000000}()
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [0] VM::assertEq(1000000000000000000 [1e18], 1000000000000000000 [1e18], "Attack contract should only receive 1 ether") [staticcall]
+    │   └─ ← [Return] 
+    ├─ [0] VM::assertEq(0, 0, "MyContract balance should be zero after attack execution") [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+[FAIL: EvmError: Revert] testCorrectDepositAndWithdraw() (gas: 29338)
+Traces:
+  [167893] InadequateDataRepresentationTest::setUp()
+    ├─ [124159] → new MyContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 520 bytes of code
+    ├─ [0] VM::deal(ECRecover: [0x0000000000000000000000000000000000000001], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    ├─ [0] VM::deal(SHA-256: [0x0000000000000000000000000000000000000002], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [29338] InadequateDataRepresentationTest::testCorrectDepositAndWithdraw()
+    ├─ [0] VM::prank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return] 
+    ├─ [164] MyContract::deposit{value: 1000000000000000000}()
+    │   └─ ← [Stop] 
+    ├─ [0] VM::prank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return] 
+    ├─ [10729] MyContract::withdraw()
+    │   ├─ [0] ECRecover::fallback{value: 1000000000000000000}()
+    │   │   └─ ← [PrecompileOOG] EvmError: PrecompileOOG
+    │   └─ ← [Revert] EvmError: Revert
+    └─ ← [Revert] EvmError: Revert
+
+[PASS] testDepositRevertOnWrongAmount() (gas: 14148)
+Traces:
+  [14148] InadequateDataRepresentationTest::testDepositRevertOnWrongAmount()
+    ├─ [0] VM::prank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  Deposit 1 ether exactly)
+    │   └─ ← [Return] 
+    ├─ [424] MyContract::deposit{value: 500000000000000000}()
+    │   └─ ← [Revert] revert: Deposit 1 ether exactly
+    └─ ← [Stop] 
+
+Suite result: FAILED. 2 passed; 1 failed; 0 skipped; finished in 917.78µs (437.27µs CPU time)
+
+Ran 1 test suite in 859.37ms (917.78µs CPU time): 2 tests passed, 1 failed, 0 skipped (3 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/5.9-Inadequate-Data-Representation-fixed.t.sol:InadequateDataRepresentationTest
+[FAIL: EvmError: Revert] testCorrectDepositAndWithdraw() (gas: 29338)
+
+Encountered a total of 1 failing tests, 2 tests succeeded
+Regenerating: 5.9-Inadequate-Data-Representation-fixed.t.sol
+
+Running forge test: 5.9-Inadequate-Data-Representation-fixed.t.sol (attempt 2)
+Passed: 5.9-Inadequate-Data-Representation-fixed.t.sol
+Test file not found, generating first: 5.9-Inadequate-Data-Representation-vulnerability.t.sol
+
+Running forge test: 5.9-Inadequate-Data-Representation-vulnerability.t.sol (attempt 1)
+Failed: 5.9-Inadequate-Data-Representation-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 356.51ms
+Compiler run successful!
+
+Ran 2 tests for test/5.9-Inadequate-Data-Representation-vulnerability.t.sol:InadequateDataRepresentationTest
+[FAIL: call didn't revert at a lower depth than cheatcode call depth] testDepositRevertsWithWrongAmount() (gas: 14002)
+Traces:
+  [392068] InadequateDataRepresentationTest::setUp()
+    ├─ [124159] → new MyContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 520 bytes of code
+    ├─ [172619] → new Attack@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 756 bytes of code
+    ├─ [0] VM::deal(MyContract: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 9000000000000000000 [9e18])
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [14002] InadequateDataRepresentationTest::testDepositRevertsWithWrongAmount()
+    ├─ [0] VM::prank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  Deposit 1 ether exactly)
+    │   └─ ← [Return] 
+    ├─ [0] MyContract::deposit{value: 500000000000000000}()
+    │   └─ ← [OutOfFunds] EvmError: OutOfFunds
+    └─ ← [Revert] call didn't revert at a lower depth than cheatcode call depth
+
+[PASS] testExploit() (gas: 42814)
+Traces:
+  [42814] InadequateDataRepresentationTest::testExploit()
+    ├─ [0] VM::deal(ECRecover: [0x0000000000000000000000000000000000000001], 1000000000000000000 [1e18])
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return] 
+    ├─ [20228] Attack::attack{value: 1000000000000000000}()
+    │   ├─ [164] MyContract::deposit{value: 1000000000000000000}()
+    │   │   └─ ← [Stop] 
+    │   ├─ [8480] MyContract::withdraw()
+    │   │   ├─ [55] Attack::receive{value: 10000000000000000000}()
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [0] VM::assertEq(10000000000000000000 [1e19], 10000000000000000000 [1e19], "Attack contract should have received 10 ether") [staticcall]
+    │   └─ ← [Return] 
+    ├─ [0] VM::assertEq(0, 0, "Vulnerable contract balance should be 0 after withdrawal") [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+Suite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 835.27µs (321.32µs CPU time)
+
+Ran 1 test suite in 796.92ms (835.27µs CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/5.9-Inadequate-Data-Representation-vulnerability.t.sol:InadequateDataRepresentationTest
+[FAIL: call didn't revert at a lower depth than cheatcode call depth] testDepositRevertsWithWrongAmount() (gas: 14002)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+Regenerating: 5.9-Inadequate-Data-Representation-vulnerability.t.sol
+
+Running forge test: 5.9-Inadequate-Data-Representation-vulnerability.t.sol (attempt 2)
+Failed: 5.9-Inadequate-Data-Representation-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 349.75ms
+Compiler run successful with warnings:
+Warning (2072): Unused local variable.
+  --> test/5.9-Inadequate-Data-Representation-vulnerability.t.sol:35:9:
+   |
+35 |         uint attackerBalanceBefore = attacker.balance;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Ran 2 tests for test/5.9-Inadequate-Data-Representation-vulnerability.t.sol:InadequateDataRepresentationTest
+[PASS] testDepositRevertsWithWrongAmount() (gas: 14415)
+Traces:
+  [14415] InadequateDataRepresentationTest::testDepositRevertsWithWrongAmount()
+    ├─ [0] VM::prank(SHA-256: [0x0000000000000000000000000000000000000002])
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  Deposit 1 ether exactly)
+    │   └─ ← [Return] 
+    ├─ [424] MyContract::deposit{value: 500000000000000000}()
+    │   └─ ← [Revert] revert: Deposit 1 ether exactly
+    └─ ← [Stop] 
+
+[FAIL: EvmError: Revert] testExploit() (gas: 33571)
+Traces:
+  [394737] InadequateDataRepresentationTest::setUp()
+    ├─ [124159] → new MyContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 520 bytes of code
+    ├─ [172619] → new Attack@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 756 bytes of code
+    ├─ [0] VM::deal(SHA-256: [0x0000000000000000000000000000000000000002], 2000000000000000000 [2e18])
+    │   └─ ← [Return] 
+    ├─ [0] VM::deal(ECRecover: [0x0000000000000000000000000000000000000001], 2000000000000000000 [2e18])
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [33571] InadequateDataRepresentationTest::testExploit()
+    ├─ [0] VM::prank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return] 
+    ├─ [20175] Attack::attack{value: 1000000000000000000}()
+    │   ├─ [164] MyContract::deposit{value: 1000000000000000000}()
+    │   │   └─ ← [Stop] 
+    │   ├─ [8429] MyContract::withdraw()
+    │   │   ├─ [0] Attack::receive{value: 10000000000000000000}()
+    │   │   │   └─ ← [OutOfFunds] EvmError: OutOfFunds
+    │   │   └─ ← [Revert] EvmError: Revert
+    │   └─ ← [Revert] EvmError: Revert
+    └─ ← [Revert] EvmError: Revert
+
+Suite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 522.72µs (148.90µs CPU time)
+
+Ran 1 test suite in 645.93ms (522.72µs CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/5.9-Inadequate-Data-Representation-vulnerability.t.sol:InadequateDataRepresentationTest
+[FAIL: EvmError: Revert] testExploit() (gas: 33571)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+Regenerating: 5.9-Inadequate-Data-Representation-vulnerability.t.sol
+
+Running forge test: 5.9-Inadequate-Data-Representation-vulnerability.t.sol (attempt 3)
+Passed: 5.9-Inadequate-Data-Representation-vulnerability.t.sol
+
+Running forge test: 6.1.1-Incorrect-Use-of-Event-Blockchain-variables-for-Time-fixed.t.sol (attempt 1)
+Passed: 6.1.1-Incorrect-Use-of-Event-Blockchain-variables-for-Time-fixed.t.sol
+
+Running forge test: 6.1.1-Incorrect-Use-of-Event-Blockchain-variables-for-Time-vulnerability.t.sol (attempt 1)
+Passed: 6.1.1-Incorrect-Use-of-Event-Blockchain-variables-for-Time-vulnerability.t.sol
+
+Running forge test: 6.1.2-Incorrect-Function-Call-Order-fixed.t.sol (attempt 1)
+Passed: 6.1.2-Incorrect-Function-Call-Order-fixed.t.sol
+
+Running forge test: 6.1.2-Incorrect-Function-Call-Order-vulnerability.t.sol (attempt 1)
+Passed: 6.1.2-Incorrect-Function-Call-Order-vulnerability.t.sol
+Test file not found, generating first: 6.1.3-Improper-Locking-fixed.t.sol
+
+Running forge test: 6.1.3-Improper-Locking-fixed.t.sol (attempt 1)
+Failed: 6.1.3-Improper-Locking-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 410.96ms
+Compiler run successful with warnings:
+Warning (2072): Unused local variable.
+  --> test/6.1.3-Improper-Locking-fixed.t.sol:44:64:
+   |
+44 |                 (address owner, uint256 amount, Lock lockAddr, bytes memory _edgewareAddr, bool _isValidator, uint256 timestamp) =
+   |                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/6.1.3-Improper-Locking-fixed.t.sol:44:111:
+   |
+44 |                 (address owner, uint256 amount, Lock lockAddr, bytes memory _edgewareAddr, bool _isValidator, uint256 timestamp) =
+   |                                                                                                               ^^^^^^^^^^^^^^^^^
+
+
+Ran 3 tests for test/6.1.3-Improper-Locking-fixed.t.sol:LockContractTest
+[FAIL: revert: Locked event not emitted] testLockNormal() (gas: 175369)
+Traces:
+  [657480] LockContractTest::setUp()
+    ├─ [414249] → new LockContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 2069 bytes of code
+    ├─ [151596] → new ForceSender@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 757 bytes of code
+    └─ ← [Stop] 
+
+  [175369] LockContractTest::testLockNormal()
+    ├─ [0] VM::recordLogs()
+    │   └─ ← [Return] 
+    ├─ [0] VM::deal(LockContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 2000000000000000000 [2e18])
+    │   └─ ← [Return] 
+    ├─ [156292] LockContract::lock{value: 1000000000000000000}(100, 0x1234, false)
+    │   ├─ [118112] → new Lock@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   └─ ← [Return] 383 bytes of code
+    │   ├─ emit Locked(owner: LockContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000 [1e18], lockAddr: Lock: [0x104fBc016F4bb334D775a19E8A6510109AC63E00], edgewareAddr: 0x1234, isValidator: false, timestamp: 1)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::getRecordedLogs()
+    │   └─ ← [Return] [([0x6e0ed1c56084c3f03b3b4352f517072a794da3cd18c46f83ed8c43fafe157e11, 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496], 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000104fbc016f4bb334d775a19e8a6510109ac63e0000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000021234000000000000000000000000000000000000000000000000000000000000, 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f)]
+    └─ ← [Revert] revert: Locked event not emitted
+
+[FAIL: revert: Lock contract address not found] testLockWithForceSendExtraETH() (gas: 175421)
+Traces:
+  [657480] LockContractTest::setUp()
+    ├─ [414249] → new LockContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 2069 bytes of code
+    ├─ [151596] → new ForceSender@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 757 bytes of code
+    └─ ← [Stop] 
+
+  [175421] LockContractTest::testLockWithForceSendExtraETH()
+    ├─ [0] VM::deal(LockContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000 [5e18])
+    │   └─ ← [Return] 
+    ├─ [0] VM::recordLogs()
+    │   └─ ← [Return] 
+    ├─ [156292] LockContract::lock{value: 1000000000000000000}(100, 0xabcd, true)
+    │   ├─ [118112] → new Lock@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   └─ ← [Return] 383 bytes of code
+    │   ├─ emit Locked(owner: LockContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000 [1e18], lockAddr: Lock: [0x104fBc016F4bb334D775a19E8A6510109AC63E00], edgewareAddr: 0xabcd, isValidator: true, timestamp: 1)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::getRecordedLogs()
+    │   └─ ← [Return] [([0x6e0ed1c56084c3f03b3b4352f517072a794da3cd18c46f83ed8c43fafe157e11, 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496], 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000104fbc016f4bb334d775a19e8a6510109ac63e0000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002abcd000000000000000000000000000000000000000000000000000000000000, 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f)]
+    └─ ← [Revert] revert: Lock contract address not found
+
+[FAIL: revert: Lock contract address not found] testMultipleForceSendsDoesNotBreakLogic() (gas: 175412)
+Traces:
+  [657480] LockContractTest::setUp()
+    ├─ [414249] → new LockContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 2069 bytes of code
+    ├─ [151596] → new ForceSender@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 757 bytes of code
+    └─ ← [Stop] 
+
+  [175412] LockContractTest::testMultipleForceSendsDoesNotBreakLogic()
+    ├─ [0] VM::deal(LockContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    ├─ [0] VM::recordLogs()
+    │   └─ ← [Return] 
+    ├─ [156292] LockContract::lock{value: 2000000000000000000}(100, 0xdeadbeef, false)
+    │   ├─ [118112] → new Lock@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   └─ ← [Return] 383 bytes of code
+    │   ├─ emit Locked(owner: LockContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 2000000000000000000 [2e18], lockAddr: Lock: [0x104fBc016F4bb334D775a19E8A6510109AC63E00], edgewareAddr: 0xdeadbeef, isValidator: false, timestamp: 1)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::getRecordedLogs()
+    │   └─ ← [Return] [([0x6e0ed1c56084c3f03b3b4352f517072a794da3cd18c46f83ed8c43fafe157e11, 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496], 0x0000000000000000000000000000000000000000000000001bc16d674ec80000000000000000000000000000104fbc016f4bb334d775a19e8a6510109ac63e0000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000004deadbeef00000000000000000000000000000000000000000000000000000000, 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f)]
+    └─ ← [Revert] revert: Lock contract address not found
+
+Suite result: FAILED. 0 passed; 3 failed; 0 skipped; finished in 1.98ms (3.70ms CPU time)
+
+Ran 1 test suite in 961.98ms (1.98ms CPU time): 0 tests passed, 3 failed, 0 skipped (3 total tests)
+
+Failing tests:
+Encountered 3 failing tests in test/6.1.3-Improper-Locking-fixed.t.sol:LockContractTest
+[FAIL: revert: Locked event not emitted] testLockNormal() (gas: 175369)
+[FAIL: revert: Lock contract address not found] testLockWithForceSendExtraETH() (gas: 175421)
+[FAIL: revert: Lock contract address not found] testMultipleForceSendsDoesNotBreakLogic() (gas: 175412)
+
+Encountered a total of 3 failing tests, 0 tests succeeded
+Regenerating: 6.1.3-Improper-Locking-fixed.t.sol
+
+Running forge test: 6.1.3-Improper-Locking-fixed.t.sol (attempt 2)
+Failed: 6.1.3-Improper-Locking-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 375.36ms
+Compiler run successful with warnings:
+Warning (2072): Unused local variable.
+  --> test/6.1.3-Improper-Locking-fixed.t.sol:53:113:
+   |
+53 |         (bool found, address owner, uint256 amount, address lockAddr, bytes memory _edgeware, bool isValidator, uint256 eventTimestamp) =
+   |                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/6.1.3-Improper-Locking-fixed.t.sol:79:24:
+   |
+79 |         (bool found, , uint256 amount, address lockAddr, , , ) =
+   |                        ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/6.1.3-Improper-Locking-fixed.t.sol:102:24:
+    |
+102 |         (bool found, , uint256 amount, address lockAddr, , , ) =
+    |                        ^^^^^^^^^^^^^^
+
+
+Ran 3 tests for test/6.1.3-Improper-Locking-fixed.t.sol:LockContractTest
+[FAIL: revert: Locked event not emitted] testLockNormal() (gas: 173780)
+Traces:
+  [657480] LockContractTest::setUp()
+    ├─ [414249] → new LockContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 2069 bytes of code
+    ├─ [151596] → new ForceSender@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 757 bytes of code
+    └─ ← [Stop] 
+
+  [173780] LockContractTest::testLockNormal()
+    ├─ [0] VM::recordLogs()
+    │   └─ ← [Return] 
+    ├─ [156292] LockContract::lock{value: 1000000000000000000}(100, 0x1234, false)
+    │   ├─ [118112] → new Lock@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   └─ ← [Return] 383 bytes of code
+    │   ├─ emit Locked(owner: LockContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000 [1e18], lockAddr: Lock: [0x104fBc016F4bb334D775a19E8A6510109AC63E00], edgewareAddr: 0x1234, isValidator: false, timestamp: 1)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::getRecordedLogs()
+    │   └─ ← [Return] [([0x6e0ed1c56084c3f03b3b4352f517072a794da3cd18c46f83ed8c43fafe157e11, 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496], 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000104fbc016f4bb334d775a19e8a6510109ac63e0000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000021234000000000000000000000000000000000000000000000000000000000000, 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f)]
+    └─ ← [Revert] revert: Locked event not emitted
+
+[FAIL: revert: Lock contract address not found] testLockWithForceSendExtraETH() (gas: 173800)
+Traces:
+  [657480] LockContractTest::setUp()
+    ├─ [414249] → new LockContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 2069 bytes of code
+    ├─ [151596] → new ForceSender@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 757 bytes of code
+    └─ ← [Stop] 
+
+  [173800] LockContractTest::testLockWithForceSendExtraETH()
+    ├─ [0] VM::recordLogs()
+    │   └─ ← [Return] 
+    ├─ [156292] LockContract::lock{value: 1000000000000000000}(100, 0xabcd, true)
+    │   ├─ [118112] → new Lock@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   └─ ← [Return] 383 bytes of code
+    │   ├─ emit Locked(owner: LockContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000 [1e18], lockAddr: Lock: [0x104fBc016F4bb334D775a19E8A6510109AC63E00], edgewareAddr: 0xabcd, isValidator: true, timestamp: 1)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::getRecordedLogs()
+    │   └─ ← [Return] [([0x6e0ed1c56084c3f03b3b4352f517072a794da3cd18c46f83ed8c43fafe157e11, 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496], 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000104fbc016f4bb334d775a19e8a6510109ac63e0000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002abcd000000000000000000000000000000000000000000000000000000000000, 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f)]
+    └─ ← [Revert] revert: Lock contract address not found
+
+[FAIL: revert: Lock contract address not found] testMultipleForceSendsDoesNotBreakLogic() (gas: 173799)
+Traces:
+  [657480] LockContractTest::setUp()
+    ├─ [414249] → new LockContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 2069 bytes of code
+    ├─ [151596] → new ForceSender@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 757 bytes of code
+    └─ ← [Stop] 
+
+  [173799] LockContractTest::testMultipleForceSendsDoesNotBreakLogic()
+    ├─ [0] VM::recordLogs()
+    │   └─ ← [Return] 
+    ├─ [156292] LockContract::lock{value: 2000000000000000000}(100, 0xdeadbeef, false)
+    │   ├─ [118112] → new Lock@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   └─ ← [Return] 383 bytes of code
+    │   ├─ emit Locked(owner: LockContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 2000000000000000000 [2e18], lockAddr: Lock: [0x104fBc016F4bb334D775a19E8A6510109AC63E00], edgewareAddr: 0xdeadbeef, isValidator: false, timestamp: 1)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::getRecordedLogs()
+    │   └─ ← [Return] [([0x6e0ed1c56084c3f03b3b4352f517072a794da3cd18c46f83ed8c43fafe157e11, 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496], 0x0000000000000000000000000000000000000000000000001bc16d674ec80000000000000000000000000000104fbc016f4bb334d775a19e8a6510109ac63e0000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000004deadbeef00000000000000000000000000000000000000000000000000000000, 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f)]
+    └─ ← [Revert] revert: Lock contract address not found
+
+Suite result: FAILED. 0 passed; 3 failed; 0 skipped; finished in 1.15ms (578.06µs CPU time)
+
+Ran 1 test suite in 1.27s (1.15ms CPU time): 0 tests passed, 3 failed, 0 skipped (3 total tests)
+
+Failing tests:
+Encountered 3 failing tests in test/6.1.3-Improper-Locking-fixed.t.sol:LockContractTest
+[FAIL: revert: Locked event not emitted] testLockNormal() (gas: 173780)
+[FAIL: revert: Lock contract address not found] testLockWithForceSendExtraETH() (gas: 173800)
+[FAIL: revert: Lock contract address not found] testMultipleForceSendsDoesNotBreakLogic() (gas: 173799)
+
+Encountered a total of 3 failing tests, 0 tests succeeded
+Regenerating: 6.1.3-Improper-Locking-fixed.t.sol
+
+Running forge test: 6.1.3-Improper-Locking-fixed.t.sol (attempt 3)
+Failed: 6.1.3-Improper-Locking-fixed.t.sol
+Error:
+Compiler run failed:
+Error (9553): Invalid type for argument in function call. Invalid implicit conversion from struct VmSafe.Log memory[] memory to bytes memory[] memory requested.
+  --> test/6.1.3-Improper-Locking-fixed.t.sol:59:39:
+   |
+59 |         Log[] memory logs = parseLogs(vm.getRecordedLogs());
+   |                                       ^^^^^^^^^^^^^^^^^^^^
+
+Error (9553): Invalid type for argument in function call. Invalid implicit conversion from struct VmSafe.Log memory[] memory to bytes memory[] memory requested.
+  --> test/6.1.3-Improper-Locking-fixed.t.sol:82:39:
+   |
+82 |         Log[] memory logs = parseLogs(vm.getRecordedLogs());
+   |                                       ^^^^^^^^^^^^^^^^^^^^
+
+Error (9553): Invalid type for argument in function call. Invalid implicit conversion from struct VmSafe.Log memory[] memory to bytes memory[] memory requested.
+   --> test/6.1.3-Improper-Locking-fixed.t.sol:108:39:
+    |
+108 |         Log[] memory logs = parseLogs(vm.getRecordedLogs());
+    |                                       ^^^^^^^^^^^^^^^^^^^^
+
+Error: Compilation failed
+Regenerating: 6.1.3-Improper-Locking-fixed.t.sol
+
+Running forge test: 6.1.3-Improper-Locking-fixed.t.sol (attempt 4)
+Failed: 6.1.3-Improper-Locking-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 362.85ms
+Compiler run successful!
+
+Ran 2 tests for test/6.1.3-Improper-Locking-fixed.t.sol:LockContractTest
+[FAIL: Locked event not found] testForceSendAttackDoesNotBreakLock() (gas: 179146)
+Traces:
+  [657480] LockContractTest::setUp()
+    ├─ [414249] → new LockContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 2069 bytes of code
+    ├─ [151596] → new ForceSender@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 757 bytes of code
+    └─ ← [Stop] 
+
+  [179146] LockContractTest::testForceSendAttackDoesNotBreakLock()
+    ├─ [0] VM::deal(0x000000000000000000000000000000000000bEEF, 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    ├─ [0] VM::recordLogs()
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [156292] LockContract::lock{value: 1000000000000000000}(200, 0x64756d6d79, false)
+    │   ├─ [118112] → new Lock@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   └─ ← [Return] 383 bytes of code
+    │   ├─ emit Locked(owner: 0x000000000000000000000000000000000000bEEF, amount: 1000000000000000000 [1e18], lockAddr: Lock: [0x104fBc016F4bb334D775a19E8A6510109AC63E00], edgewareAddr: 0x64756d6d79, isValidator: false, timestamp: 1)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::getRecordedLogs()
+    │   └─ ← [Return] [([0x6e0ed1c56084c3f03b3b4352f517072a794da3cd18c46f83ed8c43fafe157e11, 0x000000000000000000000000000000000000000000000000000000000000beef], 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000104fbc016f4bb334d775a19e8a6510109ac63e0000000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000564756d6d79000000000000000000000000000000000000000000000000000000, 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f)]
+    ├─ [0] VM::assertTrue(false, "Locked event not found") [staticcall]
+    │   └─ ← [Revert] Locked event not found
+    └─ ← [Revert] Locked event not found
+
+[FAIL: Locked event not found] testLockNormal() (gas: 179133)
+Traces:
+  [657480] LockContractTest::setUp()
+    ├─ [414249] → new LockContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 2069 bytes of code
+    ├─ [151596] → new ForceSender@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 757 bytes of code
+    └─ ← [Stop] 
+
+  [179133] LockContractTest::testLockNormal()
+    ├─ [0] VM::deal(0x000000000000000000000000000000000000ABcD, 10000000000000000000 [1e19])
+    │   └─ ← [Return] 
+    ├─ [0] VM::recordLogs()
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [156292] LockContract::lock{value: 1000000000000000000}(100, 0x64756d6d79, true)
+    │   ├─ [118112] → new Lock@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   └─ ← [Return] 383 bytes of code
+    │   ├─ emit Locked(owner: 0x000000000000000000000000000000000000ABcD, amount: 1000000000000000000 [1e18], lockAddr: Lock: [0x104fBc016F4bb334D775a19E8A6510109AC63E00], edgewareAddr: 0x64756d6d79, isValidator: true, timestamp: 1)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::getRecordedLogs()
+    │   └─ ← [Return] [([0x6e0ed1c56084c3f03b3b4352f517072a794da3cd18c46f83ed8c43fafe157e11, 0x000000000000000000000000000000000000000000000000000000000000abcd], 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000104fbc016f4bb334d775a19e8a6510109ac63e0000000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000564756d6d79000000000000000000000000000000000000000000000000000000, 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f)]
+    ├─ [0] VM::assertTrue(false, "Locked event not found") [staticcall]
+    │   └─ ← [Revert] Locked event not found
+    └─ ← [Revert] Locked event not found
+
+Suite result: FAILED. 0 passed; 2 failed; 0 skipped; finished in 664.57µs (430.91µs CPU time)
+
+Ran 1 test suite in 821.51ms (664.57µs CPU time): 0 tests passed, 2 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 2 failing tests in test/6.1.3-Improper-Locking-fixed.t.sol:LockContractTest
+[FAIL: Locked event not found] testForceSendAttackDoesNotBreakLock() (gas: 179146)
+[FAIL: Locked event not found] testLockNormal() (gas: 179133)
+
+Encountered a total of 2 failing tests, 0 tests succeeded
+Regenerating: 6.1.3-Improper-Locking-fixed.t.sol
+
+Running forge test: 6.1.3-Improper-Locking-fixed.t.sol (attempt 5)
+Failed: 6.1.3-Improper-Locking-fixed.t.sol
+Error:
+Compiler run failed:
+Error (6275): Source "ds-test/test.sol" not found: File not found.
+ --> test/6.1.3-Improper-Locking-fixed.t.sol:3:1:
+  |
+3 | import "ds-test/test.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Compilation failed
+Regenerating: 6.1.3-Improper-Locking-fixed.t.sol
+Failed after 5 attempts: 6.1.3-Improper-Locking-fixed.t.sol
+Deleted test file due to repeated failure: 6.1.3-Improper-Locking-fixed.t.sol
+
+Running forge test: 6.1.3-Improper-Locking-vulnerability.t.sol (attempt 1)
+Passed: 6.1.3-Improper-Locking-vulnerability.t.sol
+
+Running forge test: 6.1.4-Transfer-Pre-Condition-Dependent-on-Transaction-Order-fixed.t.sol (attempt 1)
+Passed: 6.1.4-Transfer-Pre-Condition-Dependent-on-Transaction-Order-fixed.t.sol
+
+Running forge test: 6.1.4-Transfer-Pre-Condition-Dependent-on-Transaction-Order-vulnerability.t.sol (attempt 1)
+Passed: 6.1.4-Transfer-Pre-Condition-Dependent-on-Transaction-Order-vulnerability.t.sol
+
+Running forge test: 6.1.5-Transfer-Amount-Depending-on-Transaction-Order-fixed.t.sol (attempt 1)
+Passed: 6.1.5-Transfer-Amount-Depending-on-Transaction-Order-fixed.t.sol
+
+Running forge test: 6.1.5-Transfer-Amount-Depending-on-Transaction-Order-vulnerability.t.sol (attempt 1)
+Passed: 6.1.5-Transfer-Amount-Depending-on-Transaction-Order-vulnerability.t.sol
+
+Running forge test: 6.1.6-Transfer-Recipient-Depending-on-Transaction-Order-fixed.t.sol (attempt 1)
+Passed: 6.1.6-Transfer-Recipient-Depending-on-Transaction-Order-fixed.t.sol
+
+Running forge test: 6.1.6-Transfer-Recipient-Depending-on-Transaction-Order-vulnerability.t.sol (attempt 1)
+Passed: 6.1.6-Transfer-Recipient-Depending-on-Transaction-Order-vulnerability.t.sol
+
+Running forge test: 6.1.7-Exposed-state-variables-fixed.t.sol (attempt 1)

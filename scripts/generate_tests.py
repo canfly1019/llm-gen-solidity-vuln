@@ -65,14 +65,19 @@ def generate_tests(file: str, error_message: str = None):
 
         You MUST ensure the generated test uses `pragma solidity ^0.8.0;` at the top.
         Do NOT use ^0.8.13, ^0.8.17, or any other version.
-         
+
+        All test files are located in the `test/` directory.
+        All contracts are located in the `src/` directory.
+        Therefore, when importing the contract into the test, use relative paths like:
+        `import "../src/{file}";`
+
         Please focus the tests specifically on the vulnerability described below.
         You do NOT need to cover general functionalities or unrelated edge cases.
 
         If any reverts or failures are expected behavior (e.g., access control or safe checks), 
         you MUST explicitly handle them using `vm.expectRevert`, `try/catch`, or assertions, 
         so that the test does not fail unexpectedly.
-         
+
         Description of the vulnerability to guide your test writing:
         {vuln_description}
 

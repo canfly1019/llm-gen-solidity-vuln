@@ -43,7 +43,7 @@ for src_file in sol_files:
     test_path = os.path.join(test_dir, test_file)
 
     for attempt in range(1, MAX_ATTEMPTS + 1):
-        # 檢測 .t.sol 是否存在，不再的話先生成
+        # 檢測 .t.sol 是否存在，不在的話先生成
         if not os.path.exists(test_path):
             log = f"Test file not found, generating first: {test_file}"
             print(log)

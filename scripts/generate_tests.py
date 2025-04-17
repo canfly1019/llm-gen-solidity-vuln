@@ -2,7 +2,6 @@ import os
 import pandas as pd
 from dotenv import load_dotenv
 from pydantic import BaseModel
-from bs4 import BeautifulSoup
 from openai import OpenAI
 from common import clean_code, write_file
 

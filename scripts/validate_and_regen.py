@@ -30,13 +30,29 @@ def append_log(text: str):
 # 開始紀錄
 append_log(f"\n===== Test run started: {datetime.now()} =====\n")
 
-start_from = "5.7.4"  # 控制從哪個 index 開始
+start_from = "3.1"  # 控制從哪個 index 開始
+end_at = "3.1"  # 控制在哪個 index 結束，設為空字串或 None 代表執行到最後
 skip = True
+finished = False
 
 for src_file in sol_files:
+    # 獲取當前文件的 index
+    current_index = src_file.split("-")[0]
+    
+    # 檢查是否超過結束點 (若 end_at 為空則不檢查)
+    if end_at and current_index > end_at:
+        log = f"Reached ending index: {end_at}, stopping processing"
+        print(log)
+        append_log(log)
+        finished = True
+        break
+        
     if skip:
         if src_file.startswith(start_from):
             skip = False # 找到起點後開始處理
+            log = f"Starting processing from index: {start_from}"
+            print(log)
+            append_log(log)
         else:
             continue
     test_file = get_test_filename(src_file)

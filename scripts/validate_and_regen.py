@@ -30,7 +30,7 @@ def append_log(text: str):
 # 開始紀錄
 append_log(f"\n===== Test run started: {datetime.now()} =====\n")
 
-start_from = "5.7.4"  # 控制從哪個 index 開始
+start_from = "5.13.2"  # 控制從哪個 index 開始
 skip = True
 
 for src_file in sol_files:
@@ -42,13 +42,11 @@ for src_file in sol_files:
     test_file = get_test_filename(src_file)
     test_path = os.path.join(test_dir, test_file)
 
+    if os.path.exists(test_path):
+        continue
+
     for attempt in range(1, MAX_ATTEMPTS + 1):
-        # 檢測 .t.sol 是否存在，不再的話先生成
-        if not os.path.exists(test_path):
-            log = f"Test file not found, generating first: {test_file}"
-            print(log)
-            append_log(log)
-            generate_tests(src_file)
+        generate_tests(src_file)
 
         # 跑 forge test match file 指令
         log = f"\nRunning forge test: {test_file} (attempt {attempt})"

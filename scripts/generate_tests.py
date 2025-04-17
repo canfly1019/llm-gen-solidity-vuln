@@ -97,7 +97,7 @@ def generate_tests(file: str, error_message: str = None):
     # 處理 GPT 回傳的結果
     try:
         response = client.beta.chat.completions.parse(
-            model="o3-mini-2025-01-31",
+            model="o4-mini-2025-04-16",
             messages=messages,
             response_format=FoundryTestOutput,
         )

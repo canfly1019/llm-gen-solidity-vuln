@@ -2,11 +2,10 @@ import os
 import pandas as pd
 from dotenv import load_dotenv
 from pydantic import BaseModel
-from bs4 import BeautifulSoup
 from openai import OpenAI
 from common import clean_code, write_file
 
-# 讀取 .xlsx
+# 讀取 output.xlsx
 excel_df = pd.read_excel("output.xlsx")
 desc_map = dict(zip(excel_df['index'].astype(str), excel_df['description']))
 
@@ -81,7 +80,7 @@ def generate_tests(file: str, error_message: str = None):
         Description of the vulnerability to guide your test writing:
         {vuln_description}
 
-        Write a Forge Foundry test for the following Solidity contract using this version:
+        Write a Foundry test for the following Solidity contract using this version:
 
         {content}
         """}

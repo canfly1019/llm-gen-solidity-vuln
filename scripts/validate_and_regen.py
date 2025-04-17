@@ -30,13 +30,29 @@ def append_log(text: str):
 # 開始紀錄
 append_log(f"\n===== Test run started: {datetime.now()} =====\n")
 
-start_from = "5.13.2"  # 控制從哪個 index 開始
+start_from = "6.1.3"  # 控制從哪個 index 開始
+end_at = "8.1.1"  # 控制在哪個 index 結束，設為空字串或 None 代表執行到最後
 skip = True
+finished = False
 
 for src_file in sol_files:
+    # 獲取當前文件的 index
+    current_index = src_file.split("-")[0]
+    
+    # 檢查是否超過結束點 (若 end_at 為空則不檢查)
+    if end_at and current_index > end_at:
+        log = f"Reached ending index: {end_at}, stopping processing"
+        print(log)
+        append_log(log)
+        finished = True
+        break
+        
     if skip:
         if src_file.startswith(start_from):
             skip = False # 找到起點後開始處理
+            log = f"Starting processing from index: {start_from}"
+            print(log)
+            append_log(log)
         else:
             continue
     test_file = get_test_filename(src_file)
@@ -46,7 +62,12 @@ for src_file in sol_files:
         continue
 
     for attempt in range(1, MAX_ATTEMPTS + 1):
-        generate_tests(src_file)
+        # 檢測 .t.sol 是否存在，不在的話先生成
+        if not os.path.exists(test_path):
+            log = f"Test file not found, generating first: {test_file}"
+            print(log)
+            append_log(log)
+            generate_tests(src_file)
 
         # 跑 forge test match file 指令
         log = f"\nRunning forge test: {test_file} (attempt {attempt})"

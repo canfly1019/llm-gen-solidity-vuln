@@ -90,8 +90,14 @@ def generate_tests(file: str, error_message: str = None):
     if error_message:
         messages.append({
             "role": "user",
-            "content": f"The previously generated test failed to compile. Here is the error message:\n\n{error_message}\n\nPlease regenerate a corrected and working test."
+            "content": f"""The previously generated test `{base_name}-{label.lower()}.t.sol` failed to compile. 
+            Here is the error message:
+
+            {error_message}
+
+            Please regenerate a corrected and working test."""
         })
+
 
     # 處理 GPT 回傳的結果
     try:

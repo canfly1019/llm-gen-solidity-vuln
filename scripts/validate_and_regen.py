@@ -30,8 +30,8 @@ def append_log(text: str):
 # 開始紀錄
 append_log(f"\n===== Test run started: {datetime.now()} =====\n")
 
-start_from = "6.1.3"  # 控制從哪個 index 開始
-end_at = "8.1.1"  # 控制在哪個 index 結束，設為空字串或 None 代表執行到最後
+start_from = "6.2.1"  # 控制從哪個 index 開始
+end_at = "6.2.1"  # 控制在哪個 index 結束，設為空字串或 None 代表執行到最後
 skip = True
 finished = False
 

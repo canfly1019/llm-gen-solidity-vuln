@@ -31352,3 +31352,300 @@ Reached ending index: 3.1, stopping processing
 
 ===== Test run finished: 2025-04-18 02:18:46.413827 =====
 
+
+===== Test run started: 2025-04-18 12:55:22.186544 =====
+
+Starting processing from index: 8.1.3
+Test file not found, generating first: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol
+
+Running forge test: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol (attempt 1)
+Failed: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 338.75ms
+Compiler run successful!
+
+Ran 3 tests for test/8.1.3-Missing-verification-for-program-termination-fixed.t.sol:FixedContractTest
+[PASS] testAttackerCannotDestroyViaAttackerContract() (gas: 158043)
+Traces:
+  [158043] FixedContractTest::testAttackerCannotDestroyViaAttackerContract()
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [107158] → new Attacker@0x29ced945BB6A5acc52d2A29C7c7e8E5f84Cf299d
+    │   └─ ← [Return] 429 bytes of code
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  nly owner can call destroy)
+    │   └─ ← [Return] 
+    ├─ [3753] Attacker::attack()
+    │   ├─ [1249] XYZ::destroy()
+    │   │   └─ ← [Revert] revert: Only owner can call destroy
+    │   └─ ← [Revert] revert: Only owner can call destroy
+    ├─ [0] VM::assertTrue(true, "Contract should not be destroyed by attacker") [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+[PASS] testDirectNonOwnerCannotDestroy() (gas: 13370)
+Traces:
+  [13370] FixedContractTest::testDirectNonOwnerCannotDestroy()
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000bEEF)
+    │   └─ ← [Return] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  nly owner can call destroy)
+    │   └─ ← [Return] 
+    ├─ [1249] XYZ::destroy()
+    │   └─ ← [Revert] revert: Only owner can call destroy
+    ├─ [0] VM::assertTrue(true, "Contract should remain after failed destroy call") [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+[FAIL: Contract code should be removed after self-destruct: 561 != 0] testOwnerCanSelfDestruct() (gas: 18344)
+Traces:
+  [171540] FixedContractTest::setUp()
+    ├─ [133225] → new XYZ@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 561 bytes of code
+    └─ ← [Stop] 
+
+  [18344] FixedContractTest::testOwnerCanSelfDestruct()
+    ├─ [0] VM::assertTrue(true, "Contract should have code before self-destruct") [staticcall]
+    │   └─ ← [Return] 
+    ├─ [5988] XYZ::destroy()
+    │   └─ ← [SelfDestruct] 
+    ├─ [0] VM::assertEq(561, 0, "Contract code should be removed after self-destruct") [staticcall]
+    │   └─ ← [Revert] Contract code should be removed after self-destruct: 561 != 0
+    └─ ← [Revert] Contract code should be removed after self-destruct: 561 != 0
+
+Suite result: FAILED. 2 passed; 1 failed; 0 skipped; finished in 686.25µs (428.36µs CPU time)
+
+Ran 1 test suite in 536.23ms (686.25µs CPU time): 2 tests passed, 1 failed, 0 skipped (3 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/8.1.3-Missing-verification-for-program-termination-fixed.t.sol:FixedContractTest
+[FAIL: Contract code should be removed after self-destruct: 561 != 0] testOwnerCanSelfDestruct() (gas: 18344)
+
+Encountered a total of 1 failing tests, 2 tests succeeded
+Regenerating: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol
+
+Running forge test: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol (attempt 2)
+Passed: 8.1.3-Missing-verification-for-program-termination-fixed.t.sol
+Reached ending index: 8.1.3, stopping processing
+
+===== Test run finished: 2025-04-18 12:56:47.144220 =====
+
+
+===== Test run started: 2025-04-18 13:09:42.275094 =====
+
+Starting processing from index: 5.13.2
+Test file not found, generating first: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+
+Running forge test: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol (attempt 1)
+Failed: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 343.77ms
+Compiler run successful!
+
+Ran 2 tests for test/5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol:WalletExploitTest
+[FAIL: panic: arithmetic underflow or overflow (0x11)] testExploitSucceedsOverwritingOwner() (gas: 37147)
+Traces:
+  [555638] WalletExploitTest::setUp()
+    ├─ [256341] → new Wallet@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1176 bytes of code
+    ├─ [1236] Wallet::owner() [staticcall]
+    │   └─ ← [Return] WalletExploitTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]
+    ├─ [0] VM::assertEq(WalletExploitTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], WalletExploitTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], "Owner should be deployer after construction") [staticcall]
+    │   └─ ← [Return] 
+    ├─ [0] VM::deal(0x000000000000000000000000000000000000ABcD, 1000000000000000000 [1e18])
+    │   └─ ← [Return] 
+    ├─ [0] VM::startPrank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [192480] → new Attack@0x01BD1984E7Ad080078C23290B8Fc6912FB7774E3
+    │   └─ ← [Return] 855 bytes of code
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [37147] WalletExploitTest::testExploitSucceedsOverwritingOwner()
+    ├─ [1236] Wallet::owner() [staticcall]
+    │   └─ ← [Return] WalletExploitTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]
+    ├─ [0] VM::assertEq(WalletExploitTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], WalletExploitTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], "Initial owner should be deployer") [staticcall]
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(0x000000000000000000000000000000000000ABcD)
+    │   └─ ← [Return] 
+    ├─ [24755] Attack::attack()
+    │   ├─ [21792] Wallet::PopBonusCode()
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Revert] panic: arithmetic underflow or overflow (0x11)
+    └─ ← [Revert] panic: arithmetic underflow or overflow (0x11)
+
+[PASS] testPopRevertsWhenNotEmpty() (gas: 49659)
+Traces:
+  [49659] WalletExploitTest::testPopRevertsWhenNotEmpty()
+    ├─ [41395] Wallet::PushBonusCode(123)
+    │   └─ ← [Stop] 
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  %Not allowed: bonusCodes must be empty)
+    │   └─ ← [Return] 
+    ├─ [1253] Wallet::PopBonusCode()
+    │   └─ ← [Revert] revert: Not allowed: bonusCodes must be empty
+    └─ ← [Stop] 
+
+Suite result: FAILED. 1 passed; 1 failed; 0 skipped; finished in 917.00µs (289.59µs CPU time)
+
+Ran 1 test suite in 569.37ms (917.00µs CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in test/5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol:WalletExploitTest
+[FAIL: panic: arithmetic underflow or overflow (0x11)] testExploitSucceedsOverwritingOwner() (gas: 37147)
+
+Encountered a total of 1 failing tests, 1 tests succeeded
+Regenerating: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+
+Running forge test: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol (attempt 2)
+Failed: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+Error:
+Compiler run failed:
+Error (9429): This looks like an address but has an invalid checksum. Correct checksummed address: "0x000000000000000000000000000000000000ABcD". If this is not used as an address, please prepend '00'. For more information please see https://docs.soliditylang.org/en/develop/types.html#address-literals
+SyntaxError: This looks like an address but has an invalid checksum. Correct checksummed address: "0x000000000000000000000000000000000000ABcD". If this is not used as an address, please prepend '00'. For more information please see https://docs.soliditylang.org/en/develop/types.html#address-literals
+  --> test/5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol:10:32:
+   |
+10 |     address attacker = address(0x000000000000000000000000000000000000ABCD);
+   |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Compilation failed
+Regenerating: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+
+Running forge test: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol (attempt 3)
+Failed: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+Error:
+Compiler run failed:
+Error (9429): This looks like an address but has an invalid checksum. Correct checksummed address: "0x000000000000000000000000000000000000ABcD". If this is not used as an address, please prepend '00'. For more information please see https://docs.soliditylang.org/en/develop/types.html#address-literals
+SyntaxError: This looks like an address but has an invalid checksum. Correct checksummed address: "0x000000000000000000000000000000000000ABcD". If this is not used as an address, please prepend '00'. For more information please see https://docs.soliditylang.org/en/develop/types.html#address-literals
+  --> test/5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol:10:32:
+   |
+10 |     address attacker = address(0x000000000000000000000000000000000000abcd);
+   |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Compilation failed
+Regenerating: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+
+Running forge test: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol (attempt 4)
+Passed: 5.13.2-Write-to-Arbitrary-Storage-Location-vulnerability.t.sol
+Reached ending index: 5.13.2, stopping processing
+
+===== Test run finished: 2025-04-18 13:11:10.168261 =====
+
+
+===== Test run started: 2025-04-18 13:17:23.993400 =====
+
+Starting processing from index: 6.2.1
+Test file not found, generating first: 6.2.1-Improper-Input-Validation-vulnerability.t.sol
+
+Running forge test: 6.2.1-Improper-Input-Validation-vulnerability.t.sol (attempt 1)
+Failed: 6.2.1-Improper-Input-Validation-vulnerability.t.sol
+Error:
+Compiling 1 files with Solc 0.8.0
+Solc 0.8.0 finished in 350.81ms
+Compiler run successful!
+
+Ran 4 tests for test/6.2.1-Improper-Input-Validation-vulnerability.t.sol:ImproperInputValidationTest
+[PASS] testLegitimateTransfer() (gas: 46033)
+Traces:
+  [46033] ImproperInputValidationTest::testLegitimateTransfer()
+    ├─ [28758] NonPayloadAttackableToken::transfer(0x000000000000000000000000000000000000bEEF, 10)
+    │   └─ ← [Stop] 
+    ├─ [1492] NonPayloadAttackableToken::balances(ImproperInputValidationTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 990
+    ├─ [0] VM::assertEq(990, 990) [staticcall]
+    │   └─ ← [Return] 
+    ├─ [1492] NonPayloadAttackableToken::balances(0x000000000000000000000000000000000000bEEF) [staticcall]
+    │   └─ ← [Return] 10
+    ├─ [0] VM::assertEq(10, 10) [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+[PASS] testOverflowTransferReverts() (gas: 7465)
+Traces:
+  [7465] ImproperInputValidationTest::testOverflowTransferReverts()
+    ├─ [0] VM::expectRevert(custom error 0xf28dceb3:  Insufficient balance)
+    │   └─ ← [Return] 
+    ├─ [1799] NonPayloadAttackableToken::transfer(0x000000000000000000000000000000000000bEEF, 2000)
+    │   └─ ← [Revert] revert: Insufficient balance
+    └─ ← [Stop] 
+
+[FAIL: Truncated call should not revert] testShortAddressAttackMisparsesValue() (gas: 592390)
+Traces:
+  [536431] ImproperInputValidationTest::setUp()
+    ├─ [241366] → new NonPayloadAttackableToken@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1105 bytes of code
+    ├─ [196243] → new Attack@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 874 bytes of code
+    ├─ [1492] NonPayloadAttackableToken::balances(ImproperInputValidationTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 1000
+    ├─ [0] VM::assertEq(1000, 1000) [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [592390] ImproperInputValidationTest::testShortAddressAttackMisparsesValue()
+    ├─ [0] VM::prank(ImproperInputValidationTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   └─ ← [Return] 
+    ├─ [28758] NonPayloadAttackableToken::transfer(Attack: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 100)
+    │   └─ ← [Stop] 
+    ├─ [1492] NonPayloadAttackableToken::balances(ImproperInputValidationTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 900
+    ├─ [0] VM::assertEq(900, 900) [staticcall]
+    │   └─ ← [Return] 
+    ├─ [1492] NonPayloadAttackableToken::balances(Attack: [0x2e234DAe75C793f67A35089C9d99245E1C58470b]) [staticcall]
+    │   └─ ← [Return] 100
+    ├─ [0] VM::assertEq(100, 100) [staticcall]
+    │   └─ ← [Return] 
+    ├─ [241366] → new NonPayloadAttackableToken@0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+    │   └─ ← [Return] 1105 bytes of code
+    ├─ [196243] → new Attack@0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9
+    │   └─ ← [Return] 874 bytes of code
+    ├─ [0] VM::prank(Attack: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9])
+    │   └─ ← [Return] 
+    ├─ [207] NonPayloadAttackableToken::transfer()
+    │   └─ ← [Revert] EvmError: Revert
+    ├─ [0] VM::assertTrue(false, "Truncated call should not revert") [staticcall]
+    │   └─ ← [Revert] Truncated call should not revert
+    └─ ← [Revert] Truncated call should not revert
+
+[FAIL: Short calldata unexpectedly reverted] testShortCalldataDoesNotRevert() (gas: 7666)
+Traces:
+  [536431] ImproperInputValidationTest::setUp()
+    ├─ [241366] → new NonPayloadAttackableToken@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1105 bytes of code
+    ├─ [196243] → new Attack@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 874 bytes of code
+    ├─ [1492] NonPayloadAttackableToken::balances(ImproperInputValidationTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 1000
+    ├─ [0] VM::assertEq(1000, 1000) [staticcall]
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [7666] ImproperInputValidationTest::testShortCalldataDoesNotRevert()
+    ├─ [0] VM::prank(Attack: [0x2e234DAe75C793f67A35089C9d99245E1C58470b])
+    │   └─ ← [Return] 
+    ├─ [207] NonPayloadAttackableToken::transfer()
+    │   └─ ← [Revert] EvmError: Revert
+    ├─ [0] VM::assertTrue(false, "Short calldata unexpectedly reverted") [staticcall]
+    │   └─ ← [Revert] Short calldata unexpectedly reverted
+    └─ ← [Revert] Short calldata unexpectedly reverted
+
+Suite result: FAILED. 2 passed; 2 failed; 0 skipped; finished in 920.43µs (970.97µs CPU time)
+
+Ran 1 test suite in 567.54ms (920.43µs CPU time): 2 tests passed, 2 failed, 0 skipped (4 total tests)
+
+Failing tests:
+Encountered 2 failing tests in test/6.2.1-Improper-Input-Validation-vulnerability.t.sol:ImproperInputValidationTest
+[FAIL: Truncated call should not revert] testShortAddressAttackMisparsesValue() (gas: 592390)
+[FAIL: Short calldata unexpectedly reverted] testShortCalldataDoesNotRevert() (gas: 7666)
+
+Encountered a total of 2 failing tests, 2 tests succeeded
+Regenerating: 6.2.1-Improper-Input-Validation-vulnerability.t.sol
+
+Running forge test: 6.2.1-Improper-Input-Validation-vulnerability.t.sol (attempt 2)
+Passed: 6.2.1-Improper-Input-Validation-vulnerability.t.sol
+Reached ending index: 6.2.1, stopping processing
+
+===== Test run finished: 2025-04-18 13:19:04.658210 =====
+

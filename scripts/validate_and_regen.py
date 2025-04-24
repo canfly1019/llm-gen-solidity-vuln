@@ -58,6 +58,9 @@ for src_file in sol_files:
     test_file = get_test_filename(src_file)
     test_path = os.path.join(test_dir, test_file)
 
+    # 對每個新文件重置session，並且設為True來確保第一次嘗試先清除之前可能存在的session
+    reset_session = True
+    
     if os.path.exists(test_path):
         continue
 
@@ -67,7 +70,9 @@ for src_file in sol_files:
             log = f"Test file not found, generating first: {test_file}"
             print(log)
             append_log(log)
-            generate_tests(src_file)
+            generate_tests(src_file, attempt=attempt, reset_session=reset_session)
+            # 第一次生成後就不需要再重置session
+            reset_session = False
 
         # 跑 forge test match file 指令
         log = f"\nRunning forge test: {test_file} (attempt {attempt})"
@@ -95,11 +100,11 @@ for src_file in sol_files:
             append_log("Error:\n" + error_output)
             print("Error:\n" + error_output)
 
-            # 回傳 error 重新生成 .t.sol
-            log = f"Regenerating: {test_file}"
+            # 回傳 error 重新生成 .t.sol，保持同一session
+            log = f"Regenerating: {test_file} (attempt {attempt+1})"
             print(log)
             append_log(log)
-            generate_tests(src_file, error_message=error_output)
+            generate_tests(src_file, error_message=error_output, attempt=attempt+1, reset_session=False)
 
     # for-else 語法，沒有 break for 代表 attempt 五次的話才執行。
     else:

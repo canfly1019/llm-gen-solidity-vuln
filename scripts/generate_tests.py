@@ -45,15 +45,17 @@ def generate_tests(file: str, error_message: str = None):
     # 根據 label 決定 system prompt
     if label == "Fixed":
         system_prompt = (
-            "You are a Solidity security auditor. The following contract is a FIXED version, "
-            "meaning the vulnerability has been resolved. Do NOT expect reverts or failed attacks. "
-            "Write tests that confirm the contract behaves securely and correctly."
+            "You are a Solidity security auditor. The following contract is a FIXED version of a previously vulnerable contract. "
+            "The vulnerability has been properly mitigated. Write Foundry tests that confirm the contract behaves securely and as intended. "
+            "Do NOT expect the attack to succeed. Ensure that any attempted exploit is reverted or fails safely."
         )
     else:
         system_prompt = (
-            "You are a Solidity security auditor. The following contract is a VULNERABLE version. "
-            "Demonstrate the issue using tests. You may expect reverts and include exploit logic."
+            "You are a Solidity security auditor. The following contract is a VULNERABLE version with a known issue. "
+            "Write Foundry tests that demonstrate how the vulnerability can be exploited. "
+            "It is expected that attacks may succeed and the contract may behave incorrectly or insecurely."
         )
+
 
     # 組合 messages 發送給 GPT (包含漏洞描述與合約內容)
     messages = [

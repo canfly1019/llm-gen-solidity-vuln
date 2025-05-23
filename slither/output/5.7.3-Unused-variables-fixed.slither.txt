@@ -1,0 +1,34 @@
+
+=== STDERR ===
+'forge config --json' running
+'/home/canfly/.solc-select/artifacts/solc-0.8.0/solc-0.8.0 --version' running
+'/home/canfly/.solc-select/artifacts/solc-0.8.0/solc-0.8.0 forge-std/=lib/forge-std/src/ /mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/src/5.7.3-Unused-variables-fixed.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --optimize-runs 200 --evm-version istanbul --allow-paths .,/mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/src' running
+Compilation warnings/errors on /mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/src/5.7.3-Unused-variables-fixed.sol:
+Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+  --> /mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/src/5.7.3-Unused-variables-fixed.sol:14:69:
+   |
+14 |     function unusedReturn(int x, int y) public pure returns (int m, int n, int o) {
+   |                                                                     ^^^^^
+
+
+INFO:Detectors:
+Version constraint >=0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- >=0.8.0 (src/5.7.3-Unused-variables-fixed.sol#1)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+UnusedVariablesFixed.a (src/5.7.3-Unused-variables-fixed.sol#6) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+INFO:Detectors:
+AttackUnusedVariablesFixed.fixedInstance (src/5.7.3-Unused-variables-fixed.sol#36) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:/mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/src/5.7.3-Unused-variables-fixed.sol analyzed (2 contracts with 100 detectors), 3 result(s) found

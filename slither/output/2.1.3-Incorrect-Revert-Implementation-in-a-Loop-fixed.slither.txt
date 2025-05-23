@@ -1,0 +1,64 @@
+
+=== STDERR ===
+'forge config --json' running
+'/home/canfly/.solc-select/artifacts/solc-0.8.0/solc-0.8.0 --version' running
+'/home/canfly/.solc-select/artifacts/solc-0.8.0/solc-0.8.0 forge-std/=lib/forge-std/src/ /mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --optimize-runs 200 --evm-version istanbul --allow-paths .,/mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/src' running
+Compilation warnings/errors on /mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol:
+Warning: This contract has a payable fallback function, but no receive ether function. Consider adding a receive ether function.
+  --> /mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol:57:1:
+   |
+57 | contract AttackFixed {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+Note: The payable fallback function is defined here.
+  --> /mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol:66:5:
+   |
+66 |     fallback() external payable {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+INFO:Detectors:
+NaiveBankFixed.setTransfer() (src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol#40-48) sends eth to arbitrary user
+	Dangerous calls:
+	- require(bool,string)(availableWinners[i].send(reward),Send failed, reverting transaction) (src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol#46)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+INFO:Detectors:
+Contract locking ether found:
+	Contract AttackFixed (src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol#57-74) has payable functions:
+	 - AttackFixed.fallback() (src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol#66-68)
+	But does not have a function to withdraw the ether
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#contracts-that-lock-ether
+INFO:Detectors:
+NaiveBankFixed.setTransfer() (src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol#40-48) has external calls inside a loop: require(bool,string)(availableWinners[i].send(reward),Send failed, reverting transaction) (src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol#46)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+INFO:Detectors:
+Version constraint >=0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- >=0.8.0 (src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter NaiveBankFixed.addWinner(address)._winner (src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol#24) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+Reentrancy in NaiveBankFixed.setTransfer() (src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol#40-48):
+	External calls:
+	- require(bool,string)(availableWinners[i].send(reward),Send failed, reverting transaction) (src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol#46)
+	State variables written after the call(s):
+	- setProcWinners(availableWinners[i]) (src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol#44)
+		- processed[addr] = true (src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol#35)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+INFO:Detectors:
+NaiveBankFixed.reward (src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol#15) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+INFO:Detectors:
+AttackFixed.fixedContract (src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol#58) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:/mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/src/2.1.3-Incorrect-Revert-Implementation-in-a-Loop-fixed.sol analyzed (2 contracts with 100 detectors), 8 result(s) found

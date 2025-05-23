@@ -1,0 +1,36 @@
+
+=== STDERR ===
+'forge config --json' running
+'/home/canfly/.solc-select/artifacts/solc-0.8.0/solc-0.8.0 --version' running
+'/home/canfly/.solc-select/artifacts/solc-0.8.0/solc-0.8.0 forge-std/=lib/forge-std/src/ /mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/src/5.5-Wrong-class-inheritance-order-fixed.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --optimize-runs 200 --evm-version istanbul --allow-paths .,/mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/src' running
+INFO:Detectors:
+Contract locking ether found:
+	Contract Sales (src/5.5-Wrong-class-inheritance-order-fixed.sol#68-84) has payable functions:
+	 - Sales.buy() (src/5.5-Wrong-class-inheritance-order-fixed.sol#76-79)
+	But does not have a function to withdraw the ether
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#contracts-that-lock-ether
+INFO:Detectors:
+WhitelistedBuyers.hasEnded() (src/5.5-Wrong-class-inheritance-order-fixed.sol#62-64) is never used and should be removed
+WhitelistedBuyers.validPurchase() (src/5.5-Wrong-class-inheritance-order-fixed.sol#58-60) is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+INFO:Detectors:
+Version constraint >=0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- >=0.8.0 (src/5.5-Wrong-class-inheritance-order-fixed.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Attack.fixedSales (src/5.5-Wrong-class-inheritance-order-fixed.sol#89) should be immutable 
+SalesCompl.endBlock (src/5.5-Wrong-class-inheritance-order-fixed.sol#21) should be immutable 
+SalesCompl.startBlock (src/5.5-Wrong-class-inheritance-order-fixed.sol#20) should be immutable 
+Utils.cap (src/5.5-Wrong-class-inheritance-order-fixed.sol#37) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:/mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/src/5.5-Wrong-class-inheritance-order-fixed.sol analyzed (5 contracts with 100 detectors), 8 result(s) found

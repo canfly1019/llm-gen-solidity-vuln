@@ -1,0 +1,65 @@
+
+=== STDERR ===
+'forge config --json' running
+'/home/canfly/.solc-select/artifacts/solc-0.8.0/solc-0.8.0 --version' running
+'/home/canfly/.solc-select/artifacts/solc-0.8.0/solc-0.8.0 forge-std/=lib/forge-std/src/ /mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --optimize-runs 200 --evm-version istanbul --allow-paths .,/mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/src' running
+INFO:Detectors:
+FixedAttack.executeAttack(uint256) (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#108-110) sends eth to arbitrary user
+	Dangerous calls:
+	- fixedExchange.depositToken{value: 0}(address(fakeToken),depositAmount) (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#109)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+INFO:Detectors:
+IERC20 (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#8-12) has incorrect ERC20 function interface:IERC20.transferFrom(address,address,uint256) (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#10)
+RealToken (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#48-73) has incorrect ERC20 function interface:RealToken.transferFrom(address,address,uint256) (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#61-67)
+FakeTokenForFixed (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#79-90) has incorrect ERC20 function interface:FakeTokenForFixed.transferFrom(address,address,uint256) (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#89)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-erc20-interface
+INFO:Detectors:
+FixedExchange.depositToken(address,uint256) (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#25-41) uses a dangerous strict equality:
+	- require(bool,string)(afterBalance - beforeBalance == amount,Token transfer amount mismatch) (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#37)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+Contract locking ether found:
+	Contract FixedExchange (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#17-42) has payable functions:
+	 - FixedExchange.depositToken(address,uint256) (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#25-41)
+	But does not have a function to withdraw the ether
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#contracts-that-lock-ether
+INFO:Detectors:
+Reentrancy in FixedExchange.depositToken(address,uint256) (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#25-41):
+	External calls:
+	- IERC20(token).transferFrom(msg.sender,address(this),amount) (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#33)
+	State variables written after the call(s):
+	- tokens[token][msg.sender] += amount (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#39)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+INFO:Detectors:
+Reentrancy in FixedExchange.depositToken(address,uint256) (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#25-41):
+	External calls:
+	- IERC20(token).transferFrom(msg.sender,address(this),amount) (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#33)
+	Event emitted after the call(s):
+	- Deposit(token,msg.sender,amount,tokens[token][msg.sender]) (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#40)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint >=0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- >=0.8.0 (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#1)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+RealToken.decimals (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#51) should be constant 
+RealToken.name (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#49) should be constant 
+RealToken.symbol (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#50) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+INFO:Detectors:
+FixedAttack.fakeToken (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#98) should be immutable 
+FixedAttack.fixedExchange (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#97) should be immutable 
+FixedAttack.owner (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#99) should be immutable 
+RealToken.totalSupply (src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol#52) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:/mnt/c/Users/2017x/CKLab/llm-gen-solidity-vuln/src/4.5-Missing-Token-Verification-of-Exchange-fixed.sol analyzed (5 contracts with 100 detectors), 16 result(s) found
